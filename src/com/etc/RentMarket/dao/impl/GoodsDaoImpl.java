@@ -179,7 +179,27 @@ public class GoodsDaoImpl implements GoodsDao {
 		String sql = "update releasegoods,good,users set good.goodName=?,good.goodImgAdd=?,users.userName=?,releasegoods.releaseDate=?,releasegoods.releaseState=?  where good.goodId=? and good.goodId=releasegoods.goodId and good.userId=users.userId";
 		return BaseDao.execute(sql,good.getGoodName(),good.getGoodImgAdd(),good.getUserName(),good.getReleaseDate(),good.getReleaseState(),good.getGoodId() )>0;
 	}
-	
+	/**
+	 * 添加商品类别
+	 * @param type Goodstype对象
+	 * @return true 操作成功，false 操作失败
+	 */
+	@Override
+	public boolean addGoodType(Goodstype type) {
+		// TODO Auto-generated method stub
+		String sql="insert into goodstype VALUES(null,?,?)";
+		return BaseDao.execute(sql, type.getTypeName(),type.getTypeparentId())>0;
+	}
+	/**
+	 * 查询所有的商品类别
+	 * @return is not null 查询成功，null 查询失败
+	 */
+	@Override
+	public List<Goodstype> selectAllType() {
+		// TODO Auto-generated method stub
+		String sql="select typeId,typeName from goodstype";
+		return (List<Goodstype>)BaseDao.select(sql, Goodstype.class);
+	}
 	@Override
 	public List<Good> getgoodsByGoodId(int goodId) {
 		// TODO Auto-generated method stub
