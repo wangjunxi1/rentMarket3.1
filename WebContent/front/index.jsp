@@ -149,10 +149,10 @@ p {
 				</h1>
 			</div>
 			<div class="head-form fl">
-				<form class="clearfix">
-					<input type="text" class="search-text" accesskey="" id="key"
+				<form class="clearfix" action="../se.do" method="post">
+					<input type="text" class="search-text" accesskey="" id="key" name="searchText"
 						autocomplete="off" placeholder="相机">
-					<button class="button" onClick="search('key');return false;">搜索</button>
+					<button class="button" type="submit" >搜索</button>
 				</form>
 				<div class="words-text clearfix">
 					<a href="#" class="red">iPhoneXS max</a> <a href="#">笔记本租赁</a> <a
@@ -579,7 +579,7 @@ p {
 										<img src=<%=goodPath + g.getGoodImgAdd()%>>
 										<p class="head-name pc-pa10"><%=g.getGoodName()%></p>
 										<p class="label-default">
-											¥<%=g.getGoodPrice()%>/月
+											¥<%=g.getGoodPrice()%>/天
 										</p>
 								</a></li>
 								<%

@@ -1,3 +1,4 @@
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="com.etc.RentMarket.entity.Good"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -81,9 +82,9 @@
     <div class="container clearfix">
         <div class="header-logo fl"><h1><a href="#"><img src="theme/icon/logo.png"></a> </h1></div>
         <div class="head-form fl">
-            <form class="clearfix">
+            <form class="clearfix" action="../se.do" method="post">
                 <input type="text" class="search-text" accesskey="" id="key" autocomplete="off"  placeholder="手机模型">
-                <button class="button" onClick="search('key');return false;">搜索</button>
+                <button class="button" type="submit" >搜索</button>
             </form>
             <div class="words-text clearfix">
                 <a href="#" class="red">1元秒爆</a>
@@ -122,96 +123,31 @@
         </ul>
     </div>
     <div>
-       	 <% 
-        		String imgPath="theme/img/pd/"; 
-
-        	%>
+       	 
         <div class="pc-nav-digit clearfix">     	
 	       <ul>
-                
+	       <% 
+        		String imgPath="theme/img/pd/"; 
+       	 		List<Good> serlist=(List<Good>) request.getAttribute("serlist");
+       	 		for(Good sergood:serlist){
+
+        	%>
+                 <li>
+                    <div class="digit1"><a href="front/goodDetail.jsp?goodId=<%=sergood.getGoodId()%>"><img src=<%=imgPath+sergood.getGoodImgAdd() %>></a></div>
+                    <div class="digit2"><a href="front/goodDetail.jsp?goodId=<%=sergood.getGoodId()%>"><%=sergood.getGoodName() %></a></div>
+                    <div class="digit2"><a href="front/goodDetail.jsp?goodId=<%=sergood.getGoodId()%>">¥<%=sergood.getGoodPrice()%>/天</a></div>
+                </li>
+                <%
+       	 		}
+                %>
             </ul>
         </div>
     </div>
     <div>
-        <div class="pc-nav-title"><h3>手机数码</h3></div>
-        <div class="pc-nav-digit clearfix">
-            <ul>
-                <li>
-                    <div class="digit1"><a href="#"><img src="theme/img/pd/相机1.jpg"></a></div>
-                    <div class="digit2"><a href="#">乐视 GENE 自拍伴侣 自拍杆 蓝牙 Liveman S1</a></div>
-                </li>
-                <li>
-                    <div class="digit1"><a href="#"><img src="theme/img/pd/相机2.jpg"></a></div>
-                    <div class="digit2"><a href="#">乐视 GENE 运动相机 直播相机 Liveman M1</a></div>
-                </li>
-                 <li>
-                    <div class="digit1"><a href="#"><img src="theme/img/pd/v1.jpg"></a></div>
-                    <div class="digit2"><a href="#">vivo</a></div>
-                </li>
-                <li>
-                    <div class="digit1"><a href="#"><img src="theme/img/pd/v2.jpg"></a></div>
-                    <div class="digit2"><a href="#">vivo Z1</a></div>
-                </li>
-                <li>
-                    <div class="digit1"><a href="#"><img src="theme/img/pd/v3.jpg"></a></div>
-                    <div class="digit2"><a href="#">vivo Nex</a></div>
-                </li>
-                 <li>
-                    <div class="digit1"><a href="#"><img src="theme/img/pd/v4.jpg"></a></div>
-                    <div class="digit2"><a href="#">vivo X23</a></div>
-                </li>
-            	 <li>
-                    <div class="digit1"><a href="#"><img src="theme/img/pd/相机1.jpg"></a></div>
-                    <div class="digit2"><a href="#">乐视 GENE 自拍伴侣 自拍杆 蓝牙 Liveman S1</a></div>
-                </li>
-                <li>
-                    <div class="digit1"><a href="#"><img src="theme/img/pd/相机3.jpg"></a></div>
-                    <div class="digit2"><a href="#">乐视 GENE 4K 运动相机 直播相机 Liveman C1</a></div>
-                </li>
-                <li>
-                    <div class="digit1"><a href="#"><img src="theme/img/pd/相机2.jpg"></a></div>
-                    <div class="digit2"><a href="#">乐视 GENE 4K 运动相机 直播相机 Liveman M1</a></div>
-                </li>
-                <li>
-                    <div class="digit1"><a href="#"><img src="theme/img/pd/相机1.jpg"></a></div>
-                    <div class="digit2"><a href="#">乐视 GENE 自拍伴侣 自拍杆 蓝牙 Liveman S1</a></div>
-                </li>
-               <li>
-                    <div class="digit1"><a href="#"><img src="theme/img/pd/相机2.jpg"></a></div>
-                    <div class="digit2"><a href="#">乐视 GENE 运动相机 直播相机 Liveman M1</a></div>
-                </li>
-                 <li>
-                    <div class="digit1"><a href="#"><img src="theme/img/pd/相机2.jpg"></a></div>
-                    <div class="digit2"><a href="#">乐视 GENE 运动相机 直播相机 Liveman M1</a></div>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div style="padding-top:30px;">
-        <div class="member-pages clearfix">
-            <div class="fr pc-search-g">
-                <a href="#" class="fl pc-search-f">上一页</a>
-                <a class="current" href="#">1</a>
-                <a href="javascript:;">2</a>
-                <a href="javascript:;">3</a>
-                <a href="javascript:;">4</a>
-                <a href="javascript:;">5</a>
-                <a href="javascript:;">6</a>
-                <a href="javascript:;">7</a>
-                <span class="pc-search-di">…</span>
-                <a onClick="SEARCH.page(3, true)" href="javascript:;" class="pc-search-n" title="使用方向键右键也可翻到下一页哦！">下一页</a>
-                    <span class="pc-search-y">
-                        <em>  共20页    到第</em>
-                        <input type="text" placeholder="1" class="pc-search-j">
-                        <em>页</em>
-                        <a class="confirm" href="#">确定</a>
-                    </span>
-
-            </div>
-        </div>
-    </div>
+      
+    
 </div>
-<div class="pc-buying clearfix"></div>
+
 <!--- footer begin-->
 <div class="aui-footer-bot">
     <div class="time-lists aui-footer-pd clearfix">

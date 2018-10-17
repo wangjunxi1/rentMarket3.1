@@ -38,9 +38,11 @@ public class SearchServlet extends HttpServlet {
 		SearchGoodsServiceImpl sd = new SearchGoodsServiceImpl();
 		
 		String searchText = request.getParameter("searchText");
+		System.out.println(searchText);
 		List<Good> serlist = sd.SelGoodByLike(searchText);
-		request.setAttribute("serlist", serlist);;
-		request.getRequestDispatcher("SearchResult.jsp").forward(request, response);
+		request.setAttribute("serlist", serlist);
+		System.out.println(serlist);
+		request.getRequestDispatcher("front/SearchResult.jsp").forward(request, response);
 		
 	}
 
