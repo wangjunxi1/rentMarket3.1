@@ -102,6 +102,7 @@ public class UsersDaoImpl implements UsersDao {
 		// TODO Auto-generated method stub
 		String sql="select * from users where userName=?";
 		List<User> list = (List<User>)BaseDao.select(sql,  User.class, userName);
+		
 		int userId=list.get(0).getUserId();
 		return userId;
 	}
