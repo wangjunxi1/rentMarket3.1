@@ -33,7 +33,7 @@ public class AddressDaoImpl implements AddressDao{
 public boolean addAddr(String userName, String userRealName, String userAddress, String userPhone) {
 	// TODO Auto-generated method stub
 	String sql = "insert into usersdetail (userName,userPhone,userAddress,userRealName) values (?,?,?,?)";
-	return BaseDao.execute(sql,userName,userRealName,userAddress,userPhone)>0;
+	return BaseDao.execute(sql,userName,userPhone,userAddress,userRealName)>0;
 }
 /**
  * 修改地址

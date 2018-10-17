@@ -116,8 +116,8 @@
                             </div>
 
                             <div class="pc-event">
-                                <a role="button" class="btn" data-toggle="modal" data-target="#Mymodal3" contenteditable="true">修改 </a>
-                                <a role="button" class="btn" data-toggle="modal" data-target="#Mymodal4" contenteditable="true">删除</a>
+                                <a role="button" class="btn" data-toggle="modal" data-target="#Mymodal3" contenteditable="true" onclick="addId(${a.userDetailId})">修改 </a>
+                                <a role="button" class="btn" data-toggle="modal" data-target="#Mymodal4" contenteditable="true" onclick="addId2(${a.userDetailId})">删除</a>
                             </div>
                         </li>
 
@@ -186,7 +186,7 @@
 									<form class="form-horizontal" action="ads.do?op=up"
 										role="form" method="post">
 										<div class="form-group">
-											<input type="hidden" id="userDetailId" name="userDetailId" value="${a.userDetailId}">
+											<input type="hidden" id="userDetailId" name="userDetailId" >
 											<label for="userRealName">收货人</label> <input type="text"
 												class="form-control" id="userRealName" name="userRealName" placeholder="" style="height: 40px;width: 550px"/>
 										</div>
@@ -229,7 +229,7 @@
 									<form class="form-horizontal" action="ads.do?op=del"
 										role="form" method="post">
 										<div class="form-group">
-											<input type="hidden" id="userDetailId" name="userDetailId" value="${a.userDetailId}">
+											<input type="hidden" id="userDetailId2" name="userDetailId2">
 											<label style="text-align: center;">确认删除该地址？</label>
 										</div>
 										<button type="submit" class="btn btn-default" style="margin-left: 170px">确定</button>
@@ -250,6 +250,15 @@
     </div>
 </section>
 <!-- 商城快讯 End -->
+
+<script type="text/javascript">
+	function addId(Id){
+		$("#userDetailId").val(Id);
+	}
+	function addId2(Id){
+		$("#userDetailId2").val(Id);
+	}
+</script>
 
 <!--- footer begin-->
 <div class="aui-footer-bot">

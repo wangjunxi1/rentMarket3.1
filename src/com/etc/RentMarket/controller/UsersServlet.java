@@ -195,7 +195,7 @@ public class UsersServlet extends HttpServlet {
 						long sizeInBytes = item.getSize(); // 大小
 						// path应该如何来赋值？ 这个文件上传之后的实际目录是哪里 ->还要将文件名写完整
 						// 分析 实际上应该是 tomcat下的webapps/工程名/某个目录 暂时定为 imgs
-						String path = "C:\\Users\\Administrator\\git\\RentMarket2.0\\WebContent\\avatar\\" + fileName;
+						String path = "C:\\Users\\Administrator\\git\\rentMarket3.1\\WebContent\\avatar\\" + fileName;
 						// 构建一个FIle对象出来
 						File uploadedFile = new File(path);
 						// write写 实际就是文件上传的具体动作
