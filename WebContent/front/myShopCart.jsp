@@ -167,12 +167,12 @@
 				</div>
 
 				<%-- <%
-					if(request.getAttribute("userName")==null){
+					if(request.getAttribute("flag")=="true"){
 				%>
-				<jsp:forward page="../shopcart.do?userName=${sessionScope.user.userName}"></jsp:forward>
+				<jsp:forward page="../shopcart.do?op=showCart&userName=${sessionScope.user.userName}"></jsp:forward>
 				<% 		
 					}
-				%> --%>
+				%>  --%>
 				<div class="member-return H-over">
 
 					<form action="pay.jsp" method="post" onsubmit="return check()">
@@ -290,7 +290,7 @@
 												<li class="td td-op">
 													<div class="td-inner">
 														<a
-															href="shopcart.do?op=delCart&goodId=${a.goodId}&userName=${requestScope.userName}"
+															href="../shopcart.do?op=delCart&goodId=${a.goodId}&userName=${requestScope.userName}"
 															data-point-url="#" class="delete"> 删除</a>
 													</div>
 												</li>
