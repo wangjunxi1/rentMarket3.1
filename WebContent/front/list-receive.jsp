@@ -29,6 +29,7 @@
 <link href="theme/css/personal.css" rel="stylesheet" type="text/css">
 <link href="theme/css/orstyle.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="theme/js/jquery.js"></script>
+<script src="theme/js/jquery-3.1.1.min.js"></script>
 <script>
 	$(function() {
 
@@ -116,21 +117,10 @@
 					<dl>
 						<dt>客户服务</dt>
 						<dd>
-							<a href="#">退货申请</a>
-						</dd>
-						<dd>
-							<a href="#">退货/退款记录</a>
+							<a href="requestback.jsp">归还</a>
 						</dd>
 					</dl>
-					<dl>
-						<dt>我的消息</dt>
-						<dd>
-							<a href="#">商城快讯</a>
-						</dd>
-						<dd>
-							<a href="#">帮助中心</a>
-						</dd>
-					</dl>
+					
 				</div>
 			</div>
 			<div class="member-right fr">
@@ -257,6 +247,20 @@
 																<p class="Mystatus">${o.orderState==0?"未收货":"已收货" }</p>
 															</div>
 														</li>
+														<li class="td td-change">
+																
+																<form method="post" action="rs.do?op=sel">
+																	<div class="am-btn am-btn-danger anniu">
+																	<input type="hidden" name="orderId" value="${o.orderId}">
+																	<input type="hidden" name="goodName" value="${o.goodName}">
+																		<button type="submit" style="background : none;color: white;border: 0">
+																			我要归还
+																		</button>
+																	</div>
+																</form>
+																	
+															</li>
+														
 														
 													</div>
 												</div>
