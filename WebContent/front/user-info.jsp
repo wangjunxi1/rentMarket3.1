@@ -91,7 +91,7 @@
 							<a href="comment.jsp">我的评价</a>
 						</dd>
 						<dd>
-							<a href="../ads.do?op=sel">地址管理</a>
+							<a href="${pageContext.request.contextPath}/ads.do?op=sel">地址管理</a>
 						</dd>
 					</dl>
 					<dl>

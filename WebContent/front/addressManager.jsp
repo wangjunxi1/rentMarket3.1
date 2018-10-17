@@ -70,9 +70,9 @@
                 <dl>
                     <dt>我的商城</dt>
                     <dd><a href="front/user-info.jsp">我的信息</a></dd>
-                    <dd><a href="os.do?op=sel">我的订单</a></dd>
+                    <dd><a href="${pageContext.request.contextPath}/os.do?op=sel">我的订单</a></dd>
                     <dd><a href="myfavorite.jsp">我的收藏</a></dd>
-                    <dd><a href="comment.jsp">我的评价</a></dd>
+                    <dd><a href="front/comment.jsp">我的评价</a></dd>
                     <dd class="cur"><a href="#">地址管理</a></dd>
                 </dl>
                 <dl>

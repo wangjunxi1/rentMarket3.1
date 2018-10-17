@@ -89,10 +89,10 @@
                 <dl>
                     <dt>我的商城</dt>
                     <dd><a href="user-info.jsp">我的信息</a></dd>
-                    <dd><a href="list-receive.jsp">我的订单</a></dd>
+                    <dd><a href="${pageContext.request.contextPath}/os.do?op=sel">我的订单</a></dd>
                     <dd><a href="myfavorite.jsp">我的收藏</a></dd>
                     <dd class="cur"><a href="#">我的评价</a></dd>
-                    <dd><a href="addressManager.jsp">地址管理</a></dd>
+                    <dd><a href="${pageContext.request.contextPath}/ads.do?op=sel">地址管理</a></dd>
                 </dl>
                 <dl>
                     <dt>客户服务</dt>
@@ -136,7 +136,6 @@
                            </div>
                            <div class="sp2"><%=o.getRentDate()%></div>
                            <div class="sp3">
-                           <a style="cursor:pointer" class="release">发表评价</a>
                            <a class="seecomment" style="margin-top: 3px; margin-bottom: 20px;cursor:pointer">查看评价</a>
                            </div>
                        </li>
@@ -159,17 +158,7 @@
                 <%
                 	}
                  %>
-               <div  class="rediv" style="clear: both;">
-                   <ul>
-                       <li class="clearfix" >
-                           <div class="member-score fl" style="margin-top: 10px;"><i class="reds">*</i>商品评价：</div>
-                           <div class="member-star fl">
-                               <textarea maxlength="200" style="margin-top: 10px;"></textarea>    
-                           </div>
-                           <button id="resubmit" type="submit" style="border: 0px solid red;background-color: red;color: white;margin-top: 20px;margin-left:90px ;width: 60px;height: 30px;">提交评价</button>
-                       </li> 
-                   </ul>
-               </div>
+               
                <!--评论区 -->
                              <%
                                 }
