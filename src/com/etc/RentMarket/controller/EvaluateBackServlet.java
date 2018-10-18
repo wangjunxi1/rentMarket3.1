@@ -89,7 +89,7 @@ public class EvaluateBackServlet extends HttpServlet {
 		// 使用printWriter对象
 		PrintWriter out = response.getWriter();
 		out.print(jsonString);
-		System.out.println("[jsonString] :" + jsonString);
+		
 		out.close();
 	}
 
@@ -103,7 +103,7 @@ public class EvaluateBackServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		int evaluateId = Integer.valueOf((request.getParameter("id")));
 		boolean flag = es.DelEvaluate(evaluateId);
-		System.out.println(flag);
+		
 		out.print(flag);
 
 	}
@@ -144,7 +144,7 @@ public class EvaluateBackServlet extends HttpServlet {
 		// 使用printWriter对象
 		PrintWriter out = response.getWriter();
 		out.print(jsonString);
-		System.out.println("[jsonString] :" + jsonString);
+		
 		out.close();
 	}
 
@@ -158,7 +158,7 @@ public class EvaluateBackServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		int cid = Integer.valueOf((request.getParameter("id")));
 		boolean flag = es.DelREevaluate(cid);
-		System.out.println(flag);
+		
 		out.print(flag);
 
 	}

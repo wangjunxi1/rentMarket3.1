@@ -173,14 +173,14 @@
 					<thead>
 						<tr class="text-c" >
 							
-							<th width="25" height="35"><input type="checkbox" name="checkbox" value="" id="employeeCheckAll" ></th>
-							<th width="70" height="35">商品Id</th>
-							<th width="200" height="35">商品名称</th>
-							<th width="80" height="35">商品图片</th>
-							<th width="80" height="35">商品价格</th>
-							<th width="120" height="35">商品数量</th>
-							<th width="80" height="35">商品状态</th>
-							<th width="100" height="35">操作</th>
+							<th width="50px"><input type="checkbox" name="checkbox" value="" id="employeeCheckAll" ></th>
+							<th width="150px">商品Id</th>
+							<th width="100">商品名称</th>
+							<th width="200px">商品图片</th>
+							<th width="200">商品价格</th>
+							<th width="200px">商品数量</th>
+							<th width="200px">商品状态</th>
+							<th width="100">操作</th>
 						</tr>
 					</thead>
 					<tbody>					
@@ -412,7 +412,7 @@ function article_shenqing(obj,id){
     //路径配置,此处配置的路径是获取数据的重要手段;
     employee.url="/"; //  这里 / 表示的是localhost/
     employee.requestUrl = {
-        queryList:employee.url+"RentMarket2.0/gsback.do?op=sel"  //数据是从servlet一侧返回的 json格式
+        queryList:employee.url+"rentMarket3.1/gsback.do?op=sel"  //数据是从servlet一侧返回的 json格式
     };
 
     employee.search={
@@ -595,7 +595,7 @@ function article_shenqing(obj,id){
 
         //回调，如果返回的时候有问题提示信息
         eloancn.table.grid.on('xhr.dt', function ( e, settings, json, xhr ) {
-            console.log("重新加载了数据");
+            
             if(typeof(json.code)!="undefined"	&&	json.code!="0"){
                 alert(json.message);
             }

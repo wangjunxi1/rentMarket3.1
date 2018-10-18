@@ -314,7 +314,7 @@ function member_del(obj,id){
     //路径配置,此处配置的路径是获取数据的重要手段;
     employee.url="/"; //  这里 / 表示的是localhost/
     employee.requestUrl = {//RentMarket2.0项目名  evaluate.do这个是所请求的servlet 
-        queryList:employee.url+"RentMarket2.0/evaluate.do"  //数据是从servlet一侧返回的 json格式
+        queryList:employee.url+"rentMarket3.1/evaluate.do"  //数据是从servlet一侧返回的 json格式
     };
 
     employee.search={
@@ -367,13 +367,7 @@ function member_del(obj,id){
     ];
 
      //导航按钮操作
-    employee.buttons =
-            '<button class="btn btn-default"  type="button" id="reload" data-toggle="modal" data-target="#employeeModal">刷新表格</button>'+
-            '<button class="btn btn-primary" type="button" id="batchIds" style="margin-left:20px;" data-toggle="modal" >多选</button>'+
-            '<button class="btn btn-success" type="button" id="selection" style="margin-left:20px;" data-toggle="modal" >单选</button>'+
-            '<button class="btn btn-success" type="button" id="search" style="margin-left:20px;" data-toggle="modal" >查询</button>'+
-            '<button class="btn btn-success" type="button" id="clearSearch" style="margin-left:20px;" data-toggle="modal" >重置</button>';
-
+  
 </script>
 
 <script>
@@ -493,7 +487,7 @@ function member_del(obj,id){
 
         //回调，如果返回的时候有问题提示信息
         eloancn.table.grid.on('xhr.dt', function ( e, settings, json, xhr ) {
-            console.log("重新加载了数据");
+            
             if(typeof(json.code)!="undefined"	&&	json.code!="0"){
                 alert(json.message);
             }
