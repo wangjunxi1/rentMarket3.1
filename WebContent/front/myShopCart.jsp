@@ -74,8 +74,10 @@
 </script>
 
 
+
+
 </head>
-<body>
+<body onload="">
 
 	<!--- header begin-->
 	<header id="pc-header">
@@ -166,13 +168,7 @@
 					</div>
 				</div>
 
-				<%-- <%
-					if(request.getAttribute("flag")=="true"){
-				%>
-				<jsp:forward page="../shopcart.do?op=showCart&userName=${sessionScope.user.userName}"></jsp:forward>
-				<% 		
-					}
-				%>  --%>
+				
 				<div class="member-return H-over">
 
 					<form action="pay.jsp" method="post" onsubmit="return check()">
@@ -217,7 +213,9 @@
 														<!--
                                         	多选按钮
                                         --> <!-- 循环开始 -->
-                							<c:forEach var="a" items="${requestScope.shopcart}">
+                                        	
+                							<c:forEach var="a" items="${requestScope.shopcart}" varStatus="i">
+                							
 											<ul class="item-content clearfix">
 											<li class="td td-chk">	
 													
@@ -255,9 +253,9 @@
 													<div class="item-price price-promo-promo">
 														<div class="price-content">
 															<div class="price-line">
-																<span id="price">
+																<div id="price${i.index+1}" style="display:inline">
 																	${a.goodPrice}
-																</span>元
+																</div><span>元</span>
 															</div>
 														</div>
 													</div>
@@ -266,44 +264,66 @@
 												<li class="td td-amount">
 													<div class="amount-wrapper ">
 														<div class="item-amount ">
-															<div class="sl">
-																<input class="min am-btn" type="button" value="-"
-																	onclick="setAllPrice()" /> 
+															<div class="sl" id="divbtn" >
+																<input class="min am-btn" type="button" value="-" id="des"
+																	 /> 
 																<input class="text_box"
-																	id="num" type="text"
-																 	name="num"
+																	id="num${i.index+1}" type="text"
+																 	name="num${i.index+1}"
 																	value="${a.goodNumber}"
-																	style="width: 30px;" /> 
-																<input class="add am-btn"
-																	type="button" value="+" onclick="setAllPrice()" />
+																	style="width: 30px;" 
+																	readonly/> 
+																<input type="hidden" id="hid" name="hidnum" value="${i.index+1}">
+																<input class="add am-btn" id="plus"
+																	type="button" value="+" />
 															</div>
 														</div>
 													</div>
 												</li>
 												<li class="td td-sum">
 													<div class="td-inner">
-														<span id="allprice<%-- <%=i%> --%>"></span> <input
-															type="hidden" id="hiddenAllprice<%-- <%=i%> --%>"
-															name="Allprice<%-- <%=i%> --%>" value="" />
+														<span id="allprice${i.index+1}" value="${a.goodNumber}"></span> <input
+															type="hidden" id="hiddenAllprice${i.index+1}"
+															name="Allprice${i.index+1}" value="" />
 													</div>
 												</li>
 												<li class="td td-op">
 													<div class="td-inner">
 														<a
-															href="../shopcart.do?op=delCart&goodId=${a.goodId}&userName=${requestScope.userName}"
+															href="${pageContext.request.contextPath}/shopcart.do?op=delCart&goodId=${a.goodId}&userName=${requestScope.userName}"
 															data-point-url="#" class="delete"> 删除</a>
 													</div>
 												</li>
 											</ul>
 											</c:forEach>
-											<%-- <%
-								}
-								} else {
-									PrintWriter pw = response.getWriter();
-									pw.write("<script language='javascript'>alert('购物车为空！');window.location.href='index.jsp';</script>");
-									pw.close();
-								}
-							%> --%>
+										
+						<script type="text/javascript">
+						//数量减一操作
+						
+						$("#des").click(function(){
+							
+							if("0"!=$("#num1").val()){//如果数量不为0就进行减一操作 
+								var num=$("#num1").val()+"-"+1;
+								var q=eval(num);
+								$("#num1").val(q);
+							}	
+						});
+						
+						//数量加一操作 
+						
+						$("#plus").click(function(){
+							
+							
+							
+								var num=$("#num1").val()+"+"+1;
+								var q=eval(num);
+								$("#num1").val(q);
+							
+							
+							
+						});	
+											
+						</script>
 										</div>
 									</div>
 								</tr>
@@ -314,7 +334,7 @@
 								<div id="J_SelectAll2" class="select-all J_SelectAll">
 									<div class="cart-checkbox">
 										<input type="checkbox" class="check-all check"
-											name="select-all" id="selAll" onclick="selectAll();" /> <label
+											name="select-all" id="selAll" onclick="setAllPrice()" /> <label
 											for="J_SelectAllCbx2"></label>
 									</div>
 									<span>全选</span>
@@ -322,7 +342,7 @@
 								</div>
 								<div class="operations">
 									<a href="shopRemoveAll.jsp" hidefocus="true" class="deleteAll">清空购物车</a>
-									<input type="checkbox" id="inverse" onclick="setNoSelect();" /><span>反选</span>
+									
 								</div>
 
 								<div class="float-bar-right">
@@ -465,11 +485,14 @@
 		var count = obj.length;
 		var selectCount = 0;
 		var pay = 0;
+		
 		for (var i = 0; i < count; i++) {
 			if (obj[i].checked == true) {
 				selectCount++;
 				//获取span值
-				var price = parseFloat($('#allprice' + i).html());
+				
+				var price = $('#allprice'+(i+1)).val();
+				
 				pay = parseFloat(pay) + price;
 			}
 			//打印选中个数
@@ -477,7 +500,7 @@
 		}
 		//计算选中的价格并打印
 
-		document.getElementById("J_Total").innerHTML = pay;
+		//document.getElementById("J_Total").innerHTML = pay;
 		//给input隐藏域赋值
 		document.getElementById("hiddenTotal").value = pay;
 		if (count == selectCount) {
@@ -485,6 +508,8 @@
 		} else {
 			document.all.selAll.checked = false;
 		}
+		setAllPrice();
+		
 	}
 
 	//反选按钮 
@@ -518,27 +543,37 @@
 
 <script type="text/javascript">
 	function setAllPrice() {
-		for (var i = 0; i < 10; i++) {
+		var total=0;
+		var allprice=0;
+		var obj = document.getElementsByName("checkAll");
+		
+		for (var i = 0; i < obj.length; i++) {
+			
+			if (obj[i].checked == true){
 			//获取span值
-			var price = $('#price' + i).html();
-			var num = document.getElementById('num' + i).value;
+			var price = parseFloat($('#price' + (i+1)).html());
+			var num = parseInt($('#num' + (i+1)).val());
+			
 			//计算
 			if (num > 1000) {
 				alert('超过最大输入数量');
-				document.getElementById('num' + i).value = 0;
+				document.getElementById('num' + (i+1)).value = 0;
 				num = 0;
 			} else if (num < 0 || num == "") {
-				document.getElementById('num' + i).value = 0;
+				document.getElementById('num' + (i+1)).value = 0;
 				num = 0;
 			}
-			var allprice = (price) * (num);
+			allprice = (price) * (num);
+			//alert("allprice="+allprice)
 			//赋值
-			document.getElementById("allprice" + i).innerHTML = allprice;
-			//给隐藏域的价格赋值
-			document.getElementById("hiddenAllprice" + i).value = allprice;
-			setSelectAll();
+			total = total+allprice;
+
 		}
+		
+		$("#J_Total").html(total);
 	}
+	}
+	
 </script>
 	<!-- footer End -->
 </body>

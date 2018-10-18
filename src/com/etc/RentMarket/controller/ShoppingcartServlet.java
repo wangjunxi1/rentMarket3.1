@@ -80,7 +80,7 @@ public class ShoppingcartServlet extends HttpServlet {
 		// 调用service的分页方法返回一个pageData对象
 		User u = (User) request.getSession().getAttribute("user");
 		String userName = u.getUserName();
-		System.out.println(userName);
+	
 		//String userName = request.getParameter("userName");
 
 		// 通过userName得到userId
