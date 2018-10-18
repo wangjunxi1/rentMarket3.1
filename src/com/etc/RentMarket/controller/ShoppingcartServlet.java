@@ -110,7 +110,7 @@ public class ShoppingcartServlet extends HttpServlet {
 		String userName = request.getParameter("userName");
 		int goodId = Integer.valueOf(request.getParameter("goodId"));
 		int goodNumber = Integer.valueOf(request.getParameter("goodNumber"));
-
+		
 		// 通过userName得到userId
 		int userId = us.getUserIdByUserName(userName);
 		// 创建一个Shoppingcart对象
@@ -138,7 +138,13 @@ public class ShoppingcartServlet extends HttpServlet {
 		boolean flag = sc.removeItem(goodId);
 		// 使用printWriter对象
 		// PrintWriter out = response.getWriter();
+		int userId = us.getUserIdByUserName(userName);
+
+		List<Shoppingcart> list = sc.showShopCart(userId);
+
+		request.setAttribute("shopcart", list);
 		if (flag) {
+			
 			request.getRequestDispatcher("shopcart.do?op=showCart").forward(request, response);
 		}
 

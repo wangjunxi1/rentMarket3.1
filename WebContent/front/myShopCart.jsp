@@ -1,3 +1,5 @@
+<%@page import="com.etc.RentMarket.entity.Shoppingcart"%>
+<%@page import="java.util.List"%>
 <%@page import="java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -170,8 +172,8 @@
 
 				
 				<div class="member-return H-over">
-
-					<form action="pay.jsp" method="post" onsubmit="return check()">
+				
+					<form action="front/order.jsp" method="post" onsubmit="return check()">
 						<!--购物车 -->
 						<div class="concent">
 							<div id="cartTable">
@@ -359,7 +361,7 @@
 										<input type="hidden" id="hiddenTotal" name="total" value="" />
 									</div>
 									<div>
-										<input type="submit" id="J_Go" class="am-btn am-btn-danger"
+										<input type="button" id="J_Go" class="am-btn am-btn-danger" 
 											value="结&nbsp;算">
 									</div>
 								</div>
@@ -458,6 +460,11 @@
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+		$("#J_Go").click(function(){
+			location.href="front/order.jsp";
+		});
+	</script>
 <script language="javascript">
 
 	//选中全选按钮，下面的checkbox全部选中 

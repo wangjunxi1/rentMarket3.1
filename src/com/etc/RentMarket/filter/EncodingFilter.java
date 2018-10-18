@@ -40,6 +40,7 @@ public class EncodingFilter implements Filter {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html");
 		// pass the request along the filter chain
+		
 		chain.doFilter(request, response);
 	}
 
