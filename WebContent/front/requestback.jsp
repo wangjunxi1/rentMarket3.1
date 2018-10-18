@@ -1,3 +1,10 @@
+<%@page import="java.util.List"%>
+<%@page import="com.etc.RentMarket.service.impl.ReturnServiceImpl"%>
+<%@page import="com.etc.RentMarket.service.ReturnService"%>
+<%@page import="com.etc.RentMarket.entity.Order"%>
+<%@page import="com.etc.RentMarket.service.impl.UsersServiceImpl"%>
+<%@page import="com.etc.RentMarket.service.UsersService"%>
+<%@page import="com.etc.RentMarket.entity.User"%>
 <%@ page language="java" pageEncoding="utf-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
@@ -12,7 +19,7 @@
 	<meta name="renderer" content="webkit">
     <meta content="歪秀购物, 购物, 大家电, 手机" name="keywords">
     <meta content="歪秀购物，购物商城。" name="description">
-	<title>会员系统退货申请</title>
+	<title>归还商品</title>
     <link rel="shortcut icon" type="image/x-icon" href="theme/icon/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="theme/css/base.css">
 	<link rel="stylesheet" type="text/css" href="theme/css/member.css">
@@ -157,13 +164,29 @@
                 <div class="member-modes clearfix">
                     <p class="clearfix"><b>商品金额：</b><em> ￥${r.orderTPrice}</em></p>
                 </div>
+                <form method="post" action="rs.do?op=add">
+                <%
+                	User u = (User)request.getSession().getAttribute("user");
+                	String userName = u.getUserName();
+                	String goodName = (String)request.getAttribute("goodName");
+                	UsersService us = new UsersServiceImpl();
+                	ReturnService rs = new ReturnServiceImpl();
+                	int userId = us.getUserIdByUserName(userName);
+                	int goodId = rs.queryGoodId(goodName);
+                	
+                %>
                 <div class="member-modes clearfix">
                 	<p style="color: red;">*请给予您宝贵的评价：</p>
-                    <script id="editor" type="text/plain" style="width:920px;height:500px;"></script>
+                    <script id="editor" name="content" type="text/plain" style="width:920px;height:500px;"></script>
                 </div>
                 <div class="member-modes clearfix">
+                	<input type="hidden" name="userId" value="<%=userId%>">
+                	<input type="hidden" name="goodId" value="<%=goodId%>">
+                	<input type="hidden" name="orderId" value="${r.orderId}">
+                	<input type="hidden" name="goodName" value="${r.goodName}">
                     <input type="submit" style="float: right;width: 70px;height: 40px;background-color: red;color: white;border: 0" value="提交">
                 </div>
+                </form>
             </div>
             </c:forEach>
         </div>

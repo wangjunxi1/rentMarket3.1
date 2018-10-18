@@ -24,8 +24,17 @@ public class Orderdetail implements Serializable {
 
 	
 	private Date rentDate;
+	private int goodState;
 
 	public Orderdetail() {
+	}
+
+	public int getGoodState() {
+		return goodState;
+	}
+
+	public void setGoodState(int goodState) {
+		this.goodState = goodState;
 	}
 
 	public int getDid() {
@@ -67,6 +76,22 @@ public class Orderdetail implements Serializable {
 
 	public void setRentDate(Date rentDate) {
 		this.rentDate = rentDate;
+	}
+
+	public Orderdetail(int did, String goodName, int goodNumber, int orderId, Date rentDate, int goodState) {
+		super();
+		this.did = did;
+		this.goodName = goodName;
+		this.goodNumber = goodNumber;
+		this.orderId = orderId;
+		this.rentDate = rentDate;
+		this.goodState = goodState;
+	}
+
+	@Override
+	public String toString() {
+		return "Orderdetail [did=" + did + ", goodName=" + goodName + ", goodNumber=" + goodNumber + ", orderId="
+				+ orderId + ", rentDate=" + rentDate + ", goodState=" + goodState + "]";
 	}
 
 }

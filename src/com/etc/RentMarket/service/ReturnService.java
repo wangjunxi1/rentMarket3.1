@@ -17,5 +17,16 @@ public interface ReturnService {
 	 * @return
 	 */
 	List<Order> getOrder(int orderId,String goodName);
-
+	/**
+	 * 添加评论
+	 * @param content 评论内容
+	 * @return
+	 */
+	boolean addComment(int userId,int goodId,String content);
+	/**
+	 * 查询商品ID
+	 * @param userName
+	 * @return
+	 */
+	int queryGoodId(String goodName);
 }

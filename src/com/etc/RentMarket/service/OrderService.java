@@ -49,4 +49,11 @@ public interface OrderService {
 	public boolean delMuchOrders(List<Integer> ordersIds);//批量删除订单
 	
 	public List<Order> queryOrdersByOrderId2(int orderId);//
+	
+	/**
+	 * 更改订单状态
+	 * @param orderState
+	 * @return
+	 */
+	boolean updateOrderState(int orderState,int orderId,String goodName);
 }

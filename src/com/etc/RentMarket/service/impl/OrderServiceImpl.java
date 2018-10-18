@@ -62,6 +62,14 @@ public class OrderServiceImpl implements OrderService{
 		// TODO Auto-generated method stub
 		return od.queryOrdersByOrderId2(orderId);
 	}
+	/**
+	 * 更改订单状态
+	 */
+	@Override
+	public boolean updateOrderState(int orderState, int orderId,String goodName) {
+		// TODO Auto-generated method stub
+		return od.updateOrderState(orderState, orderId,goodName);
+	}
 	
 
 }

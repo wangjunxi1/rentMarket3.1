@@ -80,7 +80,7 @@
 	</header>
 	<!-- header End -->
 
-<div class="containers"><div class="pc-nav-item"><a href="#">首页</a> &gt; <a href="#">会员中心 </a> &gt; <a href="#">商城快讯</a></div></div>
+<div class="containers"><div class="pc-nav-item"><a href="index.jsp">首页</a> &gt; <a href="user-info.jsp">会员中心 </a></div></div>
 <!-- 商城快讯 begin -->
 <section id="member">
     <div class="member-center clearfix">
@@ -88,7 +88,7 @@
             <div class="member-lists">
                 <dl>
                     <dt>我的商城</dt>
-                    <dd><a href="user-info.jsp">我的信息</a></dd>
+                    <dd><a href="${pageContext.request.contextPath}/front/user-info.jsp">我的信息</a></dd>
                     <dd><a href="${pageContext.request.contextPath}/os.do?op=sel">我的订单</a></dd>
                     <dd><a href="myfavorite.jsp">我的收藏</a></dd>
                     <dd class="cur"><a href="#">我的评价</a></dd>
@@ -96,13 +96,7 @@
                 </dl>
                 <dl>
                     <dt>客户服务</dt>
-                    <dd><a href="#">退货申请</a></dd>
-                    <dd><a href="#">退货/退款记录</a></dd>
-                </dl>
-                <dl>
-                    <dt>我的消息</dt>
-                    <dd><a href="#">商城快讯</a></dd>
-                    <dd><a href="#">帮助中心</a></dd>
+                    <dd><a href="#">归还</a></dd>
                 </dl>
             </div>
         </div>

@@ -19,7 +19,7 @@ public class OrderDaoImpl implements OrderDao{
 	@Override
 	public PageData<Order> queryOrdersByPage(int page, int pageSize, String userName, String keywords) {
 		// TODO Auto-generated method stub
-		String sql = "SELECT orders.orderId,orders.orderDate,orders.orderState,orders.orderTPrice,orders.userAddress,orders.userName,orders.userTel,orderdetail.goodName,orderdetail.rentDate,orderdetail.goodNumber,orderdetail.goodImg " + 
+		String sql = "SELECT orders.orderId,orders.orderDate,orders.orderState,orders.orderTPrice,orders.userAddress,orders.userName,orders.userTel,orderdetail.goodName,orderdetail.rentDate,orderdetail.goodNumber,orderdetail.goodImg,orderdetail.goodState " + 
 				" FROM orders " + 
 				" INNER JOIN orderdetail " + 
 				" ON orders.orderId = orderdetail.orderId " + 
@@ -105,6 +105,15 @@ public List<Order> queryOrdersByOrderId2(int orderId) {
 			" WHERE orders.orderId = ?";
 	List<Order> list = (List<Order>) BaseDao.select(sql, Order.class, orderId);
 	return list;
+}
+/**
+ * 更改订单状态
+ */
+@Override
+public boolean updateOrderState(int orderState,int orderId,String goodName) {
+	// TODO Auto-generated method stub
+	String sql = "update orderdetail set goodState = ? where orderId = ? and goodName = ?";
+	return BaseDao.execute(sql, orderState,orderId,goodName)>0;
 }
 
 

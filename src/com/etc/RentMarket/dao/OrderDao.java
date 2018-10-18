@@ -60,6 +60,11 @@ public interface OrderDao {
 	 * @return
 	 */
 	List<Order> queryOrdersByOrderId2(int orderId);
-	
+	/**
+	 * 更改订单状态
+	 * @param orderState
+	 * @return
+	 */
+	boolean updateOrderState(int orderState,int orderId,String goodName);
 	
 }

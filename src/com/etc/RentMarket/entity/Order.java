@@ -33,6 +33,7 @@ public class Order implements Serializable {
 	private int goodNumber;
 	private String goodImg;
 	private double rentPrice;
+	private int goodState;
 
 	public Order() {
 	}
@@ -49,6 +50,14 @@ public class Order implements Serializable {
 		this.userTel = userTel;
 	}
 	
+	public int getGoodState() {
+		return goodState;
+	}
+
+	public void setGoodState(int goodState) {
+		this.goodState = goodState;
+	}
+
 	public double getRentPrice() {
 		return rentPrice;
 	}
@@ -164,13 +173,36 @@ public class Order implements Serializable {
 		this.goodImg = goodImg;
 	}
 
+	
+	
+	public Order(int orderId, String orderDate, int orderState, double orderTPrice, String userAddress, String userName,
+			String userTel, String goodName, String rentDate, int goodNumber, String goodImg, double rentPrice,
+			int goodState) {
+		super();
+		this.orderId = orderId;
+		this.orderDate = orderDate;
+		this.orderState = orderState;
+		this.orderTPrice = orderTPrice;
+		this.userAddress = userAddress;
+		this.userName = userName;
+		this.userTel = userTel;
+		this.goodName = goodName;
+		this.rentDate = rentDate;
+		this.goodNumber = goodNumber;
+		this.goodImg = goodImg;
+		this.rentPrice = rentPrice;
+		this.goodState = goodState;
+	}
+
 	@Override
 	public String toString() {
 		return "Order [orderId=" + orderId + ", orderDate=" + orderDate + ", orderState=" + orderState
 				+ ", orderTPrice=" + orderTPrice + ", userAddress=" + userAddress + ", userName=" + userName
 				+ ", userTel=" + userTel + ", goodName=" + goodName + ", rentDate=" + rentDate + ", goodNumber="
-				+ goodNumber + ", goodImg=" + goodImg + ", rentPrice=" + rentPrice + "]";
+				+ goodNumber + ", goodImg=" + goodImg + ", rentPrice=" + rentPrice + ", goodState=" + goodState + "]";
 	}
+
+	
 
 	
 

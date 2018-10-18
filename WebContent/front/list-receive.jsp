@@ -244,7 +244,7 @@
 													<div class="move-right">
 														<li class="td td-status">
 															<div class="item-status">
-																<p class="Mystatus">${o.orderState==0?"未收货":"已收货" }</p>
+																<p class="Mystatus">${o.goodState==0?"已归还":o.goodState==1?"已收货":"未收货" }</p>
 															</div>
 														</li>
 														<li class="td td-change">

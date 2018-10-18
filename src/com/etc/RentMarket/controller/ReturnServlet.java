@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.etc.RentMarket.entity.Order;
+import com.etc.RentMarket.service.OrderService;
 import com.etc.RentMarket.service.ReturnService;
+import com.etc.RentMarket.service.impl.OrderServiceImpl;
 import com.etc.RentMarket.service.impl.ReturnServiceImpl;
 
 /**
@@ -39,8 +41,21 @@ public class ReturnServlet extends HttpServlet {
 			int orderId = Integer.parseInt(request.getParameter("orderId"));
 			String goodName = request.getParameter("goodName");
 			List<Order> list = rs.getOrder(orderId, goodName);
+			request.setAttribute("goodName", goodName);
 			request.setAttribute("list", list);
 			request.getRequestDispatcher("front/requestback.jsp").forward(request, response);
+		}else if ("add".equals(op)) {
+			int userId = Integer.parseInt(request.getParameter("userId"));
+			int goodId = Integer.parseInt(request.getParameter("goodId"));
+			int orderId = Integer.parseInt(request.getParameter("orderId"));
+			String goodName = request.getParameter("goodName");
+			String content = request.getParameter("content");
+			OrderService os = new OrderServiceImpl();
+			os.updateOrderState(0, orderId,goodName);
+			boolean flag = rs.addComment(userId, goodId, content);
+			if (flag) {
+				request.getRequestDispatcher("front/comment.jsp").forward(request, response);
+			}
 		}
 	}
 

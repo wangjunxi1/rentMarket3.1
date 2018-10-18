@@ -111,7 +111,7 @@
                             </div>
 
                             <div class="pc-event">
-                                <a role="button" class="btn" data-toggle="modal" data-target="#Mymodal3" contenteditable="true" onclick="addId(${a.userDetailId},${a.userRealName},${a.userAddress},${a.userPhone})">修改 </a>
+                                <a role="button" class="btn" data-toggle="modal" data-target="#Mymodal3" contenteditable="true" onclick="addId(${a.userDetailId})">修改 </a>
                                 <a role="button" class="btn" data-toggle="modal" data-target="#Mymodal4" contenteditable="true" onclick="addId2(${a.userDetailId})">删除</a>
                             </div>
                         </li>
@@ -247,11 +247,8 @@
 <!-- 商城快讯 End -->
 
 <script type="text/javascript">
-	function addId(Id,Name,Address,Phone){
+	function addId(Id){
 		$("#userDetailId").val(Id);
-		$("#userRealName2").val(Name);
-		$("#userAddress2").val(Address);
-		$("#userPhone2").val(Phone);
 	}
 	function addId2(Id){
 		$("#userDetailId2").val(Id);
