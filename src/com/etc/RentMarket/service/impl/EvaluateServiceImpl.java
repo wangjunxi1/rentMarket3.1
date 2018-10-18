@@ -91,6 +91,14 @@ public class EvaluateServiceImpl implements EvaluateService {
 			// TODO Auto-generated method stub
 			return ed.qEvaluate(userName, goodName);
 		}
+/**
+ * 前台商品详情获得评论
+ */
+	@Override
+	public List<EvaluateBack> qEvaluateByGoodId(int goodId) {
+		// TODO Auto-generated method stub
+		return ed.qEvaluateByGoodId(goodId);
+	}
 
 	
 

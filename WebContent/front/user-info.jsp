@@ -67,7 +67,7 @@
 
 	<div class="containers">
 		<div class="pc-nav-item">
-			<a href="index.jsp">首页</a> &gt; <a href="user-info.jsp">会员中心 </a>
+			<a href="${pageContext.request.contextPath}/front/index.jsp">首页</a> &gt; <a href="${pageContext.request.contextPath}/front/user-info.jsp">会员中心 </a>
 		</div>
 	</div>
 
@@ -85,10 +85,10 @@
 							<a href="${pageContext.request.contextPath}/os.do?op=sel">我的订单</a>
 						</dd>
 						<dd>
-							<a href="myfavorite.jsp">我的收藏</a>
+							<a href="${pageContext.request.contextPath}/shopcart.do?op=showCart&userName=${sessionScope.user.userName}">我的购物</a>
 						</dd>
 						<dd>
-							<a href="comment.jsp">我的评价</a>
+							<a href="${pageContext.request.contextPath}/front/comment.jsp">我的评价</a>
 						</dd>
 						<dd>
 							<a href="${pageContext.request.contextPath}/ads.do?op=sel">地址管理</a>

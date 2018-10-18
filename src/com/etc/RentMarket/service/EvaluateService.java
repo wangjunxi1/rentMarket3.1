@@ -61,4 +61,12 @@ public interface EvaluateService {
 	 * @return
 	 */
 	public List<EvaluateBack> getEvaluate(String userName, String goodName) ;
+	
+	/**
+	 * 前台商品详情获得评论
+	 * 
+	 * 
+	 * @return
+	 */
+	List<EvaluateBack> qEvaluateByGoodId(int goodId) ;
 }

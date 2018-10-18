@@ -16,7 +16,7 @@ public class EvaluateBack implements Serializable {
 	private int evaluateId;
 
 	private String evaluateContent;
-
+	private int userId;
 	
 	private String evaluateDate;
 
@@ -25,6 +25,14 @@ public class EvaluateBack implements Serializable {
 	private String userName;
 
 	public EvaluateBack() {
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	public int getEvaluateId() {
@@ -67,12 +75,7 @@ public class EvaluateBack implements Serializable {
 		this.userName = userName;
 	}
 
-	@Override
-	public String toString() {
-		return "Evaluate [evaluateId=" + evaluateId + ", evaluateContent=" + evaluateContent + ", evaluateDate="
-				+ evaluateDate + ", goodName=" + goodName + ", userName=" + userName + "]";
-	}
-
+	
 	public EvaluateBack(int evaluateId, String evaluateContent, String evaluateDate, String goodName, String userName) {
 		super();
 		this.evaluateId = evaluateId;
@@ -80,6 +83,23 @@ public class EvaluateBack implements Serializable {
 		this.evaluateDate = evaluateDate;
 		this.goodName = goodName;
 		this.userName = userName;
+	}
+
+	public EvaluateBack(int evaluateId, String evaluateContent, int userId, String evaluateDate, String goodName,
+			String userName) {
+		super();
+		this.evaluateId = evaluateId;
+		this.evaluateContent = evaluateContent;
+		this.userId = userId;
+		this.evaluateDate = evaluateDate;
+		this.goodName = goodName;
+		this.userName = userName;
+	}
+
+	@Override
+	public String toString() {
+		return "EvaluateBack [evaluateId=" + evaluateId + ", evaluateContent=" + evaluateContent + ", userId=" + userId
+				+ ", evaluateDate=" + evaluateDate + ", goodName=" + goodName + ", userName=" + userName + "]";
 	}
 
 }

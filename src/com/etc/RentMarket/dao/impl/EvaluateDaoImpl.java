@@ -88,6 +88,16 @@ public class EvaluateDaoImpl implements EvaluateDao {
 			List<EvaluateBack> list = (List<EvaluateBack>) BaseDao.select(sql, EvaluateBack.class, userName,goodName);
 			return list;
 		}
+		/**
+		 * 前台商品详情获得评论
+		 */
+		@Override
+		public List<EvaluateBack> qEvaluateByGoodId(int goodId) {
+			// TODO Auto-generated method stub
+			String sql = "select userId,evaluateContent,evaluateDate from evaluate where goodId = ?";
+			List<EvaluateBack> list = (List<EvaluateBack>) BaseDao.select(sql, EvaluateBack.class, goodId);
+			return list;
+		}
 		
 		
 		

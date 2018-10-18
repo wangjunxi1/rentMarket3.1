@@ -135,7 +135,7 @@ p {
 					<li class="headerul">|</li>
 					<div class="header-cart fr">
 						<a href="../shopcart.do?op=showCart&userName=${sessionScope.user.userName}"><img src="theme/icon/car.png"></a> <i
-							class="head-amount">99</i>
+							class="head-amount">1</i>
 					</div>
 					<div class="head-mountain"></div>
 				</ul>
@@ -145,11 +145,11 @@ p {
 		<div class="container clearfix">
 			<div class="header-logo fl">
 				<h1>
-					<a href="index.html"><img src="theme/icon/logo.png"></a>
+					<a href="${pageContext.request.contextPath}/front/index.jsp"><img src="theme/icon/logo.png"></a>
 				</h1>
 			</div>
 			<div class="head-form fl">
-				<form class="clearfix" action="../se.do" method="post">
+				<form class="clearfix" action="${pageContext.request.contextPath}/se.do" method="post">
 					<input type="text" class="search-text" accesskey="" id="key" name="searchText"
 						autocomplete="off" placeholder="相机">
 					<button class="button" type="submit" >搜索</button>
@@ -524,13 +524,13 @@ p {
 				<a href="javascript:;" class="pc-spin fr">换一换</a>
 			</div>
 			<div class="time-poued clearfix">
-				<a href="goodDetail.jsp?goodId=44">
+				<a href="goodDetail.jsp?goodId=42">
 				<img src="theme/img/pd/pd01.jpg"></a> 
-				<a href="goodDetail.jsp?goodId=35">
+				<a href="goodDetail.jsp?goodId=43">
 				<img src="theme/img/pd/pd02.jpg"></a> 
-				<a href="goodDetail.jsp?goodId=45">
+				<a href="goodDetail.jsp?goodId=52">
 				<img src="theme/img/pd/pd03.jpg"></a> 
-				<a href="goodDetail.jsp?goodId=46">
+				<a href="goodDetail.jsp?goodId=35">
 				<img src="theme/img/pd/pd06.jpg"></a>
 			</div>
 		</div>
@@ -539,7 +539,7 @@ p {
 				<h2>今日值得租</h2>
 			</div>
 			<div class="news-right">
-				<a href="#"><img src="theme/img/pd/pd07.jpg"></a>
+				<a href="goodDetail.jsp?goodId=74"><img src="theme/img/pd/pd07.jpg"></a>
 			</div>
 		</div>
 	</div>

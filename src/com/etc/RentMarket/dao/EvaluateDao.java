@@ -57,4 +57,12 @@ public interface EvaluateDao {
 	 * @return
 	 */
 	public List<EvaluateBack> qEvaluate(String userName, String goodName) ;
+	
+	/**
+	 * 前台商品详情获得评论
+	 * 
+	 * 
+	 * @return
+	 */
+	List<EvaluateBack> qEvaluateByGoodId(int goodId) ;
 }

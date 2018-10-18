@@ -96,4 +96,12 @@ public class UsersServiceImpl implements UsersService {
 		// TODO Auto-generated method stub
 		return ud.uploadUserImg(fileName, userName);
 	}
+/**
+ * 根据用户Id查询用户信息
+ */
+	@Override
+	public List<User> queryUserByUserId(int userId) {
+		// TODO Auto-generated method stub
+		return ud.queryUserByUserId(userId);
+	}
 }

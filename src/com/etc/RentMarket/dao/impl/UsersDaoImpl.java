@@ -116,4 +116,16 @@ public class UsersDaoImpl implements UsersDao {
 		String sql = "update users set userphoto = ? where userName = ?";
 		return BaseDao.execute(sql, fileName,userName)>0;
 	}
+/**
+ * 根据用户Id查询用户信息
+ */
+@Override
+public List<User> queryUserByUserId(int userId) {
+	// TODO Auto-generated method stub
+	String sql = "select * from users where userId = ?";
+	List<User> list = (List<User>) BaseDao.select(sql, User.class, userId);
+	return list;
+}
+	
+	
 }

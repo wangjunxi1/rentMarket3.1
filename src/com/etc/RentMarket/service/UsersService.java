@@ -64,4 +64,10 @@ public interface UsersService {
 	 * @return
 	 */
 	boolean uploadUserImg(String fileName,String userName);
+	/**
+	 * 根据用户Id查询用户信息
+	 * @param userId
+	 * @return
+	 */
+	List<User> queryUserByUserId(int userId);
 }

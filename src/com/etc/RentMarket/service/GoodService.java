@@ -57,7 +57,11 @@ public interface GoodService {
 	 * @return is not null 查询成功，null 查询失败
 	 */
 	List<Goodstype> selectAllType();
-
+/**
+ * 根据商品ID查询商品
+ * @param goodId
+ * @return
+ */
 	List<Good> getgoodsByGoodId(int goodId);
 	
 	
