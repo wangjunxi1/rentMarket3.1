@@ -27,7 +27,6 @@
     <script type="text/javascript" src="theme/js/jquery-2.0.0.min.js"></script>
 	<script type="text/javascript" src="theme/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="theme/js/jquery-ui.js"></script>
-	<script type="text/javascript" src="theme/js/jquery.ui.touch-punch.min.js"></script>
 	<script type="text/javascript" src="theme/js/jquery.htmlClean.js"></script>
     
  </head>
@@ -111,7 +110,7 @@
                             </div>
 
                             <div class="pc-event">
-                                <a role="button" class="btn" data-toggle="modal" data-target="#Mymodal3" contenteditable="true" onclick="addId(${a.userDetailId})">修改 </a>
+                                <a role="button" class="btn" data-toggle="modal" data-target="#Mymodal3" contenteditable="true" onclick="addId(${a.userDetailId},'${a.userRealName}','${a.userAddress}','${a.userPhone}')">修改 </a>
                                 <a role="button" class="btn" data-toggle="modal" data-target="#Mymodal4" contenteditable="true" onclick="addId2(${a.userDetailId})">删除</a>
                             </div>
                         </li>
@@ -120,6 +119,7 @@
                     </ul>
                 </div>
                 
+                </c:forEach>
                 
                 <!-- 添加遮罩开始 -->
                <div class="modal fade" tabindex="-1" role="dialog" id="Mymodal2" style="height: 500px">
@@ -135,8 +135,8 @@
 								<div class="modal-body">
 									<input type="hidden" id="id" name="id">
 									<!-- 内容部分 -->
-									<form class="form-horizontal" action="ads.do?op=add"
-										role="form" method="post">
+									<form class="form-horizontal" 
+										role="form">
 										<div class="form-group">
 											<input type="hidden" id="userName" name="userName" value="${sessionScope.user.userName}">
 											<label for="userRealName">收货人</label> <input type="text"
@@ -152,7 +152,7 @@
 												class="form-control" name="userPhone" id="userPhone"
 												placeholder="手机" style="height: 40px;width: 550px" required="required"/>
 										</div>
-										<button type="submit" class="btn btn-default" >提交</button>
+										<button type="button" class="btn btn-default" id="addAdress1" >提交</button>
 									</form>
 									<!-- 内容部分 -->
 								</div>
@@ -178,24 +178,24 @@
 								<div class="modal-body">
 									<input type="hidden" id="id" name="id">
 									<!-- 内容部分 -->
-									<form class="form-horizontal" action="ads.do?op=up"
-										role="form" method="post">
+									<form class="form-horizontal" 
+										role="form" >
 										<div class="form-group">
 											<input type="hidden" id="userDetailId" name="userDetailId" >
-											<label for="userRealName">收货人</label> <input type="text"
+											<label for="userRealName2">收货人</label> <input type="text"
 												class="form-control" id="userRealName2" name="userRealName2" style="height: 40px;width: 550px" value="${a.userRealName}"/>
 										</div>
 										<div class="form-group">
-											<label for="userAddress">地址</label> <input type="text"
+											<label for="userAddress2">地址</label> <input type="text"
 												class="form-control" id="userAddress2" name="userAddress2"
 												 style="height: 40px;width: 550px" value="${a.userAddress}"/>
 										</div>
 										<div class="form-group">
-											<label for="userPhone">手机</label> <input type="text"
+											<label for="userPhone2">手机</label> <input type="text"
 												class="form-control" name="userPhone2" id="userPhone2"
 												style="height: 40px;width: 550px" value="${a.userPhone}"/>
 										</div>
-										<button type="submit" class="btn btn-default">提交</button>
+										<button type="button" class="btn btn-default"id="updateAdress1">提交</button>
 									</form>
 									<!-- 内容部分 -->
 								</div>
@@ -221,13 +221,13 @@
 								<div class="modal-body">
 									<input type="hidden" id="id" name="id">
 									<!-- 内容部分 -->
-									<form class="form-horizontal" action="ads.do?op=del"
-										role="form" method="post">
+									<form class="form-horizontal" 
+										role="form" >
 										<div class="form-group">
 											<input type="hidden" id="userDetailId2" name="userDetailId2">
 											<label style="text-align: center;">确认删除该地址？</label>
 										</div>
-										<button type="submit" class="btn btn-default" style="margin-left: 170px">确定</button>
+										<button type="button" class="btn btn-default" style="margin-left: 170px" id="delAdress1">确定</button>
 										<input type="button" onclick="javascript:location.href='ads.do?op=sel'" class="btn btn-default" style="margin-left: 100px" value="取消"></input>
 									</form>
 									<!-- 内容部分 -->
@@ -239,7 +239,36 @@
 					</div>
 					<!-- /.modal -->
             <!-- 删除遮罩结束 --> 
-            </c:forEach>
+            <!-- ajax請求 -->
+           <script type="text/javascript">
+           //添加地址操作
+            	$("#addAdress1").click(function(){
+                	$.post("/rentMarket3.1/ads.do","op=add&userName="+$("#userName").val()+"&userRealName="+$("#userRealName").val()+"&userAddress="+$("#userAddress").val()+"&userPhone="+$("#userPhone").val(),function(data,state){
+                		console.log(data);
+                		if(data){
+                			location.href="/rentMarket3.1/ads.do?op=sel";
+                		}
+                	});
+                });
+           //編輯地址操作 
+            	$("#updateAdress1").click(function(){
+                	$.post("/rentMarket3.1/ads.do","op=up&userDetailId="+$("#userDetailId").val()+"&userRealName2="+$("#userRealName2").val()+"&userAddress2="+$("#userAddress2").val()+"&userPhone2="+$("#userPhone2").val(),function(data,state){
+                		console.log(data);
+                		if(data){
+                			location.href="/rentMarket3.1/ads.do?op=sel";
+                		}
+                	});
+                });
+           //删除地址操作 
+            	$("#delAdress1").click(function(){
+                	$.post("/rentMarket3.1/ads.do","op=del&userDetailId2="+$("#userDetailId2").val(),function(data,state){
+                		if(data){
+                			location.href="/rentMarket3.1/ads.do?op=sel";
+                		}
+                	});
+                });
+            
+            </script>
             </div>
         </div>
     </div>
@@ -247,8 +276,11 @@
 <!-- 商城快讯 End -->
 
 <script type="text/javascript">
-	function addId(Id){
+	function addId(Id,userName,userAddress,userPhone){
 		$("#userDetailId").val(Id);
+		$("#userRealName2").val(userName);
+		$("#userAddress2").val(userAddress);
+		$("#userPhone2").val(userPhone);
 	}
 	function addId2(Id){
 		$("#userDetailId2").val(Id);

@@ -41,37 +41,44 @@ public class AddrServlet extends HttpServlet {
 		 * 查询地址信息
 		 */
 		if("sel".equals(op)) {
+			System.out.println(op);
 			User u = (User) request.getSession().getAttribute("user");
 			String userName = u.getUserName();
 			List<Usersdetail> list = as.queryUserAddr(userName);
 			request.setAttribute("list", list);
 			request.getRequestDispatcher("front/addressManager.jsp").forward(request, response);
-		}else if ("add".equals(op)) {
+		}else if("add".equals(op)) {
+			System.out.println(op);
 			String userName = request.getParameter("userName");
 			String userRealName = request.getParameter("userRealName");
 			String userAddress = request.getParameter("userAddress");
 			String userPhone = request.getParameter("userPhone");
 			boolean flag = as.addAddr(userName, userRealName, userAddress, userPhone);
-			if (flag) {
+			response.getWriter().print(flag);
+			/*if (flag) {
 				request.getRequestDispatcher("ads.do?op=sel").forward(request, response);
-			}
+			}*/
 			
 		}else if ("up".equals(op)) {
+			System.out.println(op);
 			int userDetailId = Integer.parseInt(request.getParameter("userDetailId"));
-			String userRealName = request.getParameter("userRealName");
-			String userAddress = request.getParameter("userAddress");
-			String userPhone = request.getParameter("userPhone");
+			String userRealName = request.getParameter("userRealName2");
+			String userAddress = request.getParameter("userAddress2");
+			String userPhone = request.getParameter("userPhone2");
+			System.out.println(userDetailId);
+
 			boolean flag = as.updateAddr(userDetailId, userRealName, userAddress, userPhone);
-			if(flag) {
+			response.getWriter().print(flag);
+			/*if(flag) {
 				request.getRequestDispatcher("ads.do?op=sel").forward(request, response);
-			}
+			}*/
 		}else if ("del".equals(op)) {
-			int userDetailId = Integer.valueOf(request.getParameter("userDetailId2"));
-			
+			int userDetailId = Integer.valueOf(request.getParameter("userDetailId2"));			
 			boolean flag = as.deleteAddr(userDetailId);
-			if (flag) {
+			response.getWriter().print(flag);
+			/*if (flag) {
 				request.getRequestDispatcher("ads.do?op=sel").forward(request, response);
-			}
+			}*/
 		}
 	}
 
