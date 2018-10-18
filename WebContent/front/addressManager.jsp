@@ -265,7 +265,7 @@
                 		}
                 	});
                 });
-           //编辑地址操作 
+           //修改地址操作 
             	$("#updateAdress1").click(function(){
                 	$.post("/rentMarket3.1/ads.do","op=up&userDetailId="+$("#userDetailId").val()+"&userRealName2="+$("#userRealName2").val()+"&userAddress2="+$("#userAddress2").val()+"&userPhone2="+$("#userPhone2").val()+"&cmbProvince2="+$("#cmbProvince2").val()+"&cmbCity2="+$("#cmbCity2").val()+"&cmbArea2="+$("#cmbArea2").val(),function(data,state){
                 		if(data){
