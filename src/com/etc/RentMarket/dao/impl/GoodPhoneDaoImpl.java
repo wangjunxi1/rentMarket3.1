@@ -15,7 +15,12 @@ public class GoodPhoneDaoImpl implements PhoneGoodDao {
 		return (List<PhoneGood>) BaseDao.select(sql, PhoneGood.class);
 	}
 
-	
+	@Override
+	public List<PhoneGood> selectPhone1() {
+		// TODO Auto-generated method stub
+		String sql = "select good.goodId,good.goodName,good.goodPrice,good.goodImgAdd from good INNER JOIN goodstype where good.typeId=goodstype.typeId and good.typeId=3";
+		return (List<PhoneGood>) BaseDao.select(sql, PhoneGood.class);
+	}
 
 	
 

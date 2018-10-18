@@ -680,48 +680,39 @@ p {
 					</div>
 					<div class="brand-poa H-over clearfix" style="display: none;">
 						<ul>
+							<%
+								
+								phoneList = gpsi.selectPhone1();
+								for (PhoneGood pg : phoneList) {
+							%>
 							<li>
 								<div class="brand-imgss">
-									<a href="#"><img src="theme/img/pd/v1.jpg"></a>
+									<a href="goodDetail.jsp?goodId=<%=pg.getGoodId()%>"><img
+										src=<%=goodPath + pg.getGoodImgAdd()%>></a>
 								</div>
 								<div class="brand-title">
-									<a href="#">vivo Z1极光特别版 全面屏AI双摄手机 4GB+64GB 全网通 双卡双待</a>
+									<a href="#"><%=pg.getGoodName()%></a>
 								</div>
-								<div class="brand-price">￥50.00/月</div>
+								<div class="brand-price">
+									￥<%=pg.getGoodPrice()%>/月
+								</div>
 							</li>
-							<li>
-								<div class="brand-imgss">
-									<a href="#"><img src="theme/img/pd/v2.jpg"></a>
-								</div>
-								<div class="brand-title">
-									<a href="#">vivo X23 8GB+128GB 幻夜蓝 水滴屏全面屏 全网通4G手机 双卡双待</a>
-								</div>
-								<div class="brand-price">￥99.00/月</div>
-							</li>
-							<li>
-								<div class="brand-imgss">
-									<a href="#"><img src="theme/img/pd/v3.jpg"></a>
-								</div>
-								<div class="brand-title">
-									<a href="#">vivo NEX星迹版 全面屏AI双摄手机 8GB+128GB 全网通 双卡双待</a>
-								</div>
-								<div class="brand-price">￥120.00/月</div>
-							</li>
-							<li>
-								<div class="brand-imgss">
-									<a href="#"><img src="theme/img/pd/v4.jpg"></a>
-								</div>
-								<div class="brand-title">
-									<a href="#">vivo X21双摄拍照游戏手机 6GB+128GB 冰钻黑 全网通 双卡双待</a>
-								</div>
-								<div class="brand-price">￥88.00/月</div>
-							</li>
+							
+							<%
+								}
+							%>
 
 						</ul>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
+	<!-- 获取servlet中广告的路径,通过判断状态是否被激活决定广告是否挂出 -->
+	<div class="containers main-banner">
+		<a href="#">
+			<img src="theme\img\ad\br1.jpg" width="1200" height="105">
+		</a>
 	</div>
 <!-- 
 	<div class="containers main-banner">

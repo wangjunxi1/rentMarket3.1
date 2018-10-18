@@ -193,7 +193,7 @@ h2 {
 </head>
 <body text=#000000 bgColor="#ffffff" leftMargin=0 topMargin=4>
 	<header class="am-header">
-	<h1>支付宝支付</h1>
+	<h1>支付宝电脑网站支付体验入口页</h1>
 	</header>
 	<div id="main">
 		<div id="tabhead" class="tab-head">

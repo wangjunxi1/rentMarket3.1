@@ -21,4 +21,9 @@ public class GoodPhoneServiceImpl implements GoodPhoneService {
 		return gd.selectPhone();
 	}
 
+	@Override
+	public List<PhoneGood> selectPhone1() {
+		// TODO Auto-generated method stub
+		return gd.selectPhone1();
+	}
 }
