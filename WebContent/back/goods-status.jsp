@@ -410,7 +410,7 @@ function article_shenqing(obj,id){
     //路径配置,此处配置的路径是获取数据的重要手段;
     employee.url="/"; //  这里 / 表示的是localhost/
     employee.requestUrl = {
-        queryList:employee.url+"RentMarket2.0/gsback.do?op=checkedGoods"  //数据是从servlet一侧返回的 json格式
+        queryList:employee.url+"rentMarket3.1/gsback.do?op=checkedGoods"  //数据是从servlet一侧返回的 json格式
     };
 
     employee.search={
@@ -593,7 +593,7 @@ function article_shenqing(obj,id){
 
         //回调，如果返回的时候有问题提示信息
         eloancn.table.grid.on('xhr.dt', function ( e, settings, json, xhr ) {
-            console.log("重新加载了数据");
+           
             if(typeof(json.code)!="undefined"	&&	json.code!="0"){
                 alert(json.message);
             }

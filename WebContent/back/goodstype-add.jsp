@@ -1,4 +1,5 @@
-<!--_meta 作为公共模版分离出去-->
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -50,7 +51,8 @@
 					class="c-red">*</span>商品所属父类类别：</label>
 				<div class="formControls col-xs-8 col-sm-9">
 					<select name="typeparentId" id="typeparentId" >
-						
+						<option value="" selected id ="op1" >请输入父类类别：</option>
+					
 					</select> 
 				</div>
 			</div>
@@ -80,27 +82,28 @@
 	<script type="text/javascript"
 		src="lib/jquery.validation/1.14.0/messages_zh.js"></script>
 	<!-- ajax请求代码,页面一加载就触发事件，给下拉框添加元素 -->
-	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	
 
 	<script type="text/javascript">
 		$(function() {
 			//get请求 
-			$.get("../gsback.do","op=type", function(data) {
-				console.log(data);
+			$.get("../gsback.do","op=type", function(data,status) {
+				
 				//如何从data中提取对象
 				//此时从servlet返回的是json格式的字符串,如果要转换为json对象,JSON.parse()
-				var array = JSON.parse(data);
-				console.log(array);
+				
+				
+				
 				//遍历
-				$.each(array, function(index, type) {
-					alert("type.typeId");
+				$.each(data.data, function(index, type) {
+					
 					$("#typeparentId").append(
 							"<option value="+type.typeId+">" + type.typeName
 									+ "</option>");
-				});
+				}); 
 			});
 			/*validate验证和 ajax 的方式完成表单提交 */
-			$("#form-member-add")
+			/* $("#form-member-add")
 					.validate(
 							{
 								onkeyup : false,
@@ -161,7 +164,7 @@
 									return false; // 阻止表单自动提交事件
 
 								}
-							});
+							}); */
 		});
 	</script>
 	

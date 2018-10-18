@@ -50,8 +50,8 @@ public class GoodsBackServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		Gson gson = new Gson();
 		String op = request.getParameter("op");
-		System.out.println(op);
-		if (op.equals("sel")) {// 查询商品
+		
+		if ("sel".equals(op)) {// 查询商品
 			List<Good> list = gs.selectGoods();
 			// Ajax来实现
 			// 返回数据最好是json格式 外部的jar包 gson
@@ -60,7 +60,7 @@ public class GoodsBackServlet extends HttpServlet {
 			String jsonString = gson.toJson(md);
 			out.print(jsonString);
 			out.close();
-		} else if (op.equals("del")) {// 删除商品
+		} else if ("del".equals(op)) {// 删除商品
 			String goodId = request.getParameter("id");
 
 			boolean flag = gs.delGoods(Integer.valueOf(goodId));
@@ -72,7 +72,7 @@ public class GoodsBackServlet extends HttpServlet {
 				out.print(flag);
 			}
 			out.close();
-		} else if (op.equals("MuchDel")) {// 批量删除商品
+		} else if ("MuchDel".equals(op)) {// 批量删除商品
 
 			String goods = request.getParameter("ids");
 			String arr[] = goods.split(",");
@@ -90,7 +90,7 @@ public class GoodsBackServlet extends HttpServlet {
 				out.print(flag);
 			}
 			out.close();
-		} else if (op.equals("upInfo")) {// 更新数据
+		} else if ("upInfo".equals(op)) {// 更新数据
 			String goodId = request.getParameter("goodId");
 			String goodName = request.getParameter("goodName");
 			String goodImgAdd = request.getParameter("goodImgAdd");
@@ -102,7 +102,7 @@ public class GoodsBackServlet extends HttpServlet {
 					Double.valueOf(goodPrice), goodState);
 			boolean flag = gs.upGoods(good);
 			out.println(flag);
-		} else if (op.equals("category")) {// 商品类别信息查询
+		} else if ("category".equals(op)) {// 商品类别信息查询
 			List<Goodstype> list = gs.selGoodType();
 			// Ajax来实现
 			// 返回数据最好是json格式 外部的jar包 gson
@@ -112,7 +112,7 @@ public class GoodsBackServlet extends HttpServlet {
 			out.print(jsonString);
 
 			out.close();
-		} else if (op.equals("uptypeInfo")) {// 商品类型更新
+		} else if ("uptypeInfo".equals(op)) {// 商品类型更新
 			String goodsTypeId = request.getParameter("goodsTypeId");
 			String goodsTypeName = request.getParameter("goodsTypeName");
 			String goodsParentId = request.getParameter("goodsParentId");
@@ -120,7 +120,7 @@ public class GoodsBackServlet extends HttpServlet {
 					Integer.valueOf(goodsParentId));
 			boolean flag = gs.upGoodsType(goodstype);
 			out.println(flag);
-		} else if (op.equals("deltype")) {// 删除商品类型
+		} else if ("deltype".equals(op)) {// 删除商品类型
 			String goodId = request.getParameter("id");
 
 			boolean flag = gs.delGoodsType(Integer.valueOf(goodId));
@@ -132,7 +132,7 @@ public class GoodsBackServlet extends HttpServlet {
 				out.print(flag);
 			}
 			out.close();
-		} else if (op.equals("MuchSelType")) {// 批量删除商品类型
+		} else if ("MuchSelType".equals(op)) {// 批量删除商品类型
 			String goods = request.getParameter("ids");
 			String arr[] = goods.split(",");
 
@@ -151,7 +151,7 @@ public class GoodsBackServlet extends HttpServlet {
 			out.close();
 		}
 		// 添加商品类型
-		else if (op.equals("addType")) {
+		else if ("addType".equals(op)) {
 			String typeName = request.getParameter("typeName");
 			int typeparentId = Integer.valueOf(request.getParameter("typeparentId"));
 			Goodstype type = new Goodstype(typeName, typeparentId);
@@ -171,18 +171,16 @@ public class GoodsBackServlet extends HttpServlet {
 			
 			List<Goodstype> list = gs.selectAllType();
 			// 如何将集合变成json格式
-			Gson gson1 = new Gson();
-			String jsonString = gson1.toJson(list);
-			System.out.println(jsonString);
-			if (list.size() > 0) {
-				// 打印列表
-				System.out.println("111");
-				out.print(jsonString);
-			}
-
-		} else if (op.equals("checkedGoods")) {// 查询商品审核信息
+			MyData<Goodstype> md = new MyData<Goodstype>();
+			md.setData(list);
+			String jsonString = gson.toJson(md);
+			
+			out.print(jsonString);
+			out.close();
+		} else if ("checkedGoods".equals(op)) {// 查询商品审核信息
+			
 			List<GoodsChecked> list = gs.selGoodsChecked();
-			// Ajax来实现
+//			System.out.println(list);
 			// 返回数据最好是json格式 外部的jar包 gson
 			MyData<GoodsChecked> md = new MyData<GoodsChecked>();
 			md.setData(list);

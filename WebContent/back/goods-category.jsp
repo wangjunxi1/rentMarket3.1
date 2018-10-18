@@ -163,7 +163,7 @@
 			<span class="l">
 			<a href="javascript:;" onclick="batchIds()" class="btn btn-danger radius">
 			<i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> 
-			<a href="javascript:;" onclick="member_add('添加商品类别','goodstype-add.html','','510')" class="btn btn-primary radius">
+			<a href="javascript:;" onclick="member_add('添加商品类别','goodstype-add.jsp','','510')" class="btn btn-primary radius">
 			<i class="Hui-iconfont">&#xe600;</i> 添加商品类别</a></span> 
 			<span class="r">共有数据：<strong><span id="datarowcount"></span></strong> 条</span> </div>
 			<div class="mt-20">
@@ -410,7 +410,7 @@ function article_shenqing(obj,id){
     //路径配置,此处配置的路径是获取数据的重要手段;
     employee.url="/"; //  这里 / 表示的是localhost/
     employee.requestUrl = {
-        queryList:employee.url+"RentMarket2.0/gsback.do?op=category"  //数据是从servlet一侧返回的 json格式
+        queryList:employee.url+"rentMarket3.1/gsback.do?op=category"  //数据是从servlet一侧返回的 json格式
     };
 
     employee.search={
@@ -590,7 +590,7 @@ function article_shenqing(obj,id){
 
         //回调，如果返回的时候有问题提示信息
         eloancn.table.grid.on('xhr.dt', function ( e, settings, json, xhr ) {
-            console.log("重新加载了数据");
+            
             if(typeof(json.code)!="undefined"	&&	json.code!="0"){
                 alert(json.message);
             }

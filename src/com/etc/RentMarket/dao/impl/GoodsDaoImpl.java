@@ -34,6 +34,7 @@ public class GoodsDaoImpl implements GoodsDao {
 			}
 			
 		}
+		
 		return list;
 	}
 	/**
@@ -140,7 +141,18 @@ public class GoodsDaoImpl implements GoodsDao {
 	public List<GoodsChecked> selGoodsChecked() {
 		// TODO Auto-generated method stub
 		String sql = "select good.goodId,good.goodName,good.goodImgAdd,users.userName,releasegoods.releaseDate,releasegoods.releaseState from good,releasegoods,users  where good.goodId=releasegoods.goodId and good.userId=users.userId";
-		return (List<GoodsChecked>) BaseDao.select(sql, GoodsChecked.class);
+		List<GoodsChecked> list= (List<GoodsChecked>) BaseDao.select(sql, GoodsChecked.class);
+		for (GoodsChecked goodsChecked : list) {
+			if ("1".equals(goodsChecked.getReleaseState())) {
+				goodsChecked.setReleaseState("审核失败");
+			}else if("2".equals(goodsChecked.getReleaseState())) {
+				goodsChecked.setReleaseState("审核通过");
+			}else {
+				goodsChecked.setReleaseState("未审核");
+			}
+		}
+		
+		return list;
 	}
 	/**
 	 * 商品审核信息删除
