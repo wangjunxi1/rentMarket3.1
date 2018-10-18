@@ -46,8 +46,17 @@ public interface GoodService {
 	 * @return
 	 */
 	public boolean upGoodsChecked(GoodsChecked good);
-	
-	
+	/**
+	 * 添加商品类别
+	 * @param type Goodstype对象
+	 * @return true 操作成功，false 操作失败
+	 */
+	boolean addGoodType(Goodstype type);
+	/**
+	 * 查询所有的商品类别
+	 * @return is not null 查询成功，null 查询失败
+	 */
+	List<Goodstype> selectAllType();
 
 	List<Good> getgoodsByGoodId(int goodId);
 	

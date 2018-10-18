@@ -43,7 +43,7 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
 	@Override
 	public List<Shoppingcart> showShopCart(int userId) {
 		// TODO Auto-generated method stub
-		String sql="select good.goodName,good.goodImgAdd,good.goodPrice from shoppingcart,good,users where shoppingcart.goodId=good.goodId and users.userId=shoppingcart.userId and shoppingcart.userId=?";
+		String sql="select good.goodName,good.goodImgAdd,good.goodPrice,shoppingcart.goodNumber,shoppingcart.goodId,shoppingcart.userId from shoppingcart,good,users where shoppingcart.goodId=good.goodId and users.userId=shoppingcart.userId and shoppingcart.userId=?";
 		return (List<Shoppingcart>)BaseDao.select(sql, Shoppingcart.class, userId);
 	}
 	/**

@@ -81,15 +81,16 @@
 					<li><a href="#" style="color: red;">${sessionScope.user.userName}</a></li>
 					<li class="headerul">|</li>
 					<div class="header-cart fr">
-						<a href="#"><img src="theme/icon/car.png"></a>
+						<a href="../shopcart.do?op=showCart&userName=${sessionScope.user.userName}"><img src="theme/icon/car.png"></a>
 					</div>
 				</ul>
 			</div>
 		</div>
+	
 		<div class="container clearfix">
 			<div class="header-logo fl">
 				<h1>
-					<a href="myShopCart.jsp"><img src="theme/icon/logo.png"></a>
+					<a href=""><img src="theme/icon/logo.png"></a>
 				</h1>
 			</div>
 			<div class="member-title fl">
@@ -151,8 +152,8 @@
 								<!--操作页面-->
 								<div class="theme-popover">
 									<div class="theme-popbod dform">
-										<form class="theme-signin" name="loginform"
-											action="addshopcart_deal" method="post">
+										<form class="theme-signin" 
+											 method="post" action="../shopcart.do?op=addCart">   <!-- op=addCart&userName="++"&goodId="+$("#goodId").val()+"&goodNumber="+$("#goodNumber").val() -->
 											<input type="hidden" id="userName" name="userName" value="${sessionScope.user.userName}">
 											<input type="hidden" id="goodId" name="goodId" value="<%=list.get(0).getGoodId()%>">
 											<div class="theme-signin-left">
@@ -173,7 +174,7 @@
 													<div class="clearfix tb-btn tb-btn-basket theme-login">
 														<input style="background-color: red; color: white;"
 															id="addCart" class="submit am-btn" title="加入购物车"
-															type="submit" value="加入购物车">
+															type="button" value="加入购物车">
 															<input style="background-color: red; color: white;"
 															id="addOrder" class="submit am-btn" title="立即下单"
 															type="submit" value="立即下单">
@@ -283,12 +284,12 @@
 	<script type="text/javascript" src="lib/jquery/1.9.1/jquery.min.js"></script>
 	<script type="text/javascript">
 		$("#addCart").click(function() {
-			$.post("../admin.do?op=login","admin="+admin+"&adminPwd="+adminPwd,function(data,status){
-				if("true"==data){
-					location.href="index.jsp";
+			$.post("../shopcart.do","op=addCart&userName="+$("#userName").val()+"&goodId="+$("#goodId").val()+"&goodNumber="+$("#goodNumber").val(),function(data,status){
+				if("success"==status){
+					alert("添加成功");
 				}else{
-					console.log(data);
-					alert("")
+					
+					alert("添加失敗");
 				}
 			});
 		});

@@ -1,6 +1,8 @@
 <%@page import="java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	
 <!doctype html>
 <html>
 <head>
@@ -16,11 +18,11 @@
 <title>我的购物车</title>
 <link rel="shortcut icon" type="image/x-icon"
 	href="theme/icon/favicon.ico">
-<link href="theme/css/cartstyle.css" rel="stylesheet" type="text/css" />
+<link href="front/theme/css/cartstyle.css" rel="stylesheet" type="text/css" />
 <link href="theme/css/amazeui.css" rel="stylesheet"
 	type="text/css" />
 <link href="theme/css/demo.css" rel="stylesheet" type="text/css" />
-<link href="theme/css/cartstyle.css" rel="stylesheet" type="text/css" />
+<link href="front/theme/css/cartstyle.css" rel="stylesheet" type="text/css" />
 <link href="theme/css/optstyle.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="theme/css/base.css">
 <link rel="stylesheet" type="text/css" href="theme/css/member.css">
@@ -164,7 +166,13 @@
 					</div>
 				</div>
 
-
+				<%-- <%
+					if(request.getAttribute("flag")=="true"){
+				%>
+				<jsp:forward page="../shopcart.do?op=showCart&userName=${sessionScope.user.userName}"></jsp:forward>
+				<% 		
+					}
+				%>  --%>
 				<div class="member-return H-over">
 
 					<form action="pay.jsp" method="post" onsubmit="return check()">
@@ -186,7 +194,7 @@
 											<div class="td-inner">数量(小于1000)</div>
 										</div>
 										<div class="th th-sum">
-											<div class="td-inner">金额</div>
+											<div class="td-inner">&nbsp;</div>
 										</div>
 										<div class="th th-op">
 											<div class="td-inner">操作</div>
@@ -198,32 +206,27 @@
 								<tr class="item-list">
 									<div class="bundle  bundle-last "></div>
 								</tr>
-
+               
+                
 								<div class="clear"></div>
 
 								<tr class="item-list">
 									<div class="bundle  bundle-last ">
 
 										<div class="bundle-main">
-											<%-- <%
-								if (session.getAttribute("username") == null) {
-									PrintWriter pw = response.getWriter();
-									pw.write("<script language='javascript'>alert('您还没有登录!');window.location.href='login.jsp';</script>");
-									pw.close();
-								}
-								ArrayList<GoodsSingle> goodslist = (ArrayList<GoodsSingle>) session.getAttribute("goodslist");
-								if (null != goodslist && goodslist.size() > 0) {
-									for (int i = 0; i < goodslist.size(); i++) {
-							%> --%>
-											<ul class="item-content clearfix">
-												<li class="td td-chk">
-													<div class="cart-checkbox ">
 														<!--
                                         	多选按钮
-                                        -->
+                                        --> <!-- 循环开始 -->
+                							<c:forEach var="a" items="${requestScope.shopcart}">
+											<ul class="item-content clearfix">
+											<li class="td td-chk">	
+													
+											
+                							
+                							<div class="cart-checkbox ">
 														<input class="check" id="checkAll" name="checkAll"
 															type="checkbox" onclick="setSelectAll()"
-															value="<%-- <%=goodslist.get(i).getID()%> --%>">
+															value="${a.goodId}">
 													</div>
 												</li>
 												<li class="td td-item">
@@ -232,15 +235,15 @@
                                         	图片
                                         -->
 														<a href="#" target="_blank" data-title="图片"
-															class="J_MakePoint" data-point="tbcart.8.12"> <img
-															src="../images/book/<%-- <%=goodslist.get(i).getPicture()%> --%>"
+															class="J_MakePoint" data-point="tbcart.8.12"> <img style="width:90px; height:100px"
+															src="theme/img/pd/${a.goodImgAdd}"
 															class="itempic J_ItemImg"></a>
 													</div>
 													<div class="item-info">
 														<div class="item-basic-info">
 															<a href="#" target="_blank" title="bookname"
 																class="item-title J_MakePoint" data-point="tbcart.8.11">
-																<%-- <%=goodslist.get(i).getName()%> --%>
+																${a.goodName}
 															</a>
 														</div>
 													</div>
@@ -252,23 +255,26 @@
 													<div class="item-price price-promo-promo">
 														<div class="price-content">
 															<div class="price-line">
-																<span id="price<%-- <%=i%> --%>">
-																	<%-- <%=goodslist.get(i).getPrice()%> --%>
+																<span id="price">
+																	${a.goodPrice}
 																</span>元
 															</div>
 														</div>
 													</div>
 												</li>
+												
 												<li class="td td-amount">
 													<div class="amount-wrapper ">
 														<div class="item-amount ">
 															<div class="sl">
 																<input class="min am-btn" type="button" value="-"
-																	onclick="setAllPrice()" /> <input class="text_box"
-																	id="num<%-- <%=i%> --%>" type="number"
-																	onkeyup="setAllPrice()" name="num"
-																	value="<%-- <%=goodslist.get(i).getNum()%> --%>"
-																	style="width: 30px;" /> <input class="add am-btn"
+																	onclick="setAllPrice()" /> 
+																<input class="text_box"
+																	id="num" type="text"
+																 	name="num"
+																	value="${a.goodNumber}"
+																	style="width: 30px;" /> 
+																<input class="add am-btn"
 																	type="button" value="+" onclick="setAllPrice()" />
 															</div>
 														</div>
@@ -284,11 +290,12 @@
 												<li class="td td-op">
 													<div class="td-inner">
 														<a
-															href="shopDelete_deal.jsp?ID=<%-- <%=goodslist.get(i).getID()%> --%>"
+															href="../shopcart.do?op=delCart&goodId=${a.goodId}&userName=${requestScope.userName}"
 															data-point-url="#" class="delete"> 删除</a>
 													</div>
 												</li>
 											</ul>
+											</c:forEach>
 											<%-- <%
 								}
 								} else {
@@ -342,17 +349,7 @@
 
 
 
-				<div class="clearfix" style="padding: 30px 20px;">
-					<div class="fr pc-search-g pc-search-gs">
-						<a style="display: none" class="fl " href="#">上一页</a> <a href="#"
-							class="current">1</a> <a href="javascript:;">2</a> <a
-							href="javascript:;">3</a> <a href="javascript:;">4</a> <a
-							href="javascript:;">5</a> <a href="javascript:;">6</a> <a
-							href="javascript:;">7</a> <span class="pc-search-di">…</span> <a
-							href="javascript:;">1088</a> <a title="使用方向键右键也可翻到下一页哦！" class=""
-							href="javascript:;">下一页</a>
-					</div>
-				</div>
+			
 
 			</div>
 		</div>

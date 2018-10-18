@@ -134,7 +134,7 @@ p {
 
 					<li class="headerul">|</li>
 					<div class="header-cart fr">
-						<a href="#"><img src="theme/icon/car.png"></a> <i
+						<a href="../shopcart.do?op=showCart&userName=${sessionScope.user.userName}"><img src="theme/icon/car.png"></a> <i
 							class="head-amount">99</i>
 					</div>
 					<div class="head-mountain"></div>
