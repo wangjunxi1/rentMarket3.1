@@ -28,7 +28,7 @@
 	<script type="text/javascript" src="theme/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="theme/js/jquery-ui.js"></script>
 	<script type="text/javascript" src="theme/js/jquery.htmlClean.js"></script>
-    
+    <script type="text/javascript" src="${pageContext.request.contextPath}/theme/js/address.js"></script>  
  </head>
  <body>
 
@@ -140,17 +140,26 @@
 										<div class="form-group">
 											<input type="hidden" id="userName" name="userName" value="${sessionScope.user.userName}">
 											<label for="userRealName">收货人</label> <input type="text"
-												class="form-control" id="userRealName" name="userRealName" placeholder="" style="height: 40px;width: 550px" required="required"/>
+												class="form-control" id="userRealName" name="userRealName" placeholder="请输入收货人" style="height: 40px;width: 550px" required="required"/>
 										</div>
 										<div class="form-group">
-											<label for="userAddress">地址</label> <input type="text"
+											<label for="userAddress">地址</label> 
+											<select id="cmbProvince" name="cmbProvince" style="width: 181px"></select>  
+											<select id="cmbCity" name="cmbCity" style="width: 181px"></select>  
+											<select id="cmbArea" name="cmbArea" style="width: 181px"></select>
+											<input type="text"
 												class="form-control" id="userAddress" name="userAddress"
-												placeholder="地址" style="height: 40px;width: 550px" required="required" />
+												placeholder="请输入详细地址" style="height: 40px;width: 550px" required="required" />
+  
+											<script type="text/javascript">  
+												addressInit('cmbProvince', 'cmbCity', 'cmbArea');  
+											</script> 
+											
 										</div>
 										<div class="form-group">
 											<label for="userPhone">手机</label> <input type="text"
 												class="form-control" name="userPhone" id="userPhone"
-												placeholder="手机" style="height: 40px;width: 550px" required="required"/>
+												placeholder="请输入手机" style="height: 40px;width: 550px" required="required"/>
 										</div>
 										<button type="button" class="btn btn-default" id="addAdress1" >提交</button>
 									</form>
@@ -186,9 +195,16 @@
 												class="form-control" id="userRealName2" name="userRealName2" style="height: 40px;width: 550px" value="${a.userRealName}"/>
 										</div>
 										<div class="form-group">
-											<label for="userAddress2">地址</label> <input type="text"
+											<label for="userAddress2">地址</label> 
+											<select id="cmbProvince2" name="cmbProvince2" style="width: 181px"></select>  
+											<select id="cmbCity2" name="cmbCity2" style="width: 181px"></select>  
+											<select id="cmbArea2" name="cmbArea2" style="width: 181px"></select>
+											<input type="text"
 												class="form-control" id="userAddress2" name="userAddress2"
 												 style="height: 40px;width: 550px" value="${a.userAddress}"/>
+											<script type="text/javascript">  
+												addressInit('cmbProvince2', 'cmbCity2', 'cmbArea2');  
+											</script> 
 										</div>
 										<div class="form-group">
 											<label for="userPhone2">手机</label> <input type="text"
@@ -243,8 +259,7 @@
            <script type="text/javascript">
            //添加地址操作
             	$("#addAdress1").click(function(){
-                	$.post("/rentMarket3.1/ads.do","op=add&userName="+$("#userName").val()+"&userRealName="+$("#userRealName").val()+"&userAddress="+$("#userAddress").val()+"&userPhone="+$("#userPhone").val(),function(data,state){
-                		console.log(data);
+                	$.post("/rentMarket3.1/ads.do","op=add&userName="+$("#userName").val()+"&userRealName="+$("#userRealName").val()+"&userAddress="+$("#userAddress").val()+"&userPhone="+$("#userPhone").val()+"&cmbProvince="+$("#cmbProvince").val()+"&cmbCity="+$("#cmbCity").val()+"&cmbArea="+$("#cmbArea").val(),function(data,state){
                 		if(data){
                 			location.href="/rentMarket3.1/ads.do?op=sel";
                 		}
@@ -252,8 +267,7 @@
                 });
            //編輯地址操作 
             	$("#updateAdress1").click(function(){
-                	$.post("/rentMarket3.1/ads.do","op=up&userDetailId="+$("#userDetailId").val()+"&userRealName2="+$("#userRealName2").val()+"&userAddress2="+$("#userAddress2").val()+"&userPhone2="+$("#userPhone2").val(),function(data,state){
-                		console.log(data);
+                	$.post("/rentMarket3.1/ads.do","op=up&userDetailId="+$("#userDetailId").val()+"&userRealName2="+$("#userRealName2").val()+"&userAddress2="+$("#userAddress2").val()+"&userPhone2="+$("#userPhone2").val()+"&cmbProvince2="+$("#cmbProvince2").val()+"&cmbCity2="+$("#cmbCity2").val()+"&cmbArea2="+$("#cmbArea2").val(),function(data,state){
                 		if(data){
                 			location.href="/rentMarket3.1/ads.do?op=sel";
                 		}

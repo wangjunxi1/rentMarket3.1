@@ -41,18 +41,22 @@ public class AddrServlet extends HttpServlet {
 		 * 查询地址信息
 		 */
 		if("sel".equals(op)) {
-			System.out.println(op);
 			User u = (User) request.getSession().getAttribute("user");
 			String userName = u.getUserName();
 			List<Usersdetail> list = as.queryUserAddr(userName);
 			request.setAttribute("list", list);
 			request.getRequestDispatcher("front/addressManager.jsp").forward(request, response);
 		}else if("add".equals(op)) {
-			System.out.println(op);
 			String userName = request.getParameter("userName");
 			String userRealName = request.getParameter("userRealName");
-			String userAddress = request.getParameter("userAddress");
+			String cmbProvince = request.getParameter("cmbProvince");
+			String cmbCity = request.getParameter("cmbCity");
+			String cmbArea = request.getParameter("cmbArea");
+			String Address = request.getParameter("userAddress");
+			String userAddress = cmbProvince+cmbCity+cmbArea+Address;
 			String userPhone = request.getParameter("userPhone");
+			
+			
 			boolean flag = as.addAddr(userName, userRealName, userAddress, userPhone);
 			response.getWriter().print(flag);
 			/*if (flag) {
@@ -60,12 +64,14 @@ public class AddrServlet extends HttpServlet {
 			}*/
 			
 		}else if ("up".equals(op)) {
-			System.out.println(op);
 			int userDetailId = Integer.parseInt(request.getParameter("userDetailId"));
 			String userRealName = request.getParameter("userRealName2");
-			String userAddress = request.getParameter("userAddress2");
+			String cmbProvince = request.getParameter("cmbProvince2");
+			String cmbCity = request.getParameter("cmbCity2");
+			String cmbArea = request.getParameter("cmbArea2");
+			String Address = request.getParameter("userAddress2");
+			String userAddress = cmbProvince+cmbCity+cmbArea+Address;
 			String userPhone = request.getParameter("userPhone2");
-			System.out.println(userDetailId);
 
 			boolean flag = as.updateAddr(userDetailId, userRealName, userAddress, userPhone);
 			response.getWriter().print(flag);

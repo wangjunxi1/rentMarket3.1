@@ -143,7 +143,7 @@ public class UsersServlet extends HttpServlet {
 				if (!(userPwd.equals(userPwd2))) {
 					out.print("<script>alert('密码不正确,请重新登录！');location.href='front/login.jsp'</script>");
 				} else {
-					out.print("<script>alert('登录成功');location.href='front/index.jsp'</script>");
+					out.print("<script>location.href='front/index.jsp'</script>");
 					request.getSession().setAttribute("user", user);
 				}
 			}
