@@ -34,4 +34,10 @@ public interface ShoppingCartService {
 	 * @return true 操作成功,false 操作失败
 	 */
 	boolean updateItem(Shoppingcart cart);
+	/**
+	 * 根据商品Id查询购物车信息
+	 * @param goodId 商品Id
+	 * @return
+	 */
+	public List<Shoppingcart> selGoodByGoodId(List<Integer> goodId);
 }

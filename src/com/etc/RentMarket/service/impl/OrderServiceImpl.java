@@ -71,5 +71,16 @@ public class OrderServiceImpl implements OrderService{
 		return od.updateOrderState(orderState, orderId,goodName);
 	}
 	
+	/**
+	 * 插入订单
+	 * @param order 订单Order实体类对象
+	 * @return
+	 */
+	@Override
+	public boolean insertOrders(Order order) {
+		// TODO Auto-generated method stub
+		return od.insertOrders(order);
+	}
+	
 
 }

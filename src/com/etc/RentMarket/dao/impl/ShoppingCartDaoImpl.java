@@ -57,5 +57,32 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
 		String sql="update shoppingcart,users,good set shoppingcart.goodNumber=? where shoppingcart.userId=users.userId and shoppingcart.goodId=good.goodId and shoppingcart.userId=?";
 		return BaseDao.execute(sql, cart.getGoodNumber(),cart.getUserId())>0;
 	}
+	/**
+	 * 根据商品Id查询购物车信息
+	 * @param goodId 商品Id
+	 * @return
+	 */
+	@Override
+	public List<Shoppingcart> selGoodByGoodId(List<Integer> goodId) {
+		
+		if(goodId.size()>0) {//如果选中的数量>0
+			Integer arr[] = new Integer[goodId.size()];//创建一个数组，大小为选中的数量
+			
+			String sql = "SELECT good.goodName,good.goodPrice,good.goodImgAdd,shoppingcart.goodNumber FROM good,shoppingcart WHERE shoppingcart.goodId=good.goodId and shoppingcart.goodId in(";//拼接sql语句
+			for (int i = 0 ;i<goodId.size() ;i++) {
+				sql += "?,";
+				arr[i]=goodId.get(i);
+			}
+			sql=sql.substring(0, sql.length()-1);
+			sql += ")";
+			
+			
+			return (List<Shoppingcart>) BaseDao.select(sql, Shoppingcart.class, arr);
+			}else {
+				return null;
+			}
+		
+		
+	}
 
 }

@@ -2,6 +2,7 @@ package com.etc.RentMarket.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -68,6 +69,8 @@ public class ShoppingcartServlet extends HttpServlet {
 		// 4、更新购物车商品
 		else if ("updateCart".equals(op)) {
 			doUpdateCarts(request, response);
+		}else if("selGoodById".equals(op)) {
+			selGoodById(request, response);
 		}
 	}
 
@@ -169,6 +172,27 @@ public class ShoppingcartServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		out.print(flag);
 		out.close();
+	}
+	
+	protected void selGoodById(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {//根据商品Id查询购物车信息
+		ShoppingCartServiceImpl scs= new ShoppingCartServiceImpl();
+		String goods = request.getParameter("goodId");
+		String totalPrice =request.getParameter("totalPrice");
+		
+		String arr[] = goods.split(",");
+
+		List<Integer> list = new ArrayList<Integer>();
+		for (int i = 0; i < arr.length; i++) {
+			list.add(Integer.valueOf(arr[i]));
+		}
+		
+		List<Shoppingcart> shopCartlist= scs.selGoodByGoodId(list);
+		// System.out.println("shopser"+shopCartlist);
+		request.setAttribute("shopCartlist", shopCartlist);
+		request.setAttribute("total", totalPrice);
+		request.getRequestDispatcher("front/order.jsp").forward(request, response);
+		
 	}
 
 	/**

@@ -66,5 +66,10 @@ public interface OrderDao {
 	 * @return
 	 */
 	boolean updateOrderState(int orderState,int orderId,String goodName);
-	
+	/**
+	 * 插入订单
+	 * @param order 订单Order实体类对象
+	 * @return
+	 */
+	boolean insertOrders(Order order);
 }

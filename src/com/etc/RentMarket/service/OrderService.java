@@ -56,4 +56,10 @@ public interface OrderService {
 	 * @return
 	 */
 	boolean updateOrderState(int orderState,int orderId,String goodName);
+	/**
+	 * 插入订单
+	 * @param order 订单Order实体类对象
+	 * @return
+	 */
+	public boolean insertOrders(Order order);
 }

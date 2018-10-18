@@ -257,7 +257,7 @@
 															<div class="price-line">
 																<div id="price${i.index+1}" style="display:inline">
 																	${a.goodPrice}
-																</div><span>元</span>
+																</div><span>元/天</span>
 															</div>
 														</div>
 													</div>
@@ -357,8 +357,8 @@
 										</div>
 									</div>
 									<div class="price-sum">
-										<span class="txt">合计:</span> ¥<span class="price" id="J_Total"></span>
-										<input type="hidden" id="hiddenTotal" name="total" value="" />
+										<span class="txt">合计:</span> ¥<span  class="price" id="J_Total"  >0</span>元
+										<input type="hidden" id="hiddenTotal" name="hiddenTotal" value="" />
 									</div>
 									<div>
 										<input type="button" id="J_Go" class="am-btn am-btn-danger" 
@@ -462,7 +462,19 @@
 	</div>
 	<script type="text/javascript">
 		$("#J_Go").click(function(){
-			location.href="front/order.jsp";
+			var str = [];
+			var obj = document.getElementsByName("checkAll");
+			var total=$("#hiddenTotal").val();
+			
+			for(var i=0;i<obj.length;i++){
+				if(obj[i].checked==true){
+					str.push(obj[i].value);
+					
+				}
+				
+			}
+			
+			location.href="shopcart.do?op=selGoodById&goodId="+str+"&totalPrice="+total;
 		});
 	</script>
 <script language="javascript">
@@ -576,7 +588,7 @@
 			total = total+allprice;
 
 		}
-		
+		$("#hiddenTotal").val(total);
 		$("#J_Total").html(total);
 	}
 	}

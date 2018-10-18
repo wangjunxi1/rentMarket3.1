@@ -1,9 +1,7 @@
 package com.etc.RentMarket.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import com.etc.RentMarket.entity.Good;
 import com.etc.RentMarket.entity.Shoppingcart;
 
 /**
@@ -39,4 +37,10 @@ public interface ShoppingCartDao {
 	 * @return true 操作成功,false 操作失败
 	 */
 	boolean updateItem(Shoppingcart cart);
+	/**
+	 * 根据商品Id查询购物车信息
+	 * @param goodId 商品Id
+	 * @return
+	 */
+	List<Shoppingcart> selGoodByGoodId(List<Integer> goodId);
 }

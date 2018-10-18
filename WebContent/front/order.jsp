@@ -201,9 +201,9 @@
                 <div class="pc-order-text clearfix">
                     <ul class=" clearfix">
                         <li class="clearfix fl">
-                            <div class="fl pc-frame pc-frams" style="margin-right:50px "> <a href="#"> <img src="theme/img/pay/onlinePay.jpg" width="50px" height="24px"></img></a></div>
+                            <div class="fl pc-frame pc-frams" style="margin-right:50px "> <a href="#"> <img src="theme/img/bg/onlinePays.jpg" width="50px" height="24px"></img></a></div>
                             <div class="fl pc-frame pc-frams" style="margin-right:50px "> <a href="#"> <img src="theme/img/pay/zhifubao.jpg" width="50px" height="24px"></img></a></div> 
-                        	<div class="fl pc-frame pc-frams" style="margin-right:50px "> <a href="#"><img src="theme/img/pay/weizhifu.jpg" width="50px" height="24px"> </a></div> 
+                        	<div class="fl pc-frame pc-frams" style="margin-right:50px "> <a href="#"><img src="theme/img/pay/weizhifu.jpg" width="50px" height="24px"></img> </a></div> 
                         </li>
                     </ul>
                 </div>
@@ -214,54 +214,66 @@
                <div class="pc-order-title clearfix"><h3 class="fl">商品信息</h3></div>
                <div class="pc-border">
                    <div class="pc-order-text clearfix" style="width:1158px " >
-                       
-                       
-                       
+                       <%
+                       		List<Shoppingcart> shopcart=(List<Shoppingcart>) request.getAttribute("shopCartlist");
+                       		String total=(String)request.getAttribute("total");
+                       		String imgPath="theme/img/pd/";
+                       		for(Shoppingcart s:shopcart){
+                       %>
                        <div class="clearfix pc-wares-p">
-                           <div class="fl pc-wares"><a href="#"><img src="theme/img/pd/${requsetScope.s.goodImgAdd }"></a></div>
-                           <div class="fl pc-wares-w"> <a href="#"></a> <p class="clearfix"><span class="fl">颜色：白色</span><span class="fr">版本：联通高</span></p></div>
-                           <div class="fl pc-wares-s"><span class="reds">￥49.00/天</span><span>x1</span><span>有货</span></div>
+                           <div class="fl pc-wares"><a href="#"><img width="100px" height="100px" src=<%=imgPath+s.getGoodImgAdd() %>></a></div>
+                           <div class="fl pc-wares-w">  <p class="clearfix"><span class="fr"><%=s.getGoodName() %></span></p></div>
+                           <div class="fl pc-wares-s"><span class="reds"><%=s.getGoodPrice() %>/天</span><span>x<%=s.getGoodNumber() %></span><span>有货</span></div>
                        </div>
+                       <%
+                       		}
+                       %>
                        
-                       <div class="pc-written"><p>订单留言</p></div>
+                       <div class="pc-written"><p>订单留言</p>
+                       		<div>
+                       			<textarea rows="10" cols="165.95">
+                       			
+                       			</textarea>
+                       		</div>
+                       </div>
                    </div>
                </div>
            </div>
        </div>
-       <div class="pc-space">
-            <div class="pc-order-title clearfix"><h3 class="fl">发票信息</h3></div>
-            <div class="pc-border">
-                <div class="pc-order-text clearfix">
-                    <ul class=" clearfix">
-                        <li class="clearfix fl">
-                            <div class="fl pc-address pc-wares-l"><span>普通发票（纸质）</span> <span> 个人</span> <span>明细</span><span><a href="#">修改</a> </span></div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+       
        <div class="clearfix">
            <div class="fr pc-list-t">
                <ul>
-                   <li><span><b>2</b> 件商品，总商品金额：</span> <em>￥558.00</em></li>
-                   <li><span>减额：</span> <em>￥558.00</em></li>
-                   <li><span>运费：</span> <em>￥558.00</em></li>
-                   <li><span>应付总额：</span> <em>￥558.00</em></li>
-                   <li><span>减额：</span> <em>￥558.00</em></li>
+                   <li><span><b>2</b> 件商品，总商品金额：</span> <em>￥<%=total %></em></li>
+                   <li><span>减额：</span> <em>￥35.00</em></li>
+                   <li><span>运费：</span> <em>￥50.00</em></li>
+                  
+                   
                </ul>
            </div>
        </div>
        <div class="pc-space-n"></div>
        <div class="clearfix">
            <div class="fr pc-space-j">
-               <spna>应付总额：<strong>￥558.00</strong></spna>
-               <button class="pc-submit">提交订单</button>
+               <span>应付总额：<strong>￥<%=Double.parseDouble(total)-35+50%></strong></span>
+               <form action="os.do?op=insert" method="post" >
+               <button class="pc-submit" id="submit" type="submit">提交订单</button>
+               <input type="hidden" name="userName" id="userName" value="${sessionScope.user.userName }">
+               <input type = "hidden" name = "orderDate" id="orderDate" value="2018-10-19">
+               <input type="hidden" name ="orderTPrice" id="orderTPrice" value=<%=total %>>
+               <input type="hidden" name ="userAddress" id="userAddress" value=<%= list.get(0).getUserAddress()%> >
+               <input type="hidden" name ="userTel" id="userTel" value="<%=list.get(0).getUserPhone() %>">
+               
+               </form>
            </div>
        </div>
     </div>
 </section>
 <!-- 订单提交成功 End-->
+<script type="text/javascript">
+	
 
+</script>
 
 <!--- footer begin-->
 <div class="aui-footer-bot">

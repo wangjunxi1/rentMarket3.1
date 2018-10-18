@@ -72,7 +72,7 @@ public class OrderServlet extends HttpServlet {
 			request.setAttribute("keywords", keywords);
 				request.setAttribute("pd", pd);
 				request.getRequestDispatcher("front/list-receive.jsp").forward(request, response);
-		}else if (op.equals("selOrderInfo")) {//查询订单表信息
+		}else if ("selOrderInfo".equals(op)) {//查询订单表信息
 			List<Order> orders = os.selOrders();
 			MyData<Order> md = new MyData<Order>();
 			md.setData(orders);
@@ -80,7 +80,7 @@ public class OrderServlet extends HttpServlet {
 			out.print(jsonString);
 			
 			out.close();
-		}else if (op.equals("upInfo")) {//更新信息
+		}else if ("upInfo".equals(op)) {//更新信息
 			String orderId=request.getParameter("orderId");
 			String userName=request.getParameter("userName");
 			String userTel=request.getParameter("userTel");
@@ -95,7 +95,7 @@ public class OrderServlet extends HttpServlet {
 			String id = request.getParameter("id");
 			boolean flag = os.delOrders(Integer.valueOf(id));
 			out.println(flag);
-		}else if(op.equals("delMuchOrders")) {
+		}else if("delMuchOrders".equals(op)) {
 			String ordersIds= request.getParameter("ids");
 			String arr[]=ordersIds.split(",");
 			
@@ -112,6 +112,21 @@ public class OrderServlet extends HttpServlet {
 				out.print(flag);
 			}
 			out.close();
+		}else if ("insert".equals(op)) {
+			String userName=request.getParameter("userName");
+			String orderDate=request.getParameter("orderDate");
+			String orderTPrice=request.getParameter("orderTPrice");
+			String userAddress=request.getParameter("userAddress");
+			String userTel=request.getParameter("userTel");
+			Order order = new Order(orderDate, Double.parseDouble(orderTPrice) , userAddress, userName, userTel);
+			boolean flag = os.insertOrders(order);
+			if(flag) {
+				out.println("<script>alert('结算成功')</script>");
+				
+			}else {
+				out.println("<script>alert('结算失败')</script>");
+			}
+			request.getRequestDispatcher("front/index.jsp").forward(request, response);
 		}
 		
 	}

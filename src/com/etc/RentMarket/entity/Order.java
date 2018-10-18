@@ -38,6 +38,17 @@ public class Order implements Serializable {
 	public Order() {
 	}
 	
+	public Order(String orderDate,  double orderTPrice, String userAddress, String userName,
+			String userTel) {
+		super();
+		this.orderDate = orderDate;
+		
+		this.orderTPrice = orderTPrice;
+		this.userAddress = userAddress;
+		this.userName = userName;
+		this.userTel = userTel;
+	}
+
 	public Order(int orderId, String orderDate, int orderState, double orderTPrice, String userAddress, String userName,
 			String userTel) {
 		super();

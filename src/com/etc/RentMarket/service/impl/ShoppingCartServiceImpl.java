@@ -54,5 +54,16 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 		// TODO Auto-generated method stub
 		return sc.updateItem(cart);
 	}
+	
+	/**
+	 * 根据商品Id查询购物车信息
+	 * @param goodId 商品Id
+	 * @return
+	 */
+	@Override
+	public List<Shoppingcart> selGoodByGoodId(List<Integer> goodId) {
+		// TODO Auto-generated method stub
+		return sc.selGoodByGoodId(goodId);
+	}
 
 }

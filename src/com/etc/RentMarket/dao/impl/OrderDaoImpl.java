@@ -116,6 +116,18 @@ public boolean updateOrderState(int orderState,int orderId,String goodName) {
 	return BaseDao.execute(sql, orderState,orderId,goodName)>0;
 }
 
+/**
+ * 插入订单
+ * @param order 订单Order实体类对象
+ * @return
+ */
+@Override
+public boolean insertOrders(Order order) {
+	// TODO Auto-generated method stub
+	String sql = "INSERT INTO orders (userName, orderDate, orderTPrice,userAddress, userTel, orderState) VALUES (?, ?, ?, ?, ?, 0)";
+	return BaseDao.execute(sql, order.getUserName(),order.getOrderDate(),order.getOrderTPrice(),order.getUserAddress(),order.getUserTel())>0;
+}
+
 
 	
 
