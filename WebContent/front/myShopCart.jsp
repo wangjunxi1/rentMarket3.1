@@ -304,7 +304,7 @@
 						
 						$("#des").click(function(){
 							
-							if("0"!=$("#num1").val()){//如果数量不为0就进行减一操作 
+							if("1"!=$("#num1").val()){//如果数量不为0就进行减一操作 
 								var num=$("#num1").val()+"-"+1;
 								var q=eval(num);
 								$("#num1").val(q);
@@ -336,15 +336,15 @@
 								<div id="J_SelectAll2" class="select-all J_SelectAll">
 									<div class="cart-checkbox">
 										<input type="checkbox" class="check-all check"
-											name="select-all" id="selAll" onclick="setAllPrice()" /> <label
+											name="select-all" id="selAll" onclick="selectAll()" /> <label
 											for="J_SelectAllCbx2"></label>
 									</div>
 									<span>全选</span>
 
 								</div>
 								<div class="operations">
-									<a href="shopRemoveAll.jsp" hidefocus="true" class="deleteAll">清空购物车</a>
-									
+									<a href="${pageContext.request.contextPath}/shopcart.do?op=delAll&userName=${sessionScope.user.userName }"  class="deleteAll" id="deleteAll" >清空购物车</a>
+									<input type="hidden" id="delVal" name="delVal" value=<%=request.getParameter("delAllCart") %>>
 								</div>
 
 								<div class="float-bar-right">
@@ -480,6 +480,7 @@
 <script language="javascript">
 
 	//选中全选按钮，下面的checkbox全部选中 
+	
 	var selAll = document.getElementById("selAll");
 	function selectAll() {
 		var obj = document.getElementsByName("checkAll");
@@ -555,13 +556,22 @@
 			return true;
 		}
 	}
+	
+	window.onload=function(){
+		var isDelAll=$("#delVal").val();
+		if(isDelAll==true){
+			alert("清空购物车成功");
+		}
+		
+	};
+	
 </script>
 
 
 </head>
 
 <script type="text/javascript">
-	function setAllPrice() {
+	function setAllPrice() {//计算总价钱
 		var total=0;
 		var allprice=0;
 		var obj = document.getElementsByName("checkAll");

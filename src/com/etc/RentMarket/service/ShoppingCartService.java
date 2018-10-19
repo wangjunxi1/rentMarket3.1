@@ -45,4 +45,10 @@ public interface ShoppingCartService {
 	 * @param goodId 商品信息
 	 */
 	boolean delMuchShopCart(List<Integer> goodId) ;
+	/**
+	 * 清空购物车
+	 * @param userId 用户Id
+	 * @return true 删除成功
+	 */
+	public boolean removeAllItem(int userId);
 }

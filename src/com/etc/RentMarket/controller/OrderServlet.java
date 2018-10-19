@@ -128,19 +128,14 @@ public class OrderServlet extends HttpServlet {
 			String arr[] = goodIdlist.split(",");
 			List<Integer> list = new ArrayList<Integer>();
 			for (int i = 0; i < arr.length; i++) {
-				//list.add(Integer.valueOf(arr[i]));
+				list.add(Integer.valueOf(arr[i]));
 				
 			}
 			scs.delMuchShopCart(list);//删除购物车中的信息
 			Order order = new Order(orderDate, Double.parseDouble(orderTPrice) , userAddress, userName, userTel);
 			boolean flag = os.insertOrders(order);
-			if(flag) {
-				out.println("<script>alert('结算成功')</script>");
-				
-			}else {
-				out.println("<script>alert('结算失败')</script>");
-			}
-			request.getRequestDispatcher("front/index.jsp").forward(request, response);
+			
+			request.getRequestDispatcher("front/index.jsp?flag="+flag).forward(request, response);
 		}
 		
 	}

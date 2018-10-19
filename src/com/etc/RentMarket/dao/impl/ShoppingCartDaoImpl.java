@@ -20,7 +20,7 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
 	@Override
 	public boolean addItem(Shoppingcart cart) {
 		// TODO Auto-generated method stub
-		String sql="INSERT INTO shoppingcart (userId, goodId, goodNumber) SELECT DISTINCT shoppingcart.userId, ?, ? FROM shoppingcart, good, users WHERE users.userId = shoppingcart.userId AND good.goodId = shoppingcart.goodId AND shoppingcart.userId = ?";
+		String sql="INSERT INTO shoppingcart (userId, goodId, goodNumber) SELECT DISTINCT users.userId, ?, ? FROM users WHERE  users.userId = ?";
 		return BaseDao.execute(sql,cart.getGoodId(),cart.getGoodNumber(),cart.getUserId())>0;
 	}
 	/**
@@ -54,8 +54,8 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
 	@Override
 	public boolean updateItem(Shoppingcart cart) {
 		// TODO Auto-generated method stub
-		String sql="update shoppingcart,users,good set shoppingcart.goodNumber=? where shoppingcart.userId=users.userId and shoppingcart.goodId=good.goodId and shoppingcart.userId=?";
-		return BaseDao.execute(sql, cart.getGoodNumber(),cart.getUserId())>0;
+		String sql="update shoppingcart,users,good set shoppingcart.goodNumber=? where shoppingcart.userId=users.userId and shoppingcart.goodId=good.goodId and shoppingcart.userId=? and shoppingcart.goodId=?";
+		return BaseDao.execute(sql, cart.getGoodNumber(),cart.getUserId(),cart.getGoodId())>0;
 	}
 	/**
 	 * 根据商品Id查询购物车信息
@@ -107,6 +107,17 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
 			}else {
 				return false;
 			}
+	}
+	
+	/**
+	 * 清空购物车
+	 * @param userId 用户Id
+	 * @return true 删除成功
+	 */
+	@Override
+	public boolean removeAllItem(int userId) {
+		String sql="delete shoppingcart from users,shoppingcart,good where shoppingcart.userId=users.userId and shoppingcart.goodId=good.goodId and shoppingcart.userId=?";
+		return BaseDao.execute(sql, userId)>0;
 	}
 
 }

@@ -71,6 +71,8 @@ public class ShoppingcartServlet extends HttpServlet {
 			doUpdateCarts(request, response);
 		}else if("selGoodById".equals(op)) {
 			selGoodById(request, response);
+		}else if("delAll".equals(op)) {
+			doDelAllCarts(request, response);
 		}
 	}
 
@@ -104,24 +106,39 @@ public class ShoppingcartServlet extends HttpServlet {
 	}
 
 	/**
-	 * 2、添加购物车
+	 * 2、添加购物车信息
 	 */
 	protected void doAddCarts(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+		// 使用printWriter对象
+		PrintWriter out = response.getWriter();
 		// 获取传参数据
 		String userName = request.getParameter("userName");
 		int goodId = Integer.valueOf(request.getParameter("goodId"));
 		int goodNumber = Integer.valueOf(request.getParameter("goodNumber"));
-		
-		// 通过userName得到userId
+		//根据用户名获取用户Id
 		int userId = us.getUserIdByUserName(userName);
 		// 创建一个Shoppingcart对象
 		Shoppingcart cart = new Shoppingcart(goodNumber, userId, goodId);
+		//根据用户Id查询用户购物车的信息
+		List<Shoppingcart> list = sc.showShopCart(userId);
+		//如果购物车中已经存在一个传入的goodId，就单独增加购物车中的数量
+		boolean isExist=true;
+		for (Shoppingcart shoppingcart : list) {
+			if(shoppingcart.getGoodId()==goodId) {//存在重复的商品Id时
+				shoppingcart.setGoodNumber(shoppingcart.getGoodNumber()+goodNumber);
+				sc.updateItem(shoppingcart);//更新数据库中的信息
+				isExist=false;
+				out.print(!isExist);
+			}
+		}
+		if(isExist) {
+		
 		boolean flag = sc.addItem(cart);
-		// 使用printWriter对象
-		PrintWriter out = response.getWriter();
+		
 		out.print(flag);
+		}
 		out.close();
 		// request.getRequestDispatcher("front/myShopCart.jsp").forward(request,
 		// response);
@@ -152,6 +169,21 @@ public class ShoppingcartServlet extends HttpServlet {
 		}
 
 	}
+	/**
+	 * 3.1清空购物车
+	 */
+	protected void doDelAllCarts(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		//获取用户用户名
+		String userName = request.getParameter("userName");
+		UsersServiceImpl usi = new UsersServiceImpl();
+		//根据用户名获取用户Id
+		int userId = usi.getUserIdByUserName(userName);
+		boolean flag = sc.removeAllItem(userId);
+		request.getRequestDispatcher("shopcart.do?op=showCart&delAllCart="+flag).forward(request, response);
+		
+		
+	}
 
 	/**
 	 * 4、更新购物车商品
@@ -173,15 +205,18 @@ public class ShoppingcartServlet extends HttpServlet {
 		out.print(flag);
 		out.close();
 	}
-	
+	/**
+	 * 根据商品Id查询购物车信息
+	 * 
+	 */
 	protected void selGoodById(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {//根据商品Id查询购物车信息
+			throws ServletException, IOException {
 		ShoppingCartServiceImpl scs= new ShoppingCartServiceImpl();
 		String goods = request.getParameter("goodId");
 		String totalPrice =request.getParameter("totalPrice");
 		
 		String arr[] = goods.split(",");
-
+		
 		List<Integer> list = new ArrayList<Integer>();
 		for (int i = 0; i < arr.length; i++) {
 			list.add(Integer.valueOf(arr[i]));
@@ -189,7 +224,7 @@ public class ShoppingcartServlet extends HttpServlet {
 		
 		List<Shoppingcart> shopCartlist = scs.selGoodByGoodId(list);
 		// System.out.println("shopser"+shopCartlist);
-		request.setAttribute("goodIdlist", list);
+		request.setAttribute("goodIdlist", goods);
 		request.setAttribute("shopCartlist", shopCartlist);
 		request.setAttribute("total", totalPrice);
 		request.getRequestDispatcher("front/order.jsp").forward(request, response);

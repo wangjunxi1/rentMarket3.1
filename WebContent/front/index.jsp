@@ -71,7 +71,19 @@
 
 	$(function() {
 		timer(intDiff);
+		
 	});
+	window.onload=function c(){
+		var flag =$("#flag").val();
+		if(flag){
+			alert("结算成功");
+		}/* else{
+			alert("结算失败");
+		} */
+		
+	}
+	
+	
 </script>
 <style type="text/css">
 p {
@@ -79,9 +91,15 @@ p {
 }
 </style>
 </head>
-<body>
-
-
+<body >
+	<%//付款结算成功时
+		String flag= request.getParameter("flag");
+		if("true".equals(flag)){
+			
+		
+	%>
+		<input type="hidden" id="flag" name="flag" value=<%=flag %>>
+	<%} %>
 	<div>
 		<div id="moquu_wxin" class="moquu_wxin">
 			<a href="javascript:void(0)"><div class="moquu_wxinh"></div></a>

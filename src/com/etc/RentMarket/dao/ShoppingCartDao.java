@@ -26,6 +26,12 @@ public interface ShoppingCartDao {
 	 */
 	boolean removeItem(int goodId);
 	/**
+	 * 清空购物车
+	 * @param userId 用户Id
+	 * @return true 删除成功
+	 */
+	boolean removeAllItem(int userId);
+	/**
 	 * 显示购物车的界面
 	 * @param userId 用户编号
 	 * @return 购物车清单

@@ -74,5 +74,16 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 		
 		return sc.delMuchShopCart(goodId);
 	}
+	
+	/**
+	 * 清空购物车
+	 * @param userId 用户Id
+	 * @return true 删除成功
+	 */
+	@Override
+	public boolean removeAllItem(int userId) {
+		// TODO Auto-generated method stub
+		return sc.removeAllItem(userId);
+	}
 
 }
