@@ -40,4 +40,9 @@ public interface ShoppingCartService {
 	 * @return
 	 */
 	public List<Shoppingcart> selGoodByGoodId(List<Integer> goodId);
+	/**
+	 * 批量删除购物车的信息
+	 * @param goodId 商品信息
+	 */
+	boolean delMuchShopCart(List<Integer> goodId) ;
 }

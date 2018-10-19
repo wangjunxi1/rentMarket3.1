@@ -84,5 +84,29 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
 		
 		
 	}
+	
+	/**
+	 * 批量删除购物车的信息
+	 * @param goodId 购物车商品的Id
+	 */
+	@Override
+	public boolean delMuchShopCart(List<Integer> goodId) {
+		if(goodId.size()>0) {//如果选中的数量>0
+			Integer arr[] = new Integer[goodId.size()];//创建一个数组，大小为选中的数量
+			
+			String sql = "delete from shoppingcart where goodId in (";//拼接sql语句
+			for (int i = 0 ;i<goodId.size() ;i++) {
+				sql += "?,";
+				arr[i]=goodId.get(i);
+			}
+			sql=sql.substring(0, sql.length()-1);
+			sql += ")";
+			//System.out.println(sql);
+			int c = BaseDao.execute(sql, arr);//进行删除操作
+			return c>0;
+			}else {
+				return false;
+			}
+	}
 
 }

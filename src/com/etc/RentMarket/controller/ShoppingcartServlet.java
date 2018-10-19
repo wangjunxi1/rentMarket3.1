@@ -187,7 +187,7 @@ public class ShoppingcartServlet extends HttpServlet {
 			list.add(Integer.valueOf(arr[i]));
 		}
 		
-		List<Shoppingcart> shopCartlist= scs.selGoodByGoodId(list);
+		List<Shoppingcart> shopCartlist = scs.selGoodByGoodId(list);
 		// System.out.println("shopser"+shopCartlist);
 		request.setAttribute("goodIdlist", list);
 		request.setAttribute("shopCartlist", shopCartlist);

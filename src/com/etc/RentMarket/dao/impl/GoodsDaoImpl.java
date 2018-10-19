@@ -48,6 +48,7 @@ public class GoodsDaoImpl implements GoodsDao {
 	}
 	/**
 	 * 批量删除商品信息
+	 * @param goodIds 商品Id
 	 */
 	@Override
 	public boolean delMuchGoods(List<Integer> goodIds) {//批量删除商品信息

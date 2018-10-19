@@ -18,6 +18,7 @@ import com.etc.RentMarket.entity.Order;
 import com.etc.RentMarket.entity.User;
 import com.etc.RentMarket.service.OrderService;
 import com.etc.RentMarket.service.impl.OrderServiceImpl;
+import com.etc.RentMarket.service.impl.ShoppingCartServiceImpl;
 import com.google.gson.Gson;
 
 /**
@@ -120,8 +121,17 @@ public class OrderServlet extends HttpServlet {
 			String userTel=request.getParameter("userTel");
 			String goodIdlist=request.getParameter("goodId");
 			
-			List<Integer> list = new ArrayList<Integer>();//将
+			ShoppingCartServiceImpl scs = new ShoppingCartServiceImpl();
 			
+			//删除购物车中的信息
+			
+			String arr[] = goodIdlist.split(",");
+			List<Integer> list = new ArrayList<Integer>();
+			for (int i = 0; i < arr.length; i++) {
+				//list.add(Integer.valueOf(arr[i]));
+				
+			}
+			scs.delMuchShopCart(list);//删除购物车中的信息
 			Order order = new Order(orderDate, Double.parseDouble(orderTPrice) , userAddress, userName, userTel);
 			boolean flag = os.insertOrders(order);
 			if(flag) {

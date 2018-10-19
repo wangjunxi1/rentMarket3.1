@@ -65,5 +65,14 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 		// TODO Auto-generated method stub
 		return sc.selGoodByGoodId(goodId);
 	}
+	/**
+	 * 批量删除购物车的信息
+	 * @param goodId 商品信息
+	 */
+	@Override
+	public boolean delMuchShopCart(List<Integer> goodId) {
+		
+		return sc.delMuchShopCart(goodId);
+	}
 
 }
