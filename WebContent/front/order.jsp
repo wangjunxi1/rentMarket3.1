@@ -117,7 +117,7 @@
 			<select id="cmbArea" name="cmbArea" style="width: 181px"></select>
 										
             </div>
-            <div class="pc-label"><label><i class="reds ">*</i>详细地址:</label><input type="text" style="width:400px; " placeholder="请您填写收货人详细地址" id="userAddress " name="userAddress" value=<%-- <%=asi.queryUserAddr(user.getUserName()).get(0).getUserAddress() %> --%>></div>
+            <div class="pc-label"><label><i class="reds ">*</i>详细地址:</label><input type="text" style="width:400px; " placeholder="请您填写收货人详细地址" id="userAddressAdd " name="userAddressAdd" value=<%-- <%=asi.queryUserAddr(user.getUserName()).get(0).getUserAddress() %> --%>></div>
         	<div class="pc-label"><label><i class="reds ">*</i>手机号码:</label><input type="text" style="width:400px;"placeholder="请您填写收货人手机号码" id="userPhone" name="userPhone" value=<%=asi.queryUserAddr(user.getUserName()).get(0).getUserPhone() %>></div>
             <input id="sfdq_num" type="hidden" value="" />
             <input id="csdq_num" type="hidden" value="" />
@@ -181,8 +181,9 @@
     		var cmbCity=$("#cmbCity").find("option:selected").text();
     		var cmbArea=$("#cmbArea").find("option:selected").text();
     		var userPhone=$("#userPhone").val();
-    		var userAddress =$("#userAddress").val();
-    		/* $.get("ads.do?op=orderAdd","userName="+userName+"&userRealName="+userRealName+"&cmbProvince="+cmbProvince+"&cmbCity="+cmbCity+"&cmbArea="+cmbArea+"&userPhone="+userPhone+"&userAddress="+userAddress,function(data){
+    		var userAddress =$("input[name=userAddressAdd]").val();
+    		/* alert("cmbProvince="+cmbProvince+",cmbCity="+cmbCity+",cmbArea="+cmbArea+",+userAddress="+userAddress); */
+    		 $.get("ads.do?op=orderAdd","userName="+userName+"&userRealName="+userRealName+"&cmbProvince="+cmbProvince+"&cmbCity="+cmbCity+"&cmbArea="+cmbArea+"&userPhone="+userPhone+"&userAddress="+userAddress,function(data){
     			
     			if(data){
     				alert("添加成功");
@@ -190,7 +191,7 @@
     				alert("添加失败");
     			}
     			
-    		}); */
+    		});  
     	});
     
     	//更改内容
