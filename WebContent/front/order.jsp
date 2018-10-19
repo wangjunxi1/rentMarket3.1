@@ -1,3 +1,5 @@
+<%@page import="java.util.Date"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="com.etc.RentMarket.entity.Shoppingcart"%>
 <%@page import="com.etc.RentMarket.entity.User"%>
 <%@page import="com.etc.RentMarket.entity.Usersdetail"%>
@@ -19,6 +21,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="theme/icon/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="theme/css/base.css">
 	<link rel="stylesheet" type="text/css" href="theme/css/home.css">
+	<script type="text/javascript" src="${pageContext.request.contextPath}/theme/js/address.js"></script> 
 	<script type="text/javascript" src="theme/js/jquery.js"></script>
     <script type="text/javascript">
          (function(a){
@@ -44,14 +47,19 @@
 
          $(document).ready(function($){
 
-             $(".btn1").click(function(event){
-                 $(".hint").css({"display":"block"});
-                 $(".box").css({"display":"block"});
+             $("#btnadd").click(function(event){
+                 $("#hintAdd").css({"display":"block"});
+                 $("#boxAdd").css({"display":"block"});
              });
-
+			
+             $("#btnup").click(function(event){
+                 $("#hintUp").css({"display":"block"});
+                 $("#boxUp").css({"display":"block"});
+             });
+             
              $(".hint-in3").click(function(event) {
-                 $(".hint").css({"display":"none"});
-                 $(".box").css({"display":"none"});
+                 $("#hint").css({"display":"none"});
+                 $("#box").css({"display":"none"});
              });
 
              $(".hint3").click(function(event) {
@@ -80,11 +88,52 @@
 		//查询地址信息
 		User user=(User)session.getAttribute("user");
 		AddressServiceImpl asi = new AddressServiceImpl();
-		
+		List<Usersdetail> list=asi.queryUserAddr(user.getUserName());	
 	%>
-<div class="box">
+	<!-- 添加收货地址 -->
+<div class="box" id ="boxAdd">
 	<form action="" method="post">
-    <div class="hint">
+    <div class="hint" id ="hintAdd">
+        <div class="hint-in1">
+            <div class="hint2">添加收货地址</div>
+            <div class="hint3"></div>
+        </div>
+
+
+        <div class="pc-label">
+        <label><i class="reds ">*</i>收货人:</label>
+        <input type="text" placeholder="请您填写用户名" name="userName" id="userName" value="${sessionScope.user.userName}">
+        </div>
+        <div class="pc-label">
+        <label><i class="reds ">*</i>真实姓名:</label>
+        <input type="text" placeholder="请您填写收货人姓名" name="userRealName" id="userRealName" value="">
+        </div>
+		<div id="sjld" style="margin-top:10px; padding-left:40px; position:relative;" class="clearfix">
+
+            <div class="clearfix" style="padding-bottom:5px;"><i class="reds fl">*</i><p class="fl">所在地区:</p></div>
+
+           	<select id="cmbProvince" name="cmbProvince" style="width: 181px"></select>  
+			<select id="cmbCity" name="cmbCity" style="width: 181px"></select>  
+			<select id="cmbArea" name="cmbArea" style="width: 181px"></select>
+										
+            </div>
+            <div class="pc-label"><label><i class="reds ">*</i>详细地址:</label><input type="text" style="width:400px; " placeholder="请您填写收货人详细地址" id="userAddress " name="userAddress" value=<%-- <%=asi.queryUserAddr(user.getUserName()).get(0).getUserAddress() %> --%>></div>
+        	<div class="pc-label"><label><i class="reds ">*</i>手机号码:</label><input type="text" style="width:400px;"placeholder="请您填写收货人手机号码" id="userPhone" name="userPhone" value=<%=asi.queryUserAddr(user.getUserName()).get(0).getUserPhone() %>></div>
+            <input id="sfdq_num" type="hidden" value="" />
+            <input id="csdq_num" type="hidden" value="" />
+            <input id="sfdq_tj" type="hidden" value="" />
+            <input id="csdq_tj" type="hidden" value="" />
+            <input id="qydq_tj" type="hidden" value="" />
+            <button href="javascript:;" class="hint-in3"  id="save">保存收货地址</button>
+        </div>
+			</form>
+    </div>
+    <!-- 添加收货地址结束 -->
+    
+    <!-- 编辑收货地址开始 -->
+    <div class="box" id ="boxUp">
+	
+    <div class="hint" id ="hintUp">
         <div class="hint-in1">
             <div class="hint2">编辑收货地址</div>
             <div class="hint3"></div>
@@ -93,53 +142,81 @@
 
         <div class="pc-label">
         <label><i class="reds ">*</i>收货人:</label>
-        <input type="text" placeholder="请您填写收货人姓名" value="${sessionScope.user.userName}">
+        <input type="text" placeholder="请您填写用户名" name="userNameed" id="userNameed" value="${sessionScope.user.userName}">
         </div>
+        <div class="pc-label">
+        <label><i class="reds ">*</i>真实姓名:</label>
+        <input type="text" placeholder="请您填写收货人姓名" name="userRealNameed" id="userRealNameed" value="">
+        </div>
+        
 		<div id="sjld" style="margin-top:10px; padding-left:40px; position:relative;" class="clearfix">
 
             <div class="clearfix" style="padding-bottom:5px;"><i class="reds fl">*</i><p class="fl">所在地区:</p></div>
 
-            <div class="m_zlxg" id="shenfen">
-
-                <p title="">选择省份</p>
-                <div class="m_zlxg2">
-                    <ul>
-                    
-                    </ul>
-                </div>
+           	<select id="cmbProvinceed" name="cmbProvinceed" style="width: 181px"></select>  
+			<select id="cmbCityed" name="cmbCityed" style="width: 181px"></select>  
+			<select id="cmbAreaed" name="cmbAreaed" style="width: 181px"></select>
+										
             </div>
-            <div class="m_zlxg" id="chengshi">
-                <p title="">选择城市</p>
-                <div class="m_zlxg2">
-                    <ul>
-                    	
-                    </ul>
-                </div>
-            </div>
-            <div class="m_zlxg" id="quyu">
-                <p title="">选择区域</p>
-                <div class="m_zlxg2">
-                    <ul>
-                    	
-                    </ul>
-                </div>
-            </div>
+            <div class="pc-label"><label><i class="reds ">*</i>详细地址:</label><input type="text" style="width:400px; " placeholder="请您填写收货人详细地址" id="userAddressed " name="userAddressed"></div>
+        	<div class="pc-label"><label><i class="reds ">*</i>手机号码:</label><input type="text" style="width:400px;"placeholder="请您填写收货人手机号码" id="userPhoneed" name="userPhoneed" ></div>
             <input id="sfdq_num" type="hidden" value="" />
             <input id="csdq_num" type="hidden" value="" />
             <input id="sfdq_tj" type="hidden" value="" />
             <input id="csdq_tj" type="hidden" value="" />
             <input id="qydq_tj" type="hidden" value="" />
+            <button href="javascript:;" class="hint-in3"  id="change">更改</button>
         </div>
-
-        <div class="pc-label"><label><i class="reds ">*</i>详细地址:</label><input type="text" style="width:400px; " placeholder="请您填写收货人详细地址" value=<%=asi.queryUserAddr(user.getUserName()).get(0).getUserAddress() %>></div>
-        <div class="pc-label"><label><i class="reds ">*</i>手机号码:</label><input type="text" style="width:400px;"placeholder="请您填写收货人手机号码" value=<%=asi.queryUserAddr(user.getUserName()).get(0).getUserPhone() %>></div>
-        
-        <button href="javascript:;" class="hint-in3" type="submit">保存收货地址</button>
+			
     </div>
-    </form>
+    <!-- 编辑收货地址结束 -->
+    
+    
+    <script type="text/javascript">
+    //Ajax请求添加到数据库收货地址
+    	$("#save").click(function(){
+    		var userName=$("#userName").val();
+    		var userRealName=$("#userRealName").val();
+    		var cmbProvince=$("#cmbProvince").find("option:selected").text();
+    		var cmbCity=$("#cmbCity").find("option:selected").text();
+    		var cmbArea=$("#cmbArea").find("option:selected").text();
+    		var userPhone=$("#userPhone").val();
+    		var userAddress =$("#userAddress").val();
+    		/* $.get("ads.do?op=orderAdd","userName="+userName+"&userRealName="+userRealName+"&cmbProvince="+cmbProvince+"&cmbCity="+cmbCity+"&cmbArea="+cmbArea+"&userPhone="+userPhone+"&userAddress="+userAddress,function(data){
+    			
+    			if(data){
+    				alert("添加成功");
+    			}else{
+    				alert("添加失败");
+    			}
+    			
+    		}); */
+    	});
+    
+    	//更改内容
+    	$("#change").click(function(){
+    		var userAddressed=$("#cmbProvinceed").find("option:selected").text();
+    		userAddressed+=$("#cmbCityed").find("option:selected").text();
+    		userAddressed+=$("#cmbAreaed").find("option:selected").text();
+    		userAddressed+=$("input[name='userAddressed']").val();
+    		$("#users").html($("#userNameed").val());
+    		$("#address").html(userAddressed);
+    		$("#telephone").html($("input[name='userPhoneed']").val());
+    		 $("#hintUp").css({"display":"none"});
+             $("#boxUp").css({"display":"none"});
+    	});
+    	
+    </script>
+    
+<script type="text/javascript">  //省市级联
+	
+			addressInit('cmbProvince', 'cmbCity', 'cmbArea');  
+</script> 
 
-</div>
-
+<script type="text/javascript">  //省市级联
+	
+			addressInit('cmbProvinceed', 'cmbCityed', 'cmbAreaed');  
+</script> 
 <!--- header begin-->
 <header id="pc-header">
     <div class="BHeader">
@@ -173,23 +250,24 @@
 
 
 <!-- 订单提交成功 begin-->
-	<%
 	
-	List<Usersdetail> list=asi.queryUserAddr(user.getUserName());
-	%>
 <section>
     <div class="containers">
        <div class="pc-space">
-           <div class="pc-order-title clearfix"><h3 class="fl">收货人信息</h3> <a href="#" class="fr pc-order-add btn1">新增收货地址</a> </div>
+           <div class="pc-order-title clearfix"><h3 class="fl">收货人信息</h3> <a href="#" class="fr pc-order-add btn1" id="btnadd"> 新增收货地址</a> </div>
            <div class="pc-border">
                <div class="pc-order-text clearfix">
                    <ul class=" clearfix">
                        <li class="clearfix fl">
                            <div class="fl pc-frame pc-frams"> <a href="#">默认地址</a></div>
-                           <div class="fl pc-address"><span><%=list.get(0).getUserAddress() %></span> <span>联系方式:&nbsp;<%=list.get(0).getUserPhone() %> </span> </div>
+                           <div class="fl pc-address">
+                           <span id="users"><%=list.get(0).getUserName() %></span> 
+                           <span id="address"><%=list.get(0).getUserAddress() %></span> 
+                           <span >联系方式:</span> <span id="telephone" ><%=list.get(0).getUserPhone() %> </span>
+                           </div>
                        </li>
                        <li class="fr">
-                           <div class="pc-click"><a href="#">设为默认地址</a> <a href="#" class="btn1">编辑 </a>  </div>
+                           <div class="pc-click"><a href="#">设为默认地址</a> <a href="#" class="btn1" id="btnup">编辑 </a>  </div>
                        </li>
                    </ul>
                </div>
@@ -201,9 +279,9 @@
                 <div class="pc-order-text clearfix">
                     <ul class=" clearfix">
                         <li class="clearfix fl">
-                            <div class="fl pc-frame pc-frams" style="margin-right:50px "> <a href="#"> <img src="theme/img/bg/onlinePays.jpg" width="50px" height="24px"></img></a></div>
-                            <div class="fl pc-frame pc-frams" style="margin-right:50px "> <a href="#"> <img src="theme/img/pay/zhifubao.jpg" width="50px" height="24px"></img></a></div> 
-                        	<div class="fl pc-frame pc-frams" style="margin-right:50px "> <a href="#"><img src="theme/img/pay/weizhifu.jpg" width="50px" height="24px"></img> </a></div> 
+                            <div class="fl pc-frame pc-frams" style="margin-right:50px "> <a href="#"> <img src="${pageContext.request.contextPath}/front/theme/img/pay/yinlian.jpg" width="50px" height="25px"></img></a></div>
+                            <div class="fl pc-frame pc-frams" style="margin-right:50px "> <a href="#"> <img src="${pageContext.request.contextPath}/front/theme/img/pay/zhifubao.jpg" width="60px" height="25px"></img></a></div> 
+                        	<div class="fl pc-frame pc-frams" style="margin-right:50px "> <a href="#"><img src="${pageContext.request.contextPath}/front/theme/img/pay/weixin.jpg" width="60px" height="25px"></img> </a></div> 
                         </li>
                     </ul>
                 </div>
@@ -231,9 +309,10 @@
                        
                        <div class="pc-written"><p>订单留言</p>
                        		<div>
-                       			<textarea rows="10" cols="165.95">
+                       			<textarea rows="10" cols="165.9">
                        			
                        			</textarea>
+                       		
                        		</div>
                        </div>
                    </div>
@@ -244,7 +323,7 @@
        <div class="clearfix">
            <div class="fr pc-list-t">
                <ul>
-                   <li><span><b>2</b> 件商品，总商品金额：</span> <em>￥<%=total %></em></li>
+                   <li><span><b><%=shopcart.size() %></b> 件商品，总商品金额：</span> <em>￥<%=total %></em></li>
                    <li><span>减额：</span> <em>￥35.00</em></li>
                    <li><span>运费：</span> <em>￥50.00</em></li>
                   
@@ -259,7 +338,7 @@
                <form action="os.do?op=insert" method="post" >
                <button class="pc-submit" id="submit" type="submit">提交订单</button>
                <input type="hidden" name="userName" id="userName" value="${sessionScope.user.userName }">
-               <input type = "hidden" name = "orderDate" id="orderDate" value="2018-10-19">
+               <input type = "hidden" name = "orderDate" id="orderDate" value=<%=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) %>>
                <input type="hidden" name ="orderTPrice" id="orderTPrice" value=<%=total %>>
                <input type="hidden" name ="userAddress" id="userAddress" value=<%= list.get(0).getUserAddress()%> >
                <input type="hidden" name ="userTel" id="userTel" value="<%=list.get(0).getUserPhone() %>">

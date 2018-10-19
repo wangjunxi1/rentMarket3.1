@@ -55,15 +55,26 @@ public class AddrServlet extends HttpServlet {
 			String Address = request.getParameter("userAddress");
 			String userAddress = cmbProvince+cmbCity+cmbArea+Address;
 			String userPhone = request.getParameter("userPhone");
-			
-			
 			boolean flag = as.addAddr(userName, userRealName, userAddress, userPhone);
 			response.getWriter().print(flag);
-			/*if (flag) {
-				request.getRequestDispatcher("ads.do?op=sel").forward(request, response);
-			}*/
+
+		}else if("orderAdd".equals(op)) {
+			String userName = request.getParameter("userName");
+			String userRealName = request.getParameter("userRealName");
+			String cmbProvince = request.getParameter("cmbProvince");
+			String cmbCity = request.getParameter("cmbCity");
+			String cmbArea = request.getParameter("cmbArea");
+			String Address = request.getParameter("userAddress");
+			String userAddress = cmbProvince+cmbCity+cmbArea+Address;
+			String userPhone = request.getParameter("userPhone");
+			boolean flag = as.addAddr(userName, userRealName, userAddress, userPhone);
 			
-		}else if ("up".equals(op)) {
+			response.getWriter().print(flag);
+			
+			
+		}
+		
+		else if ("up".equals(op)) {
 			int userDetailId = Integer.parseInt(request.getParameter("userDetailId"));
 			String userRealName = request.getParameter("userRealName2");
 			String cmbProvince = request.getParameter("cmbProvince2");
