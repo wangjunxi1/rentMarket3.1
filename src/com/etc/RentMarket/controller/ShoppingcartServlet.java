@@ -189,6 +189,7 @@ public class ShoppingcartServlet extends HttpServlet {
 		
 		List<Shoppingcart> shopCartlist= scs.selGoodByGoodId(list);
 		// System.out.println("shopser"+shopCartlist);
+		request.setAttribute("goodIdlist", list);
 		request.setAttribute("shopCartlist", shopCartlist);
 		request.setAttribute("total", totalPrice);
 		request.getRequestDispatcher("front/order.jsp").forward(request, response);

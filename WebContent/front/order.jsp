@@ -183,9 +183,9 @@
     		var userPhone=$("#userPhone").val();
     		var userAddress =$("input[name=userAddressAdd]").val();
     		/* alert("cmbProvince="+cmbProvince+",cmbCity="+cmbCity+",cmbArea="+cmbArea+",+userAddress="+userAddress); */
-    		 $.get("ads.do?op=orderAdd","userName="+userName+"&userRealName="+userRealName+"&cmbProvince="+cmbProvince+"&cmbCity="+cmbCity+"&cmbArea="+cmbArea+"&userPhone="+userPhone+"&userAddress="+userAddress,function(data){
-    			
-    			if(data){
+    		 $.get("ads.do?op=orderAdd","userName="+userName+"&userRealName="+userRealName+"&cmbProvince="+cmbProvince+"&cmbCity="+cmbCity+"&cmbArea="+cmbArea+"&userPhone="+userPhone+"&userAddress="+userAddress,function(data,status){
+    			 
+    			 if(status==success){
     				alert("添加成功");
     			}else{
     				alert("添加失败");
@@ -310,7 +310,7 @@
                        
                        <div class="pc-written"><p>订单留言</p>
                        		<div>
-                       			<textarea rows="10" cols="165.9">
+                       			<textarea rows="10" cols="165.9" >
                        			
                        			</textarea>
                        		
@@ -343,7 +343,7 @@
                <input type="hidden" name ="orderTPrice" id="orderTPrice" value=<%=total %>>
                <input type="hidden" name ="userAddress" id="userAddress" value=<%= list.get(0).getUserAddress()%> >
                <input type="hidden" name ="userTel" id="userTel" value="<%=list.get(0).getUserPhone() %>">
-               
+               <input type="hidden" name ="goodId" id="goodId" value="<%=request.getAttribute("goodIdlist") %>">
                </form>
            </div>
        </div>

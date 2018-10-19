@@ -118,6 +118,10 @@ public class OrderServlet extends HttpServlet {
 			String orderTPrice=request.getParameter("orderTPrice");
 			String userAddress=request.getParameter("userAddress");
 			String userTel=request.getParameter("userTel");
+			String goodIdlist=request.getParameter("goodId");
+			
+			List<Integer> list = new ArrayList<Integer>();//将
+			
 			Order order = new Order(orderDate, Double.parseDouble(orderTPrice) , userAddress, userName, userTel);
 			boolean flag = os.insertOrders(order);
 			if(flag) {
