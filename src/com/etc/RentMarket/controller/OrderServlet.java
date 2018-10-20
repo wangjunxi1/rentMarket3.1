@@ -135,8 +135,11 @@ public class OrderServlet extends HttpServlet {
 			scs.delMuchShopCart(list);//删除购物车中的信息
 			Order order = new Order(orderDate, Double.parseDouble(orderTPrice) , userAddress, userName, userTel);
 			boolean flag = os.insertOrders(order);
+
 			request.getSession().setAttribute("order",order);
 			request.getRequestDispatcher("alipay/index.jsp?flag="+flag).forward(request, response);
+
+
 		}
 		
 	}
