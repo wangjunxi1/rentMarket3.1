@@ -546,7 +546,7 @@ p {
 				<img src="theme/img/pd/pd01.jpg"></a> 
 				<a href="goodDetail.jsp?goodId=43">
 				<img src="theme/img/pd/pd02.jpg"></a> 
-				<a href="goodDetail.jsp?goodId=52">
+				<a href="goodDetail.jsp?goodId=44">
 				<img src="theme/img/pd/pd03.jpg"></a> 
 				<a href="goodDetail.jsp?goodId=35">
 				<img src="theme/img/pd/pd06.jpg"></a>
