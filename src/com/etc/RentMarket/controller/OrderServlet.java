@@ -123,6 +123,7 @@ public class OrderServlet extends HttpServlet {
 			
 			ShoppingCartServiceImpl scs = new ShoppingCartServiceImpl();
 			
+			
 			//删除购物车中的信息
 			
 			String arr[] = goodIdlist.split(",");
@@ -134,8 +135,8 @@ public class OrderServlet extends HttpServlet {
 			scs.delMuchShopCart(list);//删除购物车中的信息
 			Order order = new Order(orderDate, Double.parseDouble(orderTPrice) , userAddress, userName, userTel);
 			boolean flag = os.insertOrders(order);
-			
-			request.getRequestDispatcher("front/index.jsp?flag="+flag).forward(request, response);
+			request.getSession().setAttribute("order",order);
+			request.getRequestDispatcher("alipay/index.jsp?flag="+flag).forward(request, response);
 		}
 		
 	}
