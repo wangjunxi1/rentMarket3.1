@@ -22,8 +22,9 @@ public class Orderdetail implements Serializable {
 
 	private int orderId;
 
-	
-	private Date rentDate;
+	private String goodImg;
+	private double rentPrice;
+	private String  rentDate;
 	private int goodState;
 
 	public Orderdetail() {
@@ -70,15 +71,15 @@ public class Orderdetail implements Serializable {
 		this.orderId = orderId;
 	}
 
-	public Date getRentDate() {
+	public String getRentDate() {
 		return this.rentDate;
 	}
 
-	public void setRentDate(Date rentDate) {
+	public void setRentDate(String rentDate) {
 		this.rentDate = rentDate;
 	}
 
-	public Orderdetail(int did, String goodName, int goodNumber, int orderId, Date rentDate, int goodState) {
+	public Orderdetail(int did, String goodName, int goodNumber, int orderId, String  rentDate, int goodState) {
 		super();
 		this.did = did;
 		this.goodName = goodName;
@@ -87,11 +88,42 @@ public class Orderdetail implements Serializable {
 		this.rentDate = rentDate;
 		this.goodState = goodState;
 	}
+	
+	
+
+	public Orderdetail(String goodName, int goodNumber, int orderId, String goodImg, double rentPrice,
+			String rentDate) {
+		super();
+		this.goodName = goodName;
+		this.goodNumber = goodNumber;
+		this.orderId = orderId;
+		this.goodImg = goodImg;
+		this.rentPrice = rentPrice;
+		this.rentDate = rentDate;
+	}
+
+	public String getGoodImg() {
+		return goodImg;
+	}
+
+	public void setGoodImg(String goodImg) {
+		this.goodImg = goodImg;
+	}
+
+	public double getRentPrice() {
+		return rentPrice;
+	}
+
+	public void setRentPrice(double rentPrice) {
+		this.rentPrice = rentPrice;
+	}
 
 	@Override
 	public String toString() {
 		return "Orderdetail [did=" + did + ", goodName=" + goodName + ", goodNumber=" + goodNumber + ", orderId="
-				+ orderId + ", rentDate=" + rentDate + ", goodState=" + goodState + "]";
+				+ orderId + ", goodImg=" + goodImg + ", rentPrice=" + rentPrice + ", rentDate=" + rentDate
+				+ ", goodState=" + goodState + "]";
 	}
+	
 
 }

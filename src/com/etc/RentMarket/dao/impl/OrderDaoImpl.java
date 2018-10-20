@@ -54,6 +54,9 @@ public List<Order> queryOrdersIdByuserName(String userName) {
 	List<Order> list = (List<Order>) BaseDao.select(sql, Order.class, userName);
 	return list;
 }
+/**
+ * 查询订单信息
+ */
 @Override
 public List<Order> selOrders() {
 	// TODO Auto-generated method stub

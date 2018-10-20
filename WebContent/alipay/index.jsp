@@ -384,6 +384,11 @@ h2 {
 	}
 	
 	function GetDateNow() {
+		var str="${sessionScope.order.orderDate}";
+		var date = str.split("-").join("");
+		var d1=date.substring(12,14);
+		var d2=date.substring(0,8);
+		var d3=d2+d1;
 		var vNow = new Date();
 		var sNow = "";
 		sNow += String(vNow.getFullYear());
@@ -393,7 +398,7 @@ h2 {
 		sNow += String(vNow.getMinutes());
 		sNow += String(vNow.getSeconds());
 		sNow += String(vNow.getMilliseconds());
-		document.getElementById("WIDout_trade_no").value =  "${sessionScope.order.orderDate}";
+		document.getElementById("WIDout_trade_no").value = d3;
 		document.getElementById("WIDsubject").value = "测试";
 		document.getElementById("WIDtotal_amount").value = "${sessionScope.order.orderTPrice}0";
 	}

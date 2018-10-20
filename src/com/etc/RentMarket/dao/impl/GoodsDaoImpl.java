@@ -89,19 +89,20 @@ public class GoodsDaoImpl implements GoodsDao {
 		return (List<Goodstype>) BaseDao.select(sql, Goodstype.class);
 	}
 	/**
-	 * //商品类型更新
+	 * //商品类型查询
 	 */
 	@Override
-
 	public List<Goodstype> selGoodTypeByTypeParentId(int typeparentId) {
 		// TODO Auto-generated method stub
 		String sql ="select * from goodstype where typeparentId = ?";
 		
 		return (List<Goodstype>) BaseDao.select(sql, Goodstype.class,typeparentId);
 	}
-	
+	/**
+	 * 商品类型更新
+	 */
 	@Override
-	public boolean upGoodsType(Goodstype goodstype) {//商品类型更新
+	public boolean upGoodsType(Goodstype goodstype) {
 
 		String sql = "update goodstype set typeName=?,typeparentId=?  where typeId=?";
 		return BaseDao.execute(sql, goodstype.getTypeName(),goodstype.getTypeparentId(),goodstype.getTypeId())>0;
@@ -213,6 +214,10 @@ public class GoodsDaoImpl implements GoodsDao {
 		String sql="select typeId,typeName from goodstype";
 		return (List<Goodstype>)BaseDao.select(sql, Goodstype.class);
 	}
+	/**
+	 * 通过goodId获取商品类
+	 * @param goodId 商品Id
+	 */
 	@Override
 	public List<Good> getgoodsByGoodId(int goodId) {
 		// TODO Auto-generated method stub

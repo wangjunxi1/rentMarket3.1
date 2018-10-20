@@ -107,21 +107,40 @@ public class GoodServiceImpl implements GoodService {
 		// TODO Auto-generated method stub
 		return gd.delGoodsChecked(goodId);
 	}
+	/**
+	 * 删除商品类型
+	 * @param goodIds商品Id集合
+	 */
 	@Override
 	public boolean delMuchGoodsChecked(List<Integer> goodIds) {
 		// TODO Auto-generated method stub
 		return gd.delMuchGoodsChecked(goodIds);
 	}
+	/**
+	 * 更新商品类型
+	 * @param good商品类
+	 */
 	@Override
 	public boolean upGoodsChecked(GoodsChecked good) {
 		// TODO Auto-generated method stub
 		return gd.upGoodsChecked(good);
 	}
+	
+	/**
+	 * 通过goodId获取商品类
+	 * @param goodId 商品Id
+	 */
 	@Override
 	public List<Good> getgoodsByGoodId(int goodId) {
 		// TODO Auto-generated method stub
 		return gd.getgoodsByGoodId(goodId);
 	}
+	/**
+	 * 
+	 * 通过typeparentId获取商品类
+	 * @param typeparentId 商品父类Id
+	 *
+	 */
 	@Override
 	public List<Goodstype> selGoodTypeByTypeParentId(int typeparentId) {
 		// TODO Auto-generated method stub

@@ -33,7 +33,7 @@
 
 	
 
-	//数量减一操作
+	//商品数量减一操作
 	function d(id){
 		if("1"!=$("#num"+id).val()){//如果数量不为0就进行减一操作 
 			var num=$("#num"+id).val()+"-"+1;
@@ -42,11 +42,26 @@
 		}	
 	}
 	
-	//数量加一操作 
+	//商品数量加一操作 
 	function add(index){
 		var num=$("#num"+index).val()+"+"+1;
 		var q=eval(num);
 		$("#num"+index).val(q);
+	}
+	
+	//租赁天数减一
+	function rentDatedes(index){
+		if("1"!=$("#rentDate"+index).val()){//如果数量不为0就进行减一操作 
+			var num=$("#rentDate"+index).val()+"-"+1;
+			var q=eval(num);
+			$("#rentDate"+index).val(q);
+		}
+	}
+	//租赁天数加一
+	function rentDateadd(index){
+		var num=$("#rentDate"+index).val()+"+"+1;
+		var q=eval(num);
+		$("#rentDate"+index).val(q);
 	}
 
 /* var index = $("#hideIndex").val();
@@ -231,17 +246,19 @@ $("#plus"+index).click(function(){
 										<div class="th th-item">
 											<div class="td-inner">商品信息</div>
 										</div>
-										<div class="th th-price">
+										<div class="th th-price" style="margin-left:-50px">
 											<div class="td-inner">单价</div>
 										</div>
 										<div class="th th-amount">
 											<div class="td-inner">数量(小于1000)</div>
 										</div>
-										<div class="th th-sum">
-											<div class="td-inner">&nbsp;</div>
+										
+										<div class="th th-inner">
+											<div class="td-inner" style="margin-left:20px">租赁天数</div>
 										</div>
+										
 										<div class="th th-op">
-											<div class="td-inner">操作</div>
+											<div class="td-inner" style="margin-left:20px">操作</div>
 										</div>
 									</div>
 								</div>
@@ -292,7 +309,7 @@ $("#plus"+index).click(function(){
 												<li class="td td-info">
 													<div class="item-props item-props-can">
 												</li>
-												<li class="td td-price">
+												<li class="td td-price" style="margin-left:-50px">
 													<div class="item-price price-promo-promo">
 														<div class="price-content">
 															<div class="price-line">
@@ -308,8 +325,8 @@ $("#plus"+index).click(function(){
 													<div class="amount-wrapper ">
 														<div class="item-amount ">
 															<div class="sl" id="divbtn" >
-																<input class="min am-btn" type="button" value="-" id="des"
-																onclick="d(${i.index+1})"	name="des" /> 
+																<input class="min am-btn" type="button" value="-" id="desNum${i.index+1}"
+																onclick="d(${i.index+1})"	name="desNum" /> 
 																<input class="text_box"
 																	id="num${i.index+1}" type="text"
 																 	name="num${i.index+1}"
@@ -317,12 +334,33 @@ $("#plus"+index).click(function(){
 																	style="width: 30px;" 
 																	readonly/> 
 																<input type="hidden" id="hid" name="hidnum" value="${i.index+1}">
-																<button class="add am-btn" id="plus" name="plus" onclick="add(${i.index+1})"
+																<button class="add am-btn" id="addNum${i.index+1}" name="addNum" onclick="add(${i.index+1})"
 																	type="button" value="+">+</button>
 															</div>
 														</div>
 													</div>
 												</li>
+												
+												<li class="td td-amount">
+													<div class="amount-wrapper ">
+														<div class="item-amount ">
+															<div class="sl" id="rentDatebtn" >
+																<input class="min am-btn" type="button" value="-" id="desDate${i.index+1}"
+																onclick="rentDatedes(${i.index+1})"	name="desDate" /> 
+																<input class="text_box"
+																	id="rentDate${i.index+1}" type="text"
+																 	name="rentDate${i.index+1}"
+																	value="1"
+																	style="width: 30px;" 
+																	readonly/> <span>天</span>
+																
+																<button class="min am-btn" id="addDate${i.index+1}" name="addDate" onclick="rentDateadd(${i.index+1})"
+																	type="button" value="+">+</button>
+															</div>
+														</div>
+													</div>
+												</li>
+												
 												<li class="td td-sum">
 													<div class="td-inner">
 														<span id="allprice${i.index+1}" value="${a.goodNumber}"></span> <input
@@ -331,10 +369,10 @@ $("#plus"+index).click(function(){
 													</div>
 												</li>
 												<li class="td td-op">
-													<div class="td-inner">
+													<div class="td-inner" style="margin-top:-20px; margin-left:-70px">
 														<a
 															href="${pageContext.request.contextPath}/shopcart.do?op=delCart&goodId=${a.goodId}&userName=${requestScope.userName}"
-															data-point-url="#" class="delete"> 删除</a>
+															data-point-url="#" class="delete">删除</a>
 													</div>
 												</li>
 											</ul>
@@ -481,16 +519,16 @@ $("#plus"+index).click(function(){
 			var str = [];
 			var obj = document.getElementsByName("checkAll");
 			var total=$("#hiddenTotal").val();
-			
+			var strRentDays=[]
 			for(var i=0;i<obj.length;i++){
 				if(obj[i].checked==true){
 					str.push(obj[i].value);
-					
+					strRentDays.push($("#rentDate"+(i+1)).val());
 				}
 				
 			}
 			
-			location.href="shopcart.do?op=selGoodById&goodId="+str+"&totalPrice="+total;
+			location.href="shopcart.do?op=selGoodById&goodId="+str+"&totalPrice="+total+"&rentDays="+strRentDays;
 		});
 	</script>
 <script language="javascript">
@@ -514,26 +552,39 @@ $("#plus"+index).click(function(){
 			}
 		}
 	}
-
+	
 	//当选中所有的时候，全选按钮会勾上 
+	var ischecked=true;//是否是选中状态，true表示还未选中
+	var checkedNo=[];
 	function setSelectAll() {
 		var obj = document.getElementsByName("checkAll");
 		var count = obj.length;
 		var selectCount = 0;
 		var pay = 0;
-		
 		for (var i = 0; i < count; i++) {
-			if (obj[i].checked == true) {
-				selectCount++;
-				//获取span值
-				
-				var price = $('#allprice'+(i+1)).val();
-				
-				pay = parseFloat(pay) + price;
+				if (obj[i].checked == true) {
+					selectCount++;
+					//checkedNo.push[i];
+					var price = $('#allprice'+(i+1)).val();
+					pay = parseFloat(pay) + price;
+					//将对应按钮隐藏
+				/* 	$("#desNum"+ (i+1)).css("display","none");
+					$("#addNum"+ (i+1)).css("display","none");
+					$("#desDate"+ (i+1)).css("display","none");
+					$("#addDate"+ (i+1)).css("display","none"); */
+					
+				}
+				/* else{
+					ischecked=true;
+					$("#desNum"+ (i+1)).show();
+					$("#addNum"+ (i+1)).show();
+					$("#desDate"+ (i+1)).show();
+					$("#addDate"+ (i+1)).show();
+				} */
 			}
-			//打印选中个数
-			document.getElementById("checked").innerHTML = selectCount;
-		}
+		
+		//打印选中个数
+		document.getElementById("checked").innerHTML = selectCount;
 		//计算选中的价格并打印
 
 		//document.getElementById("J_Total").innerHTML = pay;
@@ -547,15 +598,21 @@ $("#plus"+index).click(function(){
 		setAllPrice();
 		
 	}
+	
 
 	//反选按钮 
 	function setNoSelect() {
 		var checkboxs = document.getElementsByName("checkAll");
 		for (var i = 0; i < checkboxs.length; i++) {
-			var e = checkboxs[i];
-			e.checked = !e.checked;
-			setSelectAll();
+			if(checkboxs[i].checked==true){
+				var e = checkboxs[i];
+				e.checked = !e.checked;
+				
+				setSelectAll();
+			}
+			
 		}
+		
 	}
 
 	//判断是否有商品与数量不为0 
@@ -579,6 +636,7 @@ $("#plus"+index).click(function(){
 			alert("清空购物车成功");
 		}
 		
+		
 	};
 	
 </script>
@@ -595,9 +653,11 @@ $("#plus"+index).click(function(){
 		for (var i = 0; i < obj.length; i++) {
 			
 			if (obj[i].checked == true){
-			//获取span值
+			//获取数值
+			
 			var price = parseFloat($('#price' + (i+1)).html());
 			var num = parseInt($('#num' + (i+1)).val());
+			var rentDate=parseInt($('#rentDate'+(i+1)).val());
 			
 			//计算
 			if (num > 1000) {
@@ -608,7 +668,7 @@ $("#plus"+index).click(function(){
 				document.getElementById('num' + (i+1)).value = 0;
 				num = 0;
 			}
-			allprice = (price) * (num);
+			allprice = (price) * (num)*(rentDate);
 			//alert("allprice="+allprice)
 			//赋值
 			total = total+allprice;

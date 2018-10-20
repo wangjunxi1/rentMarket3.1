@@ -51,4 +51,11 @@ public interface ShoppingCartService {
 	 * @return true 删除成功
 	 */
 	public boolean removeAllItem(int userId);
+	/**
+	 * 更新购物车商品租赁的天数
+	 * @param rentDays 租赁天数
+	 * @param goodId 商品的Id
+	 * @return
+	 */
+	public boolean insertDays(int goodId,int rentDays);
 }

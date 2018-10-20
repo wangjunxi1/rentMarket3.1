@@ -85,5 +85,16 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 		// TODO Auto-generated method stub
 		return sc.removeAllItem(userId);
 	}
+	/**
+	 * 更新购物车商品租赁的天数
+	 * @param rentDays 租赁天数
+	 * @param goodId 商品的Id
+	 * @return
+	 */
+	@Override
+	public boolean insertDays(int goodId, int rentDays) {
+		// TODO Auto-generated method stub
+		return sc.insertDays(goodId, rentDays);
+	}
 
 }

@@ -294,15 +294,23 @@
                <div class="pc-border">
                    <div class="pc-order-text clearfix" style="width:1158px " >
                        <%
-                       		List<Shoppingcart> shopcart=(List<Shoppingcart>) request.getAttribute("shopCartlist");
-                       		String total=(String)request.getAttribute("total");
-                       		String imgPath="theme/img/pd/";
-                       		for(Shoppingcart s:shopcart){
+                       		List<Shoppingcart> shopcart=(List<Shoppingcart>) request.getAttribute("shopCartlist");//查询集合
+                       		String total=(String)request.getAttribute("total");//总价钱
+                       		String imgPath="theme/img/pd/";//图片路劲
+                       		String rentDays=(String)request.getAttribute("rentDays");
+                       		String arrRentDay[] = rentDays.split(",");//天数数组
+                       		String goodNum="";
+                       		for(int i=0;i<shopcart.size();i++){                 		
+                       			goodNum+=shopcart.get(i).getGoodNumber();
                        %>
                        <div class="clearfix pc-wares-p">
-                           <div class="fl pc-wares"><a href="#"><img width="100px" height="100px" src=<%=imgPath+s.getGoodImgAdd() %>></a></div>
-                           <div class="fl pc-wares-w">  <p class="clearfix"><span class="fr"><%=s.getGoodName() %></span></p></div>
-                           <div class="fl pc-wares-s"><span class="reds"><%=s.getGoodPrice() %>/天</span><span>x<%=s.getGoodNumber() %></span><span>有货</span></div>
+                           <div class="fl pc-wares"><a href="#"><img width="100px" height="100px" src=<%=imgPath+shopcart.get(i).getGoodImgAdd() %>></a></div>
+                           <div class="fl pc-wares-w">  <p class="clearfix"><span class="fr"><%=shopcart.get(i).getGoodName() %></span></p></div>
+                           <div class="fl pc-wares-s"><span class="reds" ><%=shopcart.get(i).getGoodPrice() %>/天</span>
+                           <span>x<%=shopcart.get(i).getGoodNumber() %></span>
+                           <span>有货</span>
+                           <span><%=arrRentDay[i] %></span><span>天</span>
+                           </div>
                        </div>
                        <%
                        		}
@@ -325,8 +333,8 @@
            <div class="fr pc-list-t">
                <ul>
                    <li><span><b><%=shopcart.size() %></b> 件商品，总商品金额：</span> <em>￥<%=total %></em></li>
-                   <li><span>减额：</span> <em>￥35.00</em></li>
-                   <li><span>运费：</span> <em>￥50.00</em></li>
+                   
+                   <li><span>运费：</span> <em>￥20</em></li>
                   
                    
                </ul>
@@ -335,15 +343,17 @@
        <div class="pc-space-n"></div>
        <div class="clearfix">
            <div class="fr pc-space-j">
-               <span>应付总额：<strong>￥<%=Double.parseDouble(total)-35+50%></strong></span>
+               <span>应付总额：<strong>￥<%=Double.parseDouble(total)+20%></strong></span>
                <form action="os.do?op=insert" method="post" >
                <button class="pc-submit" id="submit" type="submit">提交订单</button>
                <input type="hidden" name="userName" id="userName" value="${sessionScope.user.userName }">
-               <input type = "hidden" name = "orderDate" id="orderDate" value=<%=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()) %>>
-               <input type="hidden" name ="orderTPrice" id="orderTPrice" value=<%=total %>>
-               <input type="hidden" name ="userAddress" id="userAddress" value=<%= list.get(0).getUserAddress()%> >
+               <input type = "hidden" name = "orderDate" id="orderDate" value=<%=new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss").format(new Date()) %>>
+               <input type="hidden" name ="orderTPrice" id="orderTPrice" value=<%=Double.parseDouble(total)+20 %>>
+               <input type="hidden" name ="userAddress" id="userAddress" value=<%= list.get(0).getUserAddress()%>>
                <input type="hidden" name ="userTel" id="userTel" value="<%=list.get(0).getUserPhone() %>">
                <input type="hidden" name ="goodId" id="goodId" value="<%=request.getAttribute("goodIdlist") %>">
+               <input type="hidden" name ="goodNum" id="goodNum" value="<%=goodNum %>">
+               <input type="hidden" name ="rentDays" id="rentDays" value="<%=rentDays %>">
                </form>
            </div>
        </div>

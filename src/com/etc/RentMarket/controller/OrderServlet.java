@@ -15,8 +15,11 @@ import com.etc.RentMarket.DBUtil.MyData;
 import com.etc.RentMarket.DBUtil.PageData;
 import com.etc.RentMarket.entity.Good;
 import com.etc.RentMarket.entity.Order;
+import com.etc.RentMarket.entity.Orderdetail;
 import com.etc.RentMarket.entity.User;
 import com.etc.RentMarket.service.OrderService;
+import com.etc.RentMarket.service.impl.GoodServiceImpl;
+import com.etc.RentMarket.service.impl.OrderDetailServiceImpl;
 import com.etc.RentMarket.service.impl.OrderServiceImpl;
 import com.etc.RentMarket.service.impl.ShoppingCartServiceImpl;
 import com.google.gson.Gson;
@@ -120,25 +123,46 @@ public class OrderServlet extends HttpServlet {
 			String userAddress=request.getParameter("userAddress");
 			String userTel=request.getParameter("userTel");
 			String goodIdlist=request.getParameter("goodId");
-			
+			String goodNums=request.getParameter("goodNum");
+			String rentDays=request.getParameter("rentDays");
+			GoodServiceImpl gsi = new GoodServiceImpl();
 			ShoppingCartServiceImpl scs = new ShoppingCartServiceImpl();
+			OrderDetailServiceImpl odsi = new OrderDetailServiceImpl();
+			String arrrentDays[]=rentDays.split(",");
 			
 			
-			//删除购物车中的信息
+			//插入订单
+			Order order = new Order(orderDate, Double.parseDouble(orderTPrice) , userAddress, userName, userTel);
+			boolean isInsertOrder = os.insertOrders(order);
+			//根据用户名查询用户Id
+			List<Order> orders=os.queryOrdersIdByuserName(userName);
 			
 			String arr[] = goodIdlist.split(",");
 			List<Integer> list = new ArrayList<Integer>();
 			for (int i = 0; i < arr.length; i++) {
 				list.add(Integer.valueOf(arr[i]));
+				//通过goodID获取good类
+				List<Good> good = gsi.getgoodsByGoodId(Integer.valueOf(arr[i]));
+				String goodImg = good.get(i).getGoodImgAdd();//商品图片
+				int orderId=orders.get(orders.size()-1).getOrderId();//订单Id
+				String goodName=good.get(i).getGoodName();//商品名称
+				double goodPrice=good.get(0).getGoodPrice();//商品价格
+				int goodNum=goodNums.charAt(i);//商品数量
+				String rentdate =arrrentDays[i] ;//租赁天数
+				Orderdetail orderdetail= new Orderdetail(goodName, goodNum, orderId, goodImg, goodPrice, rentdate);
+				boolean isInsertOrderDetail =odsi.insertOrderDetail(orderdetail);//插入详细商品订单	
 				
+						
 			}
+			//删除购物车中的信息s
 			scs.delMuchShopCart(list);//删除购物车中的信息
-			Order order = new Order(orderDate, Double.parseDouble(orderTPrice) , userAddress, userName, userTel);
-			boolean flag = os.insertOrders(order);
-
+			
+			
+			
+			
 			request.getSession().setAttribute("order",order);
-			request.getRequestDispatcher("alipay/index.jsp?flag="+flag).forward(request, response);
-
+			request.getRequestDispatcher("alipay/index.jsp?").forward(request, response);
+			
 
 		}
 		

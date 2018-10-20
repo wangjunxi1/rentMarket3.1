@@ -214,17 +214,20 @@ public class ShoppingcartServlet extends HttpServlet {
 		ShoppingCartServiceImpl scs= new ShoppingCartServiceImpl();
 		String goods = request.getParameter("goodId");
 		String totalPrice =request.getParameter("totalPrice");
-		
-		String arr[] = goods.split(",");
-		
-		List<Integer> list = new ArrayList<Integer>();
+		String rentDays = request.getParameter("rentDays");
+		String arr[] = goods.split(",");//货物Id
+		String arrDays[] = rentDays.split(",");//租赁天数
+		List<Integer> list = new ArrayList<Integer>();//货物Id集合
 		for (int i = 0; i < arr.length; i++) {
 			list.add(Integer.valueOf(arr[i]));
+			scs.insertDays(Integer.valueOf(arr[i]), Integer.valueOf(arrDays[i]));//将天数插入购物车
 		}
+		
 		
 		List<Shoppingcart> shopCartlist = scs.selGoodByGoodId(list);
 		// System.out.println("shopser"+shopCartlist);
 		request.setAttribute("goodIdlist", goods);
+		request.setAttribute("rentDays", rentDays);
 		request.setAttribute("shopCartlist", shopCartlist);
 		request.setAttribute("total", totalPrice);
 		request.getRequestDispatcher("front/order.jsp").forward(request, response);

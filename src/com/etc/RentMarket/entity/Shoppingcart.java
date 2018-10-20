@@ -19,10 +19,25 @@ public class Shoppingcart implements Serializable {
 	private int goodNumber;//商品数量
 	private int userId;//用户Id
 	private int goodId;//商品Id
+	private String rentDate;//租赁天数
 
 	public int getGoodId() {
 		return goodId;
 	}
+	
+	
+
+	public String getRentDate() {
+		return rentDate;
+	}
+
+
+
+	public void setRentDate(String rentDate) {
+		this.rentDate = rentDate;
+	}
+
+
 
 	public void setGoodId(int goodId) {
 		this.goodId = goodId;
@@ -92,11 +107,16 @@ public class Shoppingcart implements Serializable {
 		this.userId = userId;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "Shoppingcart [cartId=" + cartId + ", goodPrice=" + goodPrice + ", goodImgAdd=" + goodImgAdd
-				+ ", goodName=" + goodName + ", goodNumber=" + goodNumber + ", userId=" + userId + "]";
+				+ ", goodName=" + goodName + ", goodNumber=" + goodNumber + ", userId=" + userId + ", goodId=" + goodId
+				+ ", rentDate=" + rentDate + "]";
 	}
+
+	
 
 	
 

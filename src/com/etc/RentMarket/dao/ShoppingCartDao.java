@@ -54,4 +54,11 @@ public interface ShoppingCartDao {
 	 * @param goodId 商品信息
 	 */
 	boolean delMuchShopCart(List<Integer> goodId) ;
+	/**
+	 * 插入商品租赁的天数
+	 * @param rentDays 租赁天数的集合
+	 * @param goodId 商品的Id
+	 * @return
+	 */
+	boolean insertDays(int goodId,int rentDays);
 }

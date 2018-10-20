@@ -119,5 +119,17 @@ public class ShoppingCartDaoImpl implements ShoppingCartDao {
 		String sql="delete shoppingcart from users,shoppingcart,good where shoppingcart.userId=users.userId and shoppingcart.goodId=good.goodId and shoppingcart.userId=?";
 		return BaseDao.execute(sql, userId)>0;
 	}
+	
+	/**
+	 * 更新购物车商品租赁的天数
+	 * @param rentDays 租赁天数
+	 * @param goodId 商品的Id
+	 * @return
+	 */
+	@Override
+	public boolean insertDays(int goodId,int rentDays) {
+		String sql="UPDATE shoppingcart SET rentDays=? WHERE cartId=?";
+		return false;
+	}
 
 }
