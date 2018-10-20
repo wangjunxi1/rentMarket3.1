@@ -61,7 +61,7 @@
 					<li><a href="#" style="color: red;">${sessionScope.user.userName}</a></li>
 					<li class="headerul">|</li>
 					<div class="header-cart fr">
-						<a href="#"><img src="theme/icon/car.png"></a>
+						<a href="../shopcart.do?op=showCart&userName=${sessionScope.user.userName}"><img src="theme/icon/car.png"></a>
 					</div>
 				</ul>
 			</div>
@@ -90,7 +90,7 @@
                     <dt>我的商城</dt>
                     <dd><a href="${pageContext.request.contextPath}/front/user-info.jsp">我的信息</a></dd>
                     <dd><a href="${pageContext.request.contextPath}/os.do?op=sel">我的订单</a></dd>
-                    <dd><a href="${pageContext.request.contextPath}/shopcart.do?op=showCart&userName=${sessionScope.user.userName}">我的购物</a></dd>
+                    <dd><a href="${pageContext.request.contextPath}/shopcart.do?op=showCart&userName=${sessionScope.user.userName}">我的购物车</a></dd>
                     <dd class="cur"><a href="#">我的评价</a></dd>
                     <dd><a href="${pageContext.request.contextPath}/ads.do?op=sel">地址管理</a></dd>
                 </dl>

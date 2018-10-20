@@ -219,35 +219,31 @@
 			addressInit('cmbProvinceed', 'cmbCityed', 'cmbAreaed');  
 </script> 
 <!--- header begin-->
-<header id="pc-header">
-    <div class="BHeader">
-        <div class="yNavIndex">
-            <ul class="BHeaderl">
-                <li><a href="#">登录</a> </li>
-                <li class="headerul">|</li>
-                <li><a href="#">订单查询</a> </li>
-                <li class="headerul">|</li>
-                <li><a href="#">我的收藏</a> </li>
-                <li class="headerul">|</li>
-                <li id="pc-nav" class="menu"><a href="#" class="tit">我的商城</a>
-                    <div class="subnav">
-                        <a href="#">我的山城</a>
-                        <a href="#">我的山城</a>
-                        <a href="#">我的山城</a>
-                    </div>
-                </li>
-                <li class="headerul">|</li>
-                <li><a href="#" class="M-iphone">易点租商城</a> </li>
-            </ul>
-        </div>
-    </div>
-    <div class="container clearfix">
-        <div class="header-logo fl" style="width:212px;"><h1><a href="#"><img src="theme/icon/logo.png"></a></h1></div>
-        
-    </div>
+	<header id="pc-header">
+		<div class="BHeader">
+			<div class="yNavIndex">
+				<ul class="BHeaderl">
+					<li><a href="#" style="color: red;">${sessionScope.user.userName}</a></li>
+					<li class="headerul">|</li>
+					<div class="header-cart fr">
+						<a href="${pageContext.request.contextPath}/shopcart.do?op=showCart&userName=${sessionScope.user.userName}"><img src="theme/icon/car.png"></a>
+					</div>
+				</ul>
+			</div>
+		</div>
+		<div class="container clearfix">
+			<div class="header-logo fl">
+				<h1>
+					<a href="#"><img src="theme/icon/logo.png"></a>
+				</h1>
+			</div>
+			<div class="member-title fl">
+				<h2></h2>
+			</div>
 
-</header>
-<!-- header End -->
+		</div>
+	</header>
+	<!-- header End -->
 
 
 <!-- 订单提交成功 begin-->

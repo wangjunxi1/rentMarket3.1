@@ -150,7 +150,7 @@ $("#plus"+index).click(function(){
 					<li><a href="#" style="color: red;">${sessionScope.user.userName}</a></li>
 					<li class="headerul">|</li>
 					<div class="header-cart fr">
-						<a href="myShopCart.jsp"><img src="theme/icon/car.png"></a>
+						<a href="#"><img src="theme/icon/car.png"></a>
 					</div>
 				</ul>
 			</div>
@@ -171,7 +171,7 @@ $("#plus"+index).click(function(){
 
 	<div class="containers">
 		<div class="pc-nav-item">
-			<a href="#">首页</a> &gt; <a href="#">我的购物车 </a>
+			<a href="${pageContext.request.contextPath}/front/index.jsp">首页</a> &gt; <a href="${pageContext.request.contextPath}/front/user-info.jsp">会员中心 </a>
 		</div>
 	</div>
 
@@ -183,37 +183,25 @@ $("#plus"+index).click(function(){
 					<dl>
 						<dt>我的商城</dt>
 						<dd>
-							<a href="user-info.jsp">我的信息</a>
+							<a href="${pageContext.request.contextPath}/front/user-info.jsp">我的信息</a>
 						</dd>
 						<dd>
-							<a href="list-receive.jsp">我的订单</a>
+							<a href="${pageContext.request.contextPath}/os.do?op=sel">我的订单</a>
 						</dd>
 						<dd class="cur">
-							<a href="#">我的收藏</a>
+							<a href="#">我的购物车</a>
 						</dd>
 						<dd>
-							<a href="comment.jsp">我的评价</a>
+							<a href="${pageContext.request.contextPath}/front/comment.jsp">我的评价</a>
 						</dd>
 						<dd>
-							<a href="addressManager.jsp">地址管理</a>
+							<a href="${pageContext.request.contextPath}/ads.do?op=sel">地址管理</a>
 						</dd>
 					</dl>
 					<dl>
 						<dt>客户服务</dt>
 						<dd class="cur">
-							<a href="#">退货申请</a>
-						</dd>
-						<dd>
-							<a href="#">退货/退款记录</a>
-						</dd>
-					</dl>
-					<dl>
-						<dt>我的消息</dt>
-						<dd>
-							<a href="#">商城快讯</a>
-						</dd>
-						<dd>
-							<a href="#">帮助中心</a>
+							<a href="#">归还</a>
 						</dd>
 					</dl>
 				</div>

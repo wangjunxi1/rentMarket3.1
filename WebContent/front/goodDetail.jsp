@@ -29,6 +29,12 @@
 	<script type="text/javascript" src="theme/js/index.js"></script>
 	<script type="text/javascript" src="theme/js/js-tab.js"></script>
     <script>
+    
+    function checkNum (val) {
+        document.getElementById('goodNumber').value = val >= 1 ? val : 1;
+    }
+    
+    
          $(function(){
              $(".yScrollListInList1 ul").css({width:$(".yScrollListInList1 ul li").length*(160+84)+"px"});
              $(".yScrollListInList2 ul").css({width:$(".yScrollListInList2 ul li").length*(160+84)+"px"});
@@ -101,25 +107,7 @@
              });
          });
      </script>
-    <script type="text/javascript">
-         (function(a){
-             a.fn.hoverClass=function(b){
-                 var a=this;
-                 a.each(function(c){
-                     a.eq(c).hover(function(){
-                         $(this).addClass(b)
-                     },function(){
-                         $(this).removeClass(b)
-                     })
-                 });
-                 return a
-             };
-         })(jQuery);
-
-         $(function(){
-             $("#pc-nav").hoverClass("current");
-         });
-     </script>
+    
      <script type="text/javascript">
          $(document).ready(function(){
 
@@ -216,7 +204,7 @@
                                 <div class="pc-version">数量</div>
                                 <div class="pc-adults clearfix">
                                     <div class="pc-adults-p clearfix fl">
-                                        <input type="number" name="goodNumber" id="goodNumber" value="1">
+                                        <input type="number" name="goodNumber" id="goodNumber" value="1" oninput="checkNum(this.value)">
                                     </div>
                                     <div class="fl pc-letter ">件</div>
                                     <div class="fl pc-stock ">库存<em>10</em>件</div>
@@ -228,9 +216,6 @@
                             <input style="background-color: red; color: white;border: 0;width: 100px;height: 50px"
 							id="addCart" class="submit am-btn" title="加入购物车"
 							type="button" value="加入购物车">
-							<input style="background-color: red; color: white;border: 0;width: 100px;height: 50px"
-							id="addOrder" class="submit am-btn" title="立即下单"
-							type="submit" value="立即下单">
 							
                         </div>
                     </div>

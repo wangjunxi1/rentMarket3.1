@@ -152,8 +152,7 @@ p {
 
 					<li class="headerul">|</li>
 					<div class="header-cart fr">
-						<a href="../shopcart.do?op=showCart&userName=${sessionScope.user.userName}"><img src="theme/icon/car.png"></a> <i
-							class="head-amount">1</i>
+						<a href="../shopcart.do?op=showCart&userName=${sessionScope.user.userName}"><img src="theme/icon/car.png"></a> 
 					</div>
 					<div class="head-mountain"></div>
 				</ul>
