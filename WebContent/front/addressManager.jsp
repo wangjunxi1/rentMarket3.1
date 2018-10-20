@@ -24,6 +24,7 @@
     <link href="theme/css/dashboard.css" rel="stylesheet">
     <link href="theme/css/bootstrap-combined.min.css" rel="stylesheet">
     <link href="theme/css/layoutit.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="layui/css/layui.css"/>
     <script type="text/javascript" src="theme/js/jquery-2.0.0.min.js"></script>
 	<script type="text/javascript" src="theme/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="theme/js/jquery-ui.js"></script>
@@ -256,12 +257,20 @@
 					<!-- /.modal -->
             <!-- 删除遮罩结束 --> 
             <!-- ajax請求 -->
+            <script type="text/javascript" src="layui/layui.js"></script>
+			<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
            <script type="text/javascript">
+           layui.use('layer', function(){
+         		var layer = layui.layer;
+       		});
            //添加地址操作
             	$("#addAdress1").click(function(){
                 	$.post("/rentMarket3.1/ads.do","op=add&userName="+$("#userName").val()+"&userRealName="+$("#userRealName").val()+"&userAddress="+$("#userAddress").val()+"&userPhone="+$("#userPhone").val()+"&cmbProvince="+$("#cmbProvince").val()+"&cmbCity="+$("#cmbCity").val()+"&cmbArea="+$("#cmbArea").val(),function(data,state){
                 		if(data){
-                			location.href="/rentMarket3.1/ads.do?op=sel";
+                			layer.msg('<span style="color:white;font-size:20px"">添加成功</span>');
+                			icon:1;
+                			time:1000;
+                			setTimeout(function(){ location.href="/rentMarket3.1/ads.do?op=sel"; }, 1000);
                 		}
                 	});
                 });
@@ -269,7 +278,10 @@
             	$("#updateAdress1").click(function(){
                 	$.post("/rentMarket3.1/ads.do","op=up&userDetailId="+$("#userDetailId").val()+"&userRealName2="+$("#userRealName2").val()+"&userAddress2="+$("#userAddress2").val()+"&userPhone2="+$("#userPhone2").val()+"&cmbProvince2="+$("#cmbProvince2").val()+"&cmbCity2="+$("#cmbCity2").val()+"&cmbArea2="+$("#cmbArea2").val(),function(data,state){
                 		if(data){
-                			location.href="/rentMarket3.1/ads.do?op=sel";
+                			layer.msg('<span style="color:white;font-size:20px"">修改成功</span>');
+                			icon:1;
+                			time:1000;
+                			setTimeout(function(){ location.href="/rentMarket3.1/ads.do?op=sel"; }, 1000);
                 		}
                 	});
                 });
@@ -277,7 +289,10 @@
             	$("#delAdress1").click(function(){
                 	$.post("/rentMarket3.1/ads.do","op=del&userDetailId2="+$("#userDetailId2").val(),function(data,state){
                 		if(data){
-                			location.href="/rentMarket3.1/ads.do?op=sel";
+                			layer.msg('<span style="color:white;font-size:20px"">删除成功</span>');
+                			icon:1;
+                			time:1000;
+                			setTimeout(function(){ location.href="/rentMarket3.1/ads.do?op=sel"; }, 1000);
                 		}
                 	});
                 });

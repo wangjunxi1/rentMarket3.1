@@ -217,7 +217,7 @@ public class GeetestLib {
 				param = param + "&ip_address=" + ipAddress;
 			}
 			
-			gtlog("GET_URL:" + getUrl + param);
+//			gtlog("GET_URL:" + getUrl + param);
 			String result_str = readContentFromGet(getUrl + param);
 			if (result_str == "fail"){
 				
@@ -226,11 +226,11 @@ public class GeetestLib {
 				
 			}
 			
-			gtlog("result:" + result_str);
+//			gtlog("result:" + result_str);
 			JSONObject jsonObject = new JSONObject(result_str);
 		    String return_challenge = jsonObject.getString("challenge");
 		
-			gtlog("return_challenge:" + return_challenge);
+//			gtlog("return_challenge:" + return_challenge);
 			
 			if (return_challenge.length() == 32) {
 				
@@ -428,7 +428,7 @@ public class GeetestLib {
 	 */
 	public void gtlog(String message) {
 		if (debugCode) {
-			System.out.println("gtlog: " + message);
+//			System.out.println("gtlog: " + message);
 		}
 	}
 

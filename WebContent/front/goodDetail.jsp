@@ -24,6 +24,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="theme/icon/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="theme/css/base.css">
 	<link rel="stylesheet" type="text/css" href="theme/css/home.css">
+	<link rel="stylesheet" type="text/css" href="layui/css/layui.css"/>
 	<script type="text/javascript" src="theme/js/jquery.js"></script>
 	<script type="text/javascript" src="theme/js/index.js"></script>
 	<script type="text/javascript" src="theme/js/js-tab.js"></script>
@@ -372,14 +373,23 @@
     </div>
 </div>
 <!--加入购物车的操作  -->
+	<script type="text/javascript" src="layui/layui.js"></script>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
 	<script type="text/javascript">
+		layui.use('layer', function(){
+  		var layer = layui.layer;
+		});   
 		$("#addCart").click(function() {
 			$.post("../shopcart.do","op=addCart&userName="+$("#userName").val()+"&goodId="+$("#goodId").val()+"&goodNumber="+$("#goodNumber").val(),function(data,status){
 				if("success"==status){
-					alert("添加成功");
+					layer.msg('<span style="color:white;font-size:20px">添加商品成功</span>');
+					icon:1;
+					time:1000
 				}else{
 					
-					alert("添加失敗");
+					layer.msg('<span style="color:gray;">添加商品失败</span>');
+					icon:1;
+					time:1000
 				}
 			});
 		});
