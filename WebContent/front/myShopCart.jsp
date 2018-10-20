@@ -30,6 +30,47 @@
 <link rel="stylesheet" type="text/css" href="theme/css/member.css">
 <script type="text/javascript" src="theme/js/jquery.js"></script>
 <script type="text/javascript">
+
+	
+
+	//数量减一操作
+	function d(id){
+		if("1"!=$("#num"+id).val()){//如果数量不为0就进行减一操作 
+			var num=$("#num"+id).val()+"-"+1;
+			var q=eval(num);
+			$("#num"+id).val(q);
+		}	
+	}
+	
+	//数量加一操作 
+	function add(index){
+		var num=$("#num"+index).val()+"+"+1;
+		var q=eval(num);
+		$("#num"+index).val(q);
+	}
+
+/* var index = $("#hideIndex").val();
+
+$("#des"+index).click(function(){
+	
+	if("1"!=$("#num1").val()){//如果数量不为0就进行减一操作 
+		var num=$("#num1").val()+"-"+1;
+		var q=eval(num);
+		$("#num1").val(q);
+	}	
+});
+
+
+$("#plus"+index).click(function(){
+
+		var num=$("#num1").val()+"+"+1;
+		var q=eval(num);
+		$("#num1").val(q);							
+							
+});	 */
+</script>
+
+<script type="text/javascript">
 	(function(a) {
 		a.fn.hoverClass = function(b) {
 			var a = this;
@@ -73,6 +114,11 @@
 			})(i));
 		});
 	});
+	
+	
+	
+						
+	
 </script>
 
 
@@ -212,17 +258,14 @@
 									<div class="bundle  bundle-last ">
 
 										<div class="bundle-main">
-														<!--
-                                        	多选按钮
-                                        --> <!-- 循环开始 -->
+											<!--多选按钮--> 
+											<!-- 循环开始 -->
                                         	
                 							<c:forEach var="a" items="${requestScope.shopcart}" varStatus="i">
-                							
+                						
 											<ul class="item-content clearfix">
 											<li class="td td-chk">	
 													
-											
-                							
                 							<div class="cart-checkbox ">
 														<input class="check" id="checkAll" name="checkAll"
 															type="checkbox" onclick="setSelectAll()"
@@ -231,9 +274,7 @@
 												</li>
 												<li class="td td-item">
 													<div class="item-pic">
-														<!--
-                                        	图片
-                                        -->
+														<!--图片-->
 														<a href="#" target="_blank" data-title="图片"
 															class="J_MakePoint" data-point="tbcart.8.12"> <img style="width:90px; height:100px"
 															src="theme/img/pd/${a.goodImgAdd}"
@@ -268,7 +309,7 @@
 														<div class="item-amount ">
 															<div class="sl" id="divbtn" >
 																<input class="min am-btn" type="button" value="-" id="des"
-																	 /> 
+																onclick="d(${i.index+1})"	name="des" /> 
 																<input class="text_box"
 																	id="num${i.index+1}" type="text"
 																 	name="num${i.index+1}"
@@ -276,8 +317,8 @@
 																	style="width: 30px;" 
 																	readonly/> 
 																<input type="hidden" id="hid" name="hidnum" value="${i.index+1}">
-																<input class="add am-btn" id="plus"
-																	type="button" value="+" />
+																<button class="add am-btn" id="plus" name="plus" onclick="add(${i.index+1})"
+																	type="button" value="+">+</button>
 															</div>
 														</div>
 													</div>
@@ -298,38 +339,13 @@
 												</li>
 											</ul>
 											</c:forEach>
-										
-						<script type="text/javascript">
-						//数量减一操作
-						
-						$("#des").click(function(){
-							
-							if("1"!=$("#num1").val()){//如果数量不为0就进行减一操作 
-								var num=$("#num1").val()+"-"+1;
-								var q=eval(num);
-								$("#num1").val(q);
-							}	
-						});
-						
-						//数量加一操作 
-						
-						$("#plus").click(function(){
-							
-							
-							
-								var num=$("#num1").val()+"+"+1;
-								var q=eval(num);
-								$("#num1").val(q);
-							
-							
-							
-						});	
-											
-						</script>
-										</div>
+											</div>
 									</div>
 								</tr>
 							</div>
+										
+						
+										
 
 
 							<div class="float-bar-wrapper">
@@ -605,5 +621,6 @@
 	
 </script>
 	<!-- footer End -->
+	
 </body>
 </html>
