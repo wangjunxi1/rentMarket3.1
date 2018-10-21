@@ -35,6 +35,7 @@ public class GoodsBackServlet extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -232,6 +233,7 @@ public class GoodsBackServlet extends HttpServlet {
 
 	}
 
+	@Override
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)

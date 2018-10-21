@@ -33,6 +33,7 @@ public class AddrServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String op = request.getParameter("op");
@@ -52,6 +53,7 @@ public class AddrServlet extends HttpServlet {
 			String cmbProvince = request.getParameter("cmbProvince");
 			String cmbCity = request.getParameter("cmbCity");
 			String cmbArea = request.getParameter("cmbArea");
+			@author tag
 			String Address = request.getParameter("userAddress");
 			String userAddress = cmbProvince+cmbCity+cmbArea+Address;
 			String userPhone = request.getParameter("userPhone");
@@ -103,6 +105,7 @@ public class AddrServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+    @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);

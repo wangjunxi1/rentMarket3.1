@@ -13,27 +13,27 @@ public class AdServiceImpl implements AdService {
 	 * 广告信息查询
 	 */
 	@Override
-	public List<Ad> SelectAds() {
+	public List<Ad> selectAds() {
 		// TODO Auto-generated method stub
-		return ad.SelectAds();
+		return ad.selectAds();
 	}
 
 	@Override
-	public boolean AddAds(Ad a) {
+	public boolean addAds(Ad a) {
 		// TODO Auto-generated method stub
-		return ad.AddAds(a);
+		return ad.addAds(a);
 	}
 	
 	@Override
-	public boolean UpdAd(Ad a) {
+	public boolean updAd(Ad a) {
 		// TODO 自动生成的方法存根
-		return ad.UpdAd(a);
+		return ad.updAd(a);
 	}
 	
 	@Override
-	public boolean DelAd(int ad_id) {
+	public boolean delAd(int id) {
 		// TODO Auto-generated method stub
-		return ad.DelAd(ad_id);
+		return ad.delAd(id);
 	}
 	/**
 	 * 后台批量删除广告
@@ -41,8 +41,8 @@ public class AdServiceImpl implements AdService {
 	 * @return true 操作成功  false 操作失败
 	 */
 	@Override
-	public boolean delMuchAd(String ad_id) {
+	public boolean delMuchAd(String id) {
 		// TODO Auto-generated method stub
-		return ad.delMuchAd(ad_id);
+		return ad.delMuchAd(id);
 	}
 }

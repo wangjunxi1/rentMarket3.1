@@ -28,7 +28,7 @@ public class EvaluateDaoImpl implements EvaluateDao {
 	 * @return true 操作成功  false 操作失败
 	 */
 	@Override
-	public boolean DelEvaluate(int evaluateId) {
+	public boolean delEvaluate(int evaluateId) {
 		// TODO Auto-generated method stub
 		String sql="delete evaluate,reevaluate from evaluate,reevaluate where evaluate.evaluateId=reevaluate.evaluateId and evaluate.evaluateId=?";
 		return BaseDao.execute(sql, evaluateId)>0;
@@ -62,7 +62,7 @@ public class EvaluateDaoImpl implements EvaluateDao {
 		 * @return true 操作成功  false 操作失败
 		 */
 		@Override
-		public boolean DelREevaluate(int cid) {
+		public boolean delREevaluate(int cid) {
 			// TODO Auto-generated method stub
 			String sql="delete from reevaluate where cid=?";
 			return BaseDao.execute(sql, cid)>0;

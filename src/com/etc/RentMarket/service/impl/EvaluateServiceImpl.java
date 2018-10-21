@@ -35,9 +35,9 @@ public class EvaluateServiceImpl implements EvaluateService {
 	 * @return true 操作成功 false 操作失败
 	 */
 	@Override
-	public boolean DelEvaluate(int evaluateId) {
+	public boolean delEvaluate(int evaluateId) {
 		// TODO Auto-generated method stub
-		return ed.DelEvaluate(evaluateId);
+		return ed.delEvaluate(evaluateId);
 	}
 	/**
 	 * 后台批量删除评价方法同时删除评价表和回复评价表
@@ -68,9 +68,9 @@ public class EvaluateServiceImpl implements EvaluateService {
 	 * @return true 操作成功 false 操作失败
 	 */
 	@Override
-	public boolean DelREevaluate(int cid) {
+	public boolean delREevaluate(int cid) {
 		// TODO Auto-generated method stub
-		return ed.DelREevaluate(cid);
+		return ed.delREevaluate(cid);
 	}
 	/**
 	 * 后台批量删除回复评价方法

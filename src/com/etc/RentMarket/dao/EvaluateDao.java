@@ -23,7 +23,7 @@ public interface EvaluateDao {
 	 * @param evaluateId
 	 * @return true 操作成功  false 操作失败
 	 */
-	boolean DelEvaluate(int evaluateId);
+	boolean delEvaluate(int evaluateId);
 	/**
 	 * 后台批量删除评价方法同时删除评价表和回复评价表
 	 * @param evaluateId
@@ -42,7 +42,7 @@ public interface EvaluateDao {
 	 * @param cid
 	 * @return true 操作成功  false 操作失败
 	 */
-	boolean DelREevaluate(int cid);
+	boolean delREevaluate(int cid);
 	/**
 	 * 后台批量删除回复评价方法
 	 * @param cid

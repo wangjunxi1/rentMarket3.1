@@ -53,9 +53,9 @@ public class UsersServiceImpl implements UsersService {
 	 * @return true 操作成功  false 操作失败
 	 */
 	@Override
-	public boolean UpdateUesrStatus(Uesrslist u) {
+	public boolean updateUesrStatus(Uesrslist u) {
 		// TODO Auto-generated method stub
-		return ud.UpdateUesrStatus(u);
+		return ud.updateUesrStatus(u);
 	}
 	/**
 	 * 后台删除用户方法同时删除用户表和用户详情表
@@ -64,9 +64,9 @@ public class UsersServiceImpl implements UsersService {
 	 * @return true 操作成功  false 操作失败
 	 */
 	@Override
-	public boolean DelUesr(int userId) {
+	public boolean delUesr(int userId) {
 		// TODO Auto-generated method stub
-		return ud.DelUesr(userId);
+		return ud.delUesr(userId);
 	}
 	/**
 	 * 后台批量删除用户方法同时删除用户表和用户详情表

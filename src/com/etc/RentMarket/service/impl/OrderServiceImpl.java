@@ -58,6 +58,7 @@ public class OrderServiceImpl implements OrderService{
 		return od.delMuchOrders(ordersIds);
 	}
 
+	@Override
 	public List<Order> queryOrdersByOrderId2(int orderId) {
 		// TODO Auto-generated method stub
 		return od.queryOrdersByOrderId2(orderId);

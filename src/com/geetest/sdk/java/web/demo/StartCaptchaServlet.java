@@ -19,6 +19,7 @@ import com.geetest.sdk.java.GeetestLib;
  */
 public class StartCaptchaServlet extends HttpServlet {
 
+	@Override
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 

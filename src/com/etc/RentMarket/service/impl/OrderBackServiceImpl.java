@@ -28,9 +28,9 @@ public class OrderBackServiceImpl implements OrderBackService {
 	 * @return true 操作成功  false 操作失败
 	 */
 	@Override
-	public boolean DelOrderBack(int orderId) {
+	public boolean delOrderBack(int orderId) {
 		// TODO Auto-generated method stub
-		return ob.DelOrderBack(orderId);
+		return ob.delOrderBack(orderId);
 	}
 	/**
 	 * 后台批量删除订单方法同时删除订单表和订单详情表
@@ -48,8 +48,8 @@ public class OrderBackServiceImpl implements OrderBackService {
 	 * @return true 操作成功  false 操作失败
 	 */
 	@Override
-	public boolean EditOrder(OrderBack order) {
+	public boolean editOrder(OrderBack order) {
 		// TODO Auto-generated method stub
-		return ob.EditOrder(order);
+		return ob.editOrder(order);
 	}
 }

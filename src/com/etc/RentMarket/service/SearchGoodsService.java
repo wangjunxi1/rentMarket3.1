@@ -10,5 +10,5 @@ public interface SearchGoodsService {
 	 * @param goodName
 	 * @return
 	 */
-	public List<Good> SelGoodByLike(String goodName);
+	public List<Good> selGoodByLike(String goodName);
 }

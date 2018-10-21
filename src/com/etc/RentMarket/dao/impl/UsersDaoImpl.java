@@ -47,7 +47,7 @@ public class UsersDaoImpl implements UsersDao {
 		String sql = "select u1.userId,u1.userName,u2.userPhone,u2.userAddress,u1.userRegisterTime,u1.userState from users u1,usersdetail u2 where u1.userName=u2.userName";
 		List<Uesrslist> list=(List<Uesrslist>) BaseDao.select(sql, Uesrslist.class);
 		for (Uesrslist user : list) {
-			if (user.getUserState().equals("0")) {
+			if ("0".equals(user.getUserState())) {
 				user.setUserState("禁用");
 			} else if (user.getUserState().equals("1")) {
 				user.setUserState("启用");
@@ -63,7 +63,7 @@ public class UsersDaoImpl implements UsersDao {
 	 * @return true 操作成功  false 操作失败
 	 */
 	@Override
-	public boolean UpdateUesrStatus(Uesrslist u) {
+	public boolean updateUesrStatus(Uesrslist u) {
 		// TODO Auto-generated method stub
 		String sql="update users set userState=? where userId=?";
 		return BaseDao.execute(sql, u.getUserState(),u.getUserId())>0;
@@ -75,7 +75,7 @@ public class UsersDaoImpl implements UsersDao {
 	 * @return true 操作成功  false 操作失败
 	 */
 	@Override
-	public boolean DelUesr(int userId) {
+	public boolean delUesr(int userId) {
 		// TODO Auto-generated method stub
 		String sql="delete users,usersdetail from users,usersdetail where users.userId=? and users.userName=usersdetail.userName ";
 		return BaseDao.execute(sql, userId)>0;

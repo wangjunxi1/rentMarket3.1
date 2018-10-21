@@ -39,6 +39,7 @@ public class OrderServlet extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -95,7 +96,7 @@ public class OrderServlet extends HttpServlet {
 			Order order = new Order(Integer.parseInt(orderId), orderDate, Integer.parseInt(orderState), Double.parseDouble(orderTPrice), userAddress, userName, userTel);
 			boolean flag = os.upOrders(order);
 			out.println(flag);
-		}else if(op.equals("delOrder")) {//删除订单
+		}else if("delOrder".equals(op)) {//删除订单
 			String id = request.getParameter("id");
 			boolean flag = os.delOrders(Integer.valueOf(id));
 			out.println(flag);
@@ -168,6 +169,7 @@ public class OrderServlet extends HttpServlet {
 		
 	}
 
+	@Override
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)

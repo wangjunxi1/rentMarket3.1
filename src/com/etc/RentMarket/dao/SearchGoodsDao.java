@@ -9,7 +9,7 @@ public interface SearchGoodsDao {
 	 * 根据商品名字进行模糊查询
 	 * @return
 	 */
-	public List<Good> SelGoodByLike(String goodName);
+	public List<Good> selGoodByLike(String goodName);
 	
 
 }

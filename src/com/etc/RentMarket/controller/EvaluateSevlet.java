@@ -22,7 +22,8 @@ public class EvaluateSevlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
+    @Override
+    /**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -31,7 +32,8 @@ public class EvaluateSevlet extends HttpServlet {
 		
 	}
 
-	/**
+    @Override
+    /**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

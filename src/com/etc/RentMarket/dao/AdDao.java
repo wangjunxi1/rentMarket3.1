@@ -5,17 +5,17 @@ import java.util.List;
 import com.etc.RentMarket.entity.Ad;
 
 public interface AdDao {
-	public List<Ad> SelectAds();
+	public List<Ad> selectAds();
 	
-	public boolean AddAds(Ad a);
+	public boolean addAds(Ad a);
 	
-	public boolean UpdAd(Ad a);
+	public boolean updAd(Ad a);
 	
-	public boolean DelAd(int ad_id);
+	public boolean delAd(int id);
 	/**
 	 * 后台批量删除广告
 	 * @param ad_id
 	 * @return true 操作成功  false 操作失败
 	 */
-	boolean delMuchAd(String ad_id);
+	boolean delMuchAd(String id);
 }

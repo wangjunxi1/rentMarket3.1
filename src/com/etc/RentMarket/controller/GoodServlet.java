@@ -27,7 +27,8 @@ public class GoodServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
+    @Override
+    /**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -40,7 +41,8 @@ public class GoodServlet extends HttpServlet {
 		request.getRequestDispatcher("front/index.jsp").forward(request, response);
 	}
 
-	/**
+    @Override
+    /**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -12,9 +12,9 @@ public class SearchGoodsServiceImpl implements SearchGoodsService{
 	/**
 	 * 根据商品名称模糊查询
 	 */
-	public List<Good> SelGoodByLike(String goodName) {
+	public List<Good> selGoodByLike(String goodName) {
 		// TODO Auto-generated method stub
-		return sd.SelGoodByLike(goodName);
+		return sd.selGoodByLike(goodName);
 	}
 	
 

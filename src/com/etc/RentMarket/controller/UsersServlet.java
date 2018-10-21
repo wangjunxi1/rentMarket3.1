@@ -38,6 +38,7 @@ public class UsersServlet extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
+	@Override
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -62,7 +63,7 @@ public class UsersServlet extends HttpServlet {
 			userName = request.getParameter("username");// 用户名
 
 			// 先判断是否存在
-			if (userName.equals("")) {
+			if (""userName.equals()) {
 				data = "*请输入用户名";
 				out.print(data);
 			} else {
@@ -80,7 +81,7 @@ public class UsersServlet extends HttpServlet {
 			userPwd = request.getParameter("password");// 密码
 			setPwd(userPwd);//传一个密码参数给set()
 			if (userPwd != null) {
-				if (userPwd.equals("")) {
+				if (""userPwd.equals()) {
 					data = "*密码不能为空";
 					out.print(data);
 				} else {
@@ -95,7 +96,7 @@ public class UsersServlet extends HttpServlet {
 			userPwd=getPwd();
 			reUserPwd = request.getParameter("repassword");// 确认密码
 			if (reUserPwd != null) {
-				if (reUserPwd.equals("")) {
+				if (""reUserPwd.equals()) {
 					data = "*密码不能为空";
 					out.print(data);
 				} else {
@@ -220,6 +221,7 @@ public class UsersServlet extends HttpServlet {
 		}
 	
 
+	@Override
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)

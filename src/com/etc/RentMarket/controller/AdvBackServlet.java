@@ -37,6 +37,7 @@ public class AdvBackServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -88,12 +89,13 @@ public class AdvBackServlet extends HttpServlet {
 	 */
 	protected void doAddAds(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String ad_content = request.getParameter("content");
-		String ad_picture = request.getParameter("picture");
-		String ad_productor = request.getParameter("productor");
-		int ad_day = Integer.parseInt(request.getParameter("day"));
-		String ad_state = request.getParameter("adStatus");
-		Ad a = new Ad(ad_content, ad_picture, ad_productor, ad_day, ad_state);
+		
+		String content = request.getParameter("content");
+		String picture = request.getParameter("picture");
+		String productor = request.getParameter("productor");
+		int day = Integer.parseInt(request.getParameter("day"));
+		String state = request.getParameter("adStatus");
+		Ad a = new Ad(content, picture, productor, day, state);
 		flag = as.AddAds(a);
 	}
 
@@ -107,13 +109,13 @@ public class AdvBackServlet extends HttpServlet {
 	 */
 	protected void doUpdAds(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int ad_id = Integer.parseInt(request.getParameter("ad_id"));
-		String ad_content = request.getParameter("content");
-		String ad_picture = request.getParameter("picture");
-		String ad_productor = request.getParameter("productor");
-		int ad_day = Integer.parseInt(request.getParameter("day"));
-		String ad_state = request.getParameter("adStatus");
-		Ad a = new Ad(ad_content, ad_picture, ad_productor, ad_day, ad_state, ad_id);
+		int id = Integer.parseInt(request.getParameter("ad_id"));
+		String content = request.getParameter("content");
+		String picture = request.getParameter("picture");
+		String productor = request.getParameter("productor");
+		int day = Integer.parseInt(request.getParameter("day"));
+		String state = request.getParameter("adStatus");
+		Ad a = new Ad(content, picture, productor, day, state, id);
 		flag = as.UpdAd(a);
 	}
 
@@ -122,8 +124,8 @@ public class AdvBackServlet extends HttpServlet {
 	 */
 	protected void doDelAds(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		int ad_id = Integer.parseInt(request.getParameter("ad_id"));
-		flag = as.DelAd(ad_id);
+		int id = Integer.parseInt(request.getParameter("id"));
+		flag = as.DelAd(id);
 	}
 
 	/**
@@ -133,8 +135,8 @@ public class AdvBackServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// 使用printWriter对象
 		PrintWriter out = response.getWriter();
-		String ad_id = request.getParameter("ids");
-		boolean flag = as.delMuchAd(ad_id);
+		String id = request.getParameter("ids");
+		boolean flag = as.delMuchAd(id);
 		if (flag) {
 
 			out.print(flag);
@@ -148,6 +150,7 @@ public class AdvBackServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub

@@ -21,6 +21,7 @@ import com.geetest.sdk.java.GeetestLib;
  */
 public class VerifyLoginServlet extends HttpServlet {
 
+	@Override
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 

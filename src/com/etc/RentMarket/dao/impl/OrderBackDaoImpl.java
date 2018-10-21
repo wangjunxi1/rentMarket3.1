@@ -32,7 +32,7 @@ public class OrderBackDaoImpl implements OrderBackDao {
 	 * @return true 操作成功 false 操作失败
 	 */
 	@Override
-	public boolean DelOrderBack(int orderId) {
+	public boolean delOrderBack(int orderId) {
 		// TODO Auto-generated method stub
 		String sql = "delete orders,orderdetail from orders,orderdetail where orders.orderId=orderdetail.orderId and orders.orderId=?";
 		return BaseDao.execute(sql, orderId) > 0;
@@ -54,7 +54,7 @@ public class OrderBackDaoImpl implements OrderBackDao {
 	 * @return true 操作成功  false 操作失败
 	 */
 	@Override
-	public boolean EditOrder(OrderBack order) {
+	public boolean editOrder(OrderBack order) {
 		// TODO Auto-generated method stub
 		String sql="update orders set orderState=? where orderId=?";
 		return BaseDao.execute(sql, order.getOrderState(),order.getOrderId())>0;

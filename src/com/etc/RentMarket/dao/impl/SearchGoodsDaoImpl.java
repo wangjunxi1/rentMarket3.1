@@ -11,7 +11,7 @@ public class SearchGoodsDaoImpl implements SearchGoodsDao{
 	/**
 	 * 根据商品名称模糊查询
 	 */
-	public List<Good> SelGoodByLike(String goodName) {
+	public List<Good> selGoodByLike(String goodName) {
 		// TODO Auto-generated method stub
 		String sql = "select * from good where goodName like ?";
 		
