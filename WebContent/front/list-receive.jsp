@@ -28,6 +28,7 @@
 <link href="theme/css/amazeui.css" rel="stylesheet" type="text/css">
 <link href="theme/css/personal.css" rel="stylesheet" type="text/css">
 <link href="theme/css/orstyle.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="layui/css/layui.css"/>
 <script type="text/javascript" src="theme/js/jquery.js"></script>
 <script src="theme/js/jquery-3.1.1.min.js"></script>
 <script>
@@ -253,7 +254,8 @@
 																	<div class="am-btn am-btn-danger anniu">
 																	<input type="hidden" name="orderId" value="${o.orderId}">
 																	<input type="hidden" name="goodName" value="${o.goodName}">
-																		<button type="submit" style="background : none;color: white;border: 0">
+																	<input type="hidden" name="goodState" id="goodState" value="${o.goodState}">
+																		<button type="submit" style="background : none;color: white;border: 0" onclick="return confirm()">
 																			我要归还
 																		</button>
 																	</div>
@@ -271,6 +273,24 @@
 									</div>
 								</div>
 								</c:forEach>
+								<script type="text/javascript" src="layui/layui.js"></script>
+					<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+								<script type="text/javascript">
+								layui.use('layer', function(){
+					         		var layer = layui.layer;
+					       		});
+			 function confirm(){
+					if (($("#goodState").val())==0) {
+						console.log($("#goodState").val());
+						layer.msg('<span style="color:white;font-size:20px"">该物品已归还</span>');
+            			icon:1;
+            			time:1000;
+						return false;
+					} else{
+						return true;
+					}
+			}  
+		</script> 
 							</div>
 
 						</div>
