@@ -522,7 +522,7 @@ p {
 				<h2 class="fl" style="margin-right: 20px;">商城快讯</h2>
 				<div id="MarqueeDiv" class="MarqueeDiv">
 				<%for(Ad a:ad) {%>
-					<a href="new.html"><%=a.getad_content() %></a> 
+					<a href="new.html"><%=a.getAdContent() %></a> 
 						<%} %> 
 				</div>
 				<a href="new.html" style="position: absolute; right: 15px; top: 0;">
@@ -619,9 +619,9 @@ p {
 				for (Ad a : ad) {
 			%>
 			<%
-				if (a.getAd_state().equals("激活")) {
+				if (a.getAdState().equals("激活")) {
 			%><img
-			src=<%=adPath + a.getad_picture()%> width="1200" height="105">
+			src=<%=adPath + a.getAdPicture()%> width="1200" height="105">
 			<%
 				}
 			%>

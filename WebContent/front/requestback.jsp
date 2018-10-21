@@ -117,11 +117,21 @@
 				<div class="member-lists">
 					<dl>
 						<dt>我的商城</dt>
-                    <dd><a href="#">我的订单</a></dd>
-                    <dd><a href="#">我的收藏</a></dd>
-                    <dd><a href="#">账户安全</a></dd>
-                    <dd><a href="#">我的评价</a></dd>
-                    <dd><a href="#">地址管理</a></dd>
+                    <dd class="cur">
+							<a href="${pageContext.request.contextPath}/front/user-info.jsp">我的信息</a>
+						</dd>
+						<dd>
+							<a href="${pageContext.request.contextPath}/os.do?op=sel">我的订单</a>
+						</dd>
+						<dd>
+							<a href="${pageContext.request.contextPath}/shopcart.do?op=showCart&userName=${sessionScope.user.userName}">我的购物车</a>
+						</dd>
+						<dd>
+							<a href="${pageContext.request.contextPath}/front/comment.jsp">我的评价</a>
+						</dd>
+						<dd>
+							<a href="${pageContext.request.contextPath}/ads.do?op=sel">地址管理</a>
+						</dd>
                 </dl>
                 <dl>
                     <dt>客户服务</dt>

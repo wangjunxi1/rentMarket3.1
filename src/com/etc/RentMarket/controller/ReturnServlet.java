@@ -54,7 +54,7 @@ public class ReturnServlet extends HttpServlet {
 			OrderService os = new OrderServiceImpl();
 			os.updateOrderState(0, orderId,goodName);
 			boolean flag = rs.addComment(userId, goodId, content);
-			if (flag) {
+			if(flag){
 				request.getRequestDispatcher("front/comment.jsp").forward(request, response);
 			}
 		}

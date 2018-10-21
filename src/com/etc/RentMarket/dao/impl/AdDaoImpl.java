@@ -15,10 +15,10 @@ public class AdDaoImpl implements AdDao {
 		String sql = "select * from ad";
 		List<Ad> list = (List<Ad>) BaseDao.select(sql, Ad.class);
 		for (Ad ad : list) {
-			if ("0".equals(ad.getAd_state())) {
-				ad.setAd_state("未激活");
+			if ("0".equals(ad.getAdState())) {
+				ad.setAdState("未激活");
 			} else {
-				ad.setAd_state("激活");
+				ad.setAdState("激活");
 			} 
 		}
 		return list;
@@ -28,14 +28,14 @@ public class AdDaoImpl implements AdDao {
 	public boolean addAds(Ad a) {
 		// TODO Auto-generated method stub
 		String sql = "insert into ad(ad_content,ad_picture,ad_productor,ad_beginDate,ad_day,ad_state)values(?,?,?,now(),?,?)";
-		return BaseDao.execute(sql, a.getad_content(),a.getad_picture(),a.getad_productor(),a.getAd_day(),a.getAd_state())>0;
+		return BaseDao.execute(sql, a.getAdContent(),a.getAdPicture(),a.getAdProductor(),a.getAdDay(),a.getAdState())>0;
 	}
 	
 	@Override
 	public boolean updAd(Ad a) {
 		// TODO 自动生成的方法存根
 		String sql = "update ad set ad_content=?,ad_picture=?,ad_productor=?,ad_endDate=now(),ad_day=?,ad_state=? where ad_id=?";
-		return BaseDao.execute(sql,  a.getad_content(),a.getad_picture(),a.getad_productor(),a.getAd_day(),a.getAd_state(),a.getad_id())>0;
+		return BaseDao.execute(sql,  a.getAdContent(),a.getAdPicture(),a.getAdProductor(),a.getAdDay(),a.getAdState(),a.getAdId())>0;
 	}
 	
 	@Override
