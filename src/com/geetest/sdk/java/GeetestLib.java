@@ -544,7 +544,6 @@ public class GeetestLib {
 			StringBuffer buf = new StringBuffer("");
 			for (int offset = 0; offset < b.length; offset++) {
 				i = b[offset];
-				@author 
 				if (i < 0) {
 					i += 256;
 				}

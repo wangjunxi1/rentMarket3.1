@@ -53,7 +53,6 @@ public class AddrServlet extends HttpServlet {
 			String cmbProvince = request.getParameter("cmbProvince");
 			String cmbCity = request.getParameter("cmbCity");
 			String cmbArea = request.getParameter("cmbArea");
-			@author tag
 			String Address = request.getParameter("userAddress");
 			String userAddress = cmbProvince+cmbCity+cmbArea+Address;
 			String userPhone = request.getParameter("userPhone");

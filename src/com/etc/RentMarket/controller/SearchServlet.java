@@ -40,7 +40,7 @@ public class SearchServlet extends HttpServlet {
 		
 		String searchText = request.getParameter("searchText");
 		System.out.println(searchText);
-		List<Good> serlist = sd.SelGoodByLike(searchText);
+		List<Good> serlist = sd.selGoodByLike(searchText);
 		request.setAttribute("serlist", serlist);
 		System.out.println(serlist);
 		request.getRequestDispatcher("front/SearchResult.jsp").forward(request, response);

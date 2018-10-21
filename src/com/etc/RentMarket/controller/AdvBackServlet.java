@@ -71,7 +71,7 @@ public class AdvBackServlet extends HttpServlet {
 	protected void doGetAds(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		List<Ad> list = as.SelectAds();
+		List<Ad> list = as.selectAds();
 		// Ajax来实现
 		// 返回数据最好是json格式 外部的jar包 gson
 		MyData<Ad> md = new MyData<Ad>();
@@ -96,7 +96,7 @@ public class AdvBackServlet extends HttpServlet {
 		int day = Integer.parseInt(request.getParameter("day"));
 		String state = request.getParameter("adStatus");
 		Ad a = new Ad(content, picture, productor, day, state);
-		flag = as.AddAds(a);
+		flag = as.addAds(a);
 	}
 
 	/**
@@ -116,7 +116,7 @@ public class AdvBackServlet extends HttpServlet {
 		int day = Integer.parseInt(request.getParameter("day"));
 		String state = request.getParameter("adStatus");
 		Ad a = new Ad(content, picture, productor, day, state, id);
-		flag = as.UpdAd(a);
+		flag = as.updAd(a);
 	}
 
 	/**
@@ -125,7 +125,7 @@ public class AdvBackServlet extends HttpServlet {
 	protected void doDelAds(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
-		flag = as.DelAd(id);
+		flag = as.delAd(id);
 	}
 
 	/**

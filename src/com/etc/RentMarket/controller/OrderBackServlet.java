@@ -95,7 +95,7 @@ public class OrderBackServlet extends HttpServlet {
 		// 使用printWriter对象
 		PrintWriter out = response.getWriter();
 		int orderId = Integer.valueOf((request.getParameter("id")));
-		boolean flag = obs.DelOrderBack(orderId);
+		boolean flag = obs.delOrderBack(orderId);
 		out.print(flag);
 
 	}
@@ -130,7 +130,7 @@ public class OrderBackServlet extends HttpServlet {
 		int orderState = Integer.valueOf(request.getParameter("orderState"));
 		OrderBack order=new OrderBack(orderId, orderState);
 		System.out.println(order);
-		boolean flag = obs.EditOrder(order);
+		boolean flag = obs.editOrder(order);
 		if (flag) {
 
 			out.print(flag);

@@ -40,7 +40,7 @@ public class AdvServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		AdService as = new AdServiceImpl();
-		List<Ad> list = as.SelectAds();
+		List<Ad> list = as.selectAds();
 		
 		request.setAttribute("Ad", list);
 		request.getRequestDispatcher("front/index.jsp").forward(request, response);

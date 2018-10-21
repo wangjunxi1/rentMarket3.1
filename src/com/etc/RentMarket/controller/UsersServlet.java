@@ -63,7 +63,7 @@ public class UsersServlet extends HttpServlet {
 			userName = request.getParameter("username");// 用户名
 
 			// 先判断是否存在
-			if (""userName.equals()) {
+			if ("userName".equals("")) {
 				data = "*请输入用户名";
 				out.print(data);
 			} else {
@@ -81,7 +81,7 @@ public class UsersServlet extends HttpServlet {
 			userPwd = request.getParameter("password");// 密码
 			setPwd(userPwd);//传一个密码参数给set()
 			if (userPwd != null) {
-				if (""userPwd.equals()) {
+				if ("userPwd".equals("")) {
 					data = "*密码不能为空";
 					out.print(data);
 				} else {
@@ -96,14 +96,13 @@ public class UsersServlet extends HttpServlet {
 			userPwd=getPwd();
 			reUserPwd = request.getParameter("repassword");// 确认密码
 			if (reUserPwd != null) {
-				if (""reUserPwd.equals()) {
+				if ("reUserPwd".equals("")) {
 					data = "*密码不能为空";
 					out.print(data);
 				} else {
 					if (userPwd != null) {
 						if (userPwd.equals(reUserPwd)) {
 							reUserPwd = MD5Util.getEncodeByMd5(reUserPwd);
-							System.out.println(reUserPwd);
 							data = "*密码匹配,请继续";
 							out.print(data);
 						} else {
@@ -119,16 +118,14 @@ public class UsersServlet extends HttpServlet {
 			userName = request.getParameter("username");// 用户名
 			userPwd = MD5Util.getEncodeByMd5(request.getParameter("password"));// 密码
 			reUserPwd = MD5Util.getEncodeByMd5(request.getParameter("repassword"));// 确认密码
-			System.out.println(userName);
 			// 添加用户
 			User u = new User(userName, userPwd);
 			boolean flag = us.addUsers(u);
-			System.out.println("flag:" + flag);
 
 			// 暂时不提示成功或者失败
 			// 页面的跳转
-			// request实现页面的跳转->转发
-			request.getRequestDispatcher("front/login.jsp").forward(request, response);
+			// response实现页面的跳转->转发
+			response.sendRedirect("front/login.jsp");
 		} else if ("login".equals(op)) {
 			userName = request.getParameter("userName");
 			userPwd = MD5Util.getEncodeByMd5((request.getParameter("userPwd")));

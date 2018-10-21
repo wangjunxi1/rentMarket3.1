@@ -95,7 +95,7 @@ public class UsersBackServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		int userId = Integer.valueOf((request.getParameter("userId")));
 		Uesrslist u = new Uesrslist(userId, request.getParameter("userStatus"));
-		boolean flag = us.UpdateUesrStatus(u);
+		boolean flag = us.updateUesrStatus(u);
 		out.print(flag);
 
 	}
@@ -109,7 +109,7 @@ public class UsersBackServlet extends HttpServlet {
 		// 使用printWriter对象
 		PrintWriter out = response.getWriter();
 		int userId = Integer.valueOf((request.getParameter("id")));
-		boolean flag = us.DelUesr(userId);
+		boolean flag = us.delUesr(userId);
 		out.print(flag);
 
 	}

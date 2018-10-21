@@ -151,6 +151,7 @@ public class OrderServlet extends HttpServlet {
 				int goodNum=goodNums.charAt(i);//商品数量
 				String rentdate =arrrentDays[i] ;//租赁天数
 				Orderdetail orderdetail= new Orderdetail(goodName, goodNum, orderId, goodImg, goodPrice, rentdate);
+				request.getSession().setAttribute("orderdetail",orderdetail);
 				boolean isInsertOrderDetail =odsi.insertOrderDetail(orderdetail);//插入详细商品订单	
 				
 						
