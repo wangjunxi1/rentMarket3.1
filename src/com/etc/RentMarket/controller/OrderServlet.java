@@ -126,6 +126,7 @@ public class OrderServlet extends HttpServlet {
 			String goodIdlist=request.getParameter("goodId");
 			String goodNums=request.getParameter("goodNum");
 			goodNums=goodNums.substring(0,goodNums.length()-1);
+			
 			String rentDays=request.getParameter("rentDays");
 			GoodServiceImpl gsi = new GoodServiceImpl();
 			ShoppingCartServiceImpl scs = new ShoppingCartServiceImpl();
@@ -142,15 +143,16 @@ public class OrderServlet extends HttpServlet {
 			
 			String arr[] = goodIdlist.split(",");
 			List<Integer> list = new ArrayList<Integer>();
-			List<Integer>	listNums=new ArrayList<Integer>();
+		
+			
 			for (int i = 0; i < arr.length; i++) {
 				list.add(Integer.valueOf(arr[i]));
 				
 				//通过goodID获取good类
 				List<Good> good = gsi.getgoodsByGoodId(Integer.valueOf(arr[i]));
-				String goodImg = good.get(i).getGoodImgAdd();//商品图片
+				String goodImg = good.get(0).getGoodImgAdd();//商品图片
 				int orderId=orders.get(orders.size()-1).getOrderId();//订单Id
-				String goodName=good.get(i).getGoodName();//商品名称
+				String goodName=good.get(0).getGoodName();//商品名称
 				double goodPrice=good.get(0).getGoodPrice();//商品价格
 				int goodNum=Integer.valueOf(arrgoodNums[i]);//商品数量
 				
