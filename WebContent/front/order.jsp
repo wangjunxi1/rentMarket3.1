@@ -297,7 +297,7 @@
                        		String arrRentDay[] = rentDays.split(",");//天数数组
                        		String goodNum="";
                        		for(int i=0;i<shopcart.size();i++){                 		
-                       			goodNum+=shopcart.get(i).getGoodNumber();
+                       			goodNum+=shopcart.get(i).getGoodNumber()+",";
                        %>
                        <div class="clearfix pc-wares-p">
                            <div class="fl pc-wares"><a href="#"><img width="100px" height="100px" src=<%=imgPath+shopcart.get(i).getGoodImgAdd() %>></a></div>
