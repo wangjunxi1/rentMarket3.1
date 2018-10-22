@@ -123,7 +123,7 @@
 					});
 			 $("#password").blur(
 					function() {
-						console.log(Math.random());
+						
 						$.get("../us.do?op=tip-userpwd", "password=" + $(this).val()
 								+ "&random=" + Math.random(), function(data,
 								status) {
@@ -134,7 +134,7 @@
 					});
 			 $("#repassword").blur(
 					function() {
-						console.log(Math.random());
+						
 						$.get("../us.do?op=tip-cuserpwd", "repassword=" + $(this).val()
 								+ "&random=" + Math.random(), function(data,
 								status) {

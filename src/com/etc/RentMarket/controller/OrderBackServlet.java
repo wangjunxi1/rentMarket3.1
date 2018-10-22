@@ -129,7 +129,7 @@ public class OrderBackServlet extends HttpServlet {
 		int orderId = Integer.valueOf(request.getParameter("orderId"));
 		int orderState = Integer.valueOf(request.getParameter("orderState"));
 		OrderBack order=new OrderBack(orderId, orderState);
-		System.out.println(order);
+		
 		boolean flag = obs.editOrder(order);
 		if (flag) {
 
