@@ -67,7 +67,7 @@
 					<li><a href="#" style="color: red;">${sessionScope.user.userName}</a></li>
 					<li class="headerul">|</li>
 					<div class="header-cart fr">
-						<a href="../shopcart.do?op=showCart&userName=${sessionScope.user.userName}"><img src="theme/icon/car.png"></a>
+						<a href="${pageContext.request.contextPath}/shopcart.do?op=showCart&userName=${sessionScope.user.userName}"><img src="theme/icon/car.png"></a>
 					</div>
 				</ul>
 			</div>

@@ -117,7 +117,7 @@
 				<div class="member-lists">
 					<dl>
 						<dt>我的商城</dt>
-                    <dd class="cur">
+                    <dd>
 							<a href="${pageContext.request.contextPath}/front/user-info.jsp">我的信息</a>
 						</dd>
 						<dd>
