@@ -75,7 +75,7 @@
 										<!-- 自动登录开始fore4 -->
 										<div class="item item-fore4">
 											<div class="safe">
-												<span> <a href="register.html" class=""> <b></b>立即注册
+												<span> <a href="register.jsp" class=""> <b></b>立即注册
 											</a>
 											</span> <span class="forget-pw-safe"> <a href="">忘记密码</a>
 											</span>
