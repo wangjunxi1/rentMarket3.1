@@ -365,7 +365,7 @@
   		var layer = layui.layer;
 		});   
 		$("#addCart").click(function() {
-			$.post("../shopcart.do","op=addCart&userName="+$("#userName").val()+"&goodId="+$("#goodId").val()+"&goodNumber="+$("#goodNumber").val(),function(data,status){
+			$.post("${pageContext.request.contextPath}/shopcart.do","op=addCart&userName="+$("#userName").val()+"&goodId="+$("#goodId").val()+"&goodNumber="+$("#goodNumber").val(),function(data,status){
 				if("success"==status){
 					layer.msg('<span style="color:white;font-size:20px">添加商品成功</span>');
 					icon:1;
