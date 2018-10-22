@@ -153,12 +153,12 @@
 	<div class="Hui-article">
 	
 		<article class="cl pd-20"> 
-		<div class="text-c">
+		<!-- <div class="text-c">
 				
 				
 				<input type="text" name="" id="" placeholder=" 商品名称" style="width:250px" class="input-text">
 				<button name="" id="" class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i> 搜商品名称</button>
-			</div>
+			</div> -->
 			
 			<div class="cl pd-5 bg-1 bk-gray mt-20"> 
 			<span class="l">

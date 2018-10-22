@@ -463,7 +463,7 @@ function member_del(obj,id){
     //路径配置,此处配置的路径是获取数据的重要手段;
     employee.url="/"; //  这里 / 表示的是localhost/
     employee.requestUrl = {
-        queryList:employee.url+"RentMarket2.0/as.do"  //数据是从servlet一侧返回的 json格式
+        queryList:employee.url+"rentMarket3.1/as.do"  //数据是从servlet一侧返回的 json格式
     };
 
     employee.search={
@@ -494,23 +494,23 @@ function member_del(obj,id){
         {   //第一个列
         	"data": "extn",
             "createdCell": function (nTd, sData, oData, iRow, iCol) {
-                $(nTd).html("<input type='checkbox' name='checkList' value='" + oData.ad_id + "'>");
+                $(nTd).html("<input type='checkbox' name='checkList' value='" + oData.adId + "'>");
             }
         }, //这里是返回的json对象中的 属性值   {data : }
-        {"data": "ad_id"},
-        {"data": "ad_content"},
-        {"data": "ad_picture"},
-        {"data": "ad_productor"},
-        {"data": "ad_day"},
-        {"data": "ad_beginDate"},
-        {"data": "ad_endDate"},
-        {"data": "ad_state"},
+        {"data": "adId"},
+        {"data": "adContent"},
+        {"data": "adPicture"},
+        {"data": "adProductor"},
+        {"data": "adDay"},
+        {"data": "adBeginDate"},
+        {"data": "adEndDate"},
+        {"data": "adState"},
         {    //创建操作那个列
         	"data":"extn",
         	"createdCell":function(nTd,sData, oData, iRow, iCol)
         	{
         		//表格最后一个列增加很多超链接 启用禁用。 编辑   删除 修改密码
-        		$(nTd).html(' <a title="编辑" href="javascript:;" class="empedit ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>  <a title="删除" href="javascript:;" onclick="member_del(this,'+oData.ad_id+')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
+        		$(nTd).html(' <a title="编辑" href="javascript:;" class="empedit ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a>  <a title="删除" href="javascript:;" onclick="member_del(this,'+oData.adId+')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
         		//$(nTd).html('<a onClick="member_stop(this,\'10001\')">xx<a>');
         		//$(nTd).html('<a style="text-decoration:none" onClick="member_stop(this,\'10001\')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a> <a title="编辑" href="javascript:;" onclick="member_edit(\'编辑\',\'member-add.html\',\'4\',\'\',\'510\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> <a style="text-decoration:none" class="ml-5" onClick="change_password(\'修改密码\',\'change-password.html\',\'10001\',\'600\',\'270\')" href="javascript:;" title="修改密码"><i class="Hui-iconfont">&#xe63f;</i></a> <a title="删除" href="javascript:;" onclick="member_del(this,\'1\')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>');
         		//$(nTd).html("<td class='td-manage'><a style='text-decoration:none' onClick='member_stop(this,'10001')' href='javascript:;' title='停用'><i class='Hui-iconfont'>&#xe631;</i></a> <a title='编辑' href='javascript:;' onclick='member_edit('编辑','member-add.html','4','','510')' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6df;</i></a> <a style='text-decoration:none' class='ml-5' onClick='change_password('修改密码','change-password.html','10001','600','270')' href='javascript:;' title='修改密码'><i class='Hui-iconfont'>&#xe63f;</i></a> <a title='删除' href='javascript:;' onclick='member_del(this,'1')' class='ml-5' style='text-decoration:none'><i class='Hui-iconfont'>&#xe6e2;</i></a></td>");

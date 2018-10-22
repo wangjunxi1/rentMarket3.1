@@ -160,13 +160,13 @@
 			</span> 
 			<span class="r">共有数据：<strong><span id="datarowcount"></span></strong> 条</span> </div>
 		
-			<div class="text-c"> 日期范围：
+			<!-- <div class="text-c"> 日期范围：
 				<input type="text" onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'logmax\')||\'%y-%M-%d\'}'})" id="logmin" class="input-text Wdate" style="width:120px;">
 				-
 				<input type="text" onfocus="WdatePicker({minDate:'#F{$dp.$D(\'logmin\')}',maxDate:'%y-%M-%d'})" id="logmax" class="input-text Wdate" style="width:120px;">
 				<input type="text" name="" id="" placeholder=" 商品名称" style="width:250px" class="input-text">
 				<button name="" id="" class="btn btn-success" type="submit"><i class="Hui-iconfont">&#xe665;</i> 搜商品</button>
-			</div>
+			</div> -->
 			<div class="mt-20">
 				<table id="example" class="table table-border table-bordered table-bg table-hover table-sort">
 					<thead>

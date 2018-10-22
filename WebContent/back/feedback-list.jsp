@@ -162,10 +162,10 @@
 				<table id="example" class="table table-border table-bordered table-hover table-bg table-sort">
 					<thead>
 						<tr class="text-c">
-							<th width="25"><input type="checkbox" name="" value=""></th>
-							<th width="60">评价Id</th>
-							<th width="60">评价商品</th>
-							<th>评价内容</th>
+							<th width="25px"><input type="checkbox" name="" value=""></th>
+							<th width="60px">评价Id</th>
+							<th width="200px">评价商品</th>
+							<th width="200px">评价内容</th>
 							<th width="160">评价时间</th>
 							<th width="60">评价用户</th>
 							<th width="100">操作</th>
