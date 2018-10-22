@@ -9,135 +9,145 @@ public class Ad implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	
-	private int ad_id;
+	private int adId;
 
-	private String ad_content;
+	private String adContent;
 	
 	
-	private String ad_picture;
-
-
-	private String ad_productor;
-	
-	
-	private String ad_beginDate;
-
-	
-	private String ad_endDate;
+	private String adPicture;
 
 
-	private int ad_day;
+	private String adProductor;
 	
 	
-	private String ad_state;
+	private String adBeginDate;
+
+	
+	private String adEndDate;
+
+
+	private int adDay;
 	
 	
-	public Ad(String ad_content, String ad_picture, String ad_productor, int ad_day, String ad_state , int ad_id) {
+	private String adState;
+	
+	
+	
+
+	public Ad(String adContent, String adPicture, String adProductor, int adDay, String adState,int adId) {
 		super();
-		this.ad_id = ad_id;
-		this.ad_content = ad_content;
-		this.ad_picture = ad_picture;
-		this.ad_productor = ad_productor;
-		this.ad_day = ad_day;
-		this.ad_state = ad_state;
+		this.adId = adId;
+		this.adContent = adContent;
+		this.adPicture = adPicture;
+		this.adProductor = adProductor;
+		this.adDay = adDay;
+		this.adState = adState;
 	}
 
 	public Ad() {
 	}
 
-	public int getad_id() {
-		return this.ad_id;
+	
+
+	public int getAdId() {
+		return adId;
 	}
 
-	public void setad_id(int ad_id) {
-		this.ad_id = ad_id;
+	public void setAdId(int adId) {
+		this.adId = adId;
 	}
 
-	public String  getAd_beginDate() {
-		return this.ad_beginDate;
+	public String getAdContent() {
+		return adContent;
 	}
 
-	public void setAd_beginDate(String ad_beginDate) {
-		this.ad_beginDate = ad_beginDate;
+	public void setAdContent(String adContent) {
+		this.adContent = adContent;
 	}
 
-	public String getad_content() {
-		return this.ad_content;
+	public String getAdPicture() {
+		return adPicture;
 	}
 
-	public void setad_content(String ad_content) {
-		this.ad_content = ad_content;
+	public void setAdPicture(String adPicture) {
+		this.adPicture = adPicture;
 	}
 
-	public String getAd_endDate() {
-		return this.ad_endDate;
+	public String getAdProductor() {
+		return adProductor;
 	}
 
-	public void setAd_endDate(String ad_endDate) {
-		this.ad_endDate = ad_endDate;
+	public void setAdProductor(String adProductor) {
+		this.adProductor = adProductor;
 	}
 
-	public String getad_picture() {
-		return this.ad_picture;
+	public String getAdBeginDate() {
+		return adBeginDate;
 	}
 
-	public void setad_picture(String ad_picture) {
-		this.ad_picture = ad_picture;
+	public void setAdBeginDate(String adBeginDate) {
+		this.adBeginDate = adBeginDate;
 	}
 
-	public String getad_productor() {
-		return this.ad_productor;
+	public String getAdEndDate() {
+		return adEndDate;
 	}
 
-	public void setad_productor(String ad_productor) {
-		this.ad_productor = ad_productor;
+	public void setAdEndDate(String adEndDate) {
+		this.adEndDate = adEndDate;
 	}
 
-	public int getAd_day() {
-		return ad_day;
+	public int getAdDay() {
+		return adDay;
 	}
 
-	public void setAd_day(int ad_day) {
-		this.ad_day = ad_day;
+	public void setAdDay(int adDay) {
+		this.adDay = adDay;
 	}
 
-	public String getAd_state() {
-		return ad_state;
+	public String getAdState() {
+		return adState;
 	}
 
-	public void setAd_state(String ad_state) {
-		this.ad_state = ad_state;
-	}
-
-	public Ad(int ad_id, String ad_content, String ad_picture, String ad_productor, String ad_beginDate,
-			String ad_endDate, int ad_day, String ad_state) {
-		super();
-		this.ad_id = ad_id;
-		this.ad_content = ad_content;
-		this.ad_picture = ad_picture;
-		this.ad_productor = ad_productor;
-		this.ad_beginDate = ad_beginDate;
-		this.ad_endDate = ad_endDate;
-		this.ad_day = ad_day;
-		this.ad_state = ad_state;
+	public void setAdState(String adState) {
+		this.adState = adState;
 	}
 
 	
-	public Ad(String ad_content, String ad_picture, String ad_productor, int ad_day, String ad_state) {
+
+	
+	public Ad(int adId, String adContent, String adPicture, String adProductor, String adBeginDate, String adEndDate,
+			int adDay, String adState) {
 		super();
-		this.ad_content = ad_content;
-		this.ad_picture = ad_picture;
-		this.ad_productor = ad_productor;
-		this.ad_day = ad_day;
-		this.ad_state = ad_state;
+		this.adId = adId;
+		this.adContent = adContent;
+		this.adPicture = adPicture;
+		this.adProductor = adProductor;
+		this.adBeginDate = adBeginDate;
+		this.adEndDate = adEndDate;
+		this.adDay = adDay;
+		this.adState = adState;
+	}
+
+	
+
+	public Ad(String adContent, String adPicture, String adProductor, int adDay, String adState) {
+		super();
+		this.adContent = adContent;
+		this.adPicture = adPicture;
+		this.adProductor = adProductor;
+		this.adDay = adDay;
+		this.adState = adState;
 	}
 
 	@Override
 	public String toString() {
-		return "Ad [ad_id=" + ad_id + ", ad_content=" + ad_content + ", ad_picture=" + ad_picture + ", ad_productor="
-				+ ad_productor + ", ad_beginDate=" + ad_beginDate + ", ad_endDate=" + ad_endDate + ", ad_day=" + ad_day
-				+ ", ad_state=" + ad_state + "]";
+		return "Ad [adId=" + adId + ", adContent=" + adContent + ", adPicture=" + adPicture + ", adProductor="
+				+ adProductor + ", adBeginDate=" + adBeginDate + ", adEndDate=" + adEndDate + ", adDay=" + adDay
+				+ ", adState=" + adState + "]";
 	}
+
+	
 
 	
 

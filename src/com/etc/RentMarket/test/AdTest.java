@@ -9,7 +9,7 @@ import com.etc.RentMarket.service.impl.AdServiceImpl;
 public class AdTest {
 	public static void main(String[] args) {
 		AdService as = new AdServiceImpl();
-		List<Ad> list = as.SelectAds();
+		List<Ad> list = as.selectAds();
 		System.out.println(list);
 	}
 

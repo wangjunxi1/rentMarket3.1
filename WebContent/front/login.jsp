@@ -57,7 +57,7 @@
 							<div class="msg-wrap"></div>
 							<div class="mc">
 								<div class="form">
-									<form action="../us.do?op=login" id="formlogin" method="post"  >
+									<form action="${pageContext.request.contextPath }/us.do?op=login" id="formlogin" method="post"  >
 										<div class="item item-fore1 item-error">
 											<label for="userName" class="login-label name-label"></label>
 											<input type="text" name="userName" id="userName" class="itxt" tabindex="1" autocomplete="off" placeholder="邮箱/用户名/已验证手机" >
@@ -168,7 +168,7 @@
 					</a>
 				</div>
 				<div style="padding-left: 10px">
-					<p style="padding-top: 10px; padding-bottom: 10px; color: #999">网络文化经营许可证：浙网文[2013]0268-027号| 增值电信业务经营许可证：浙B2-20080224-1
+					<p style="padding-top: 10px; padding-bottom: 10px; color: #999">网络文化经营许可证：网文[2013]0268-027号| 
 					</p>
 					<p style="padding-bottom: 10px; color: #999">信息网络传播视听节目许可证：1109364号 | 互联网违法和不良信息举报电话:0571-81683755</p>
 				</div>
