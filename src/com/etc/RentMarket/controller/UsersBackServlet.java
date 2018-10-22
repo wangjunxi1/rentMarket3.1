@@ -47,6 +47,7 @@ public class UsersBackServlet extends HttpServlet {
 		if (request.getParameter("op") != null) {
 			op = request.getParameter("op");
 		}
+		
 		// 1、显示用户信息
 		if ("".equals(op)) {
 			doGetUsers(request, response);
